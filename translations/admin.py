@@ -9,17 +9,27 @@ from django.contrib.auth.forms import (
     UserChangeForm,
 )
 from django.contrib.admin.views.decorators import staff_member_required
+from unfold.admin import ModelAdmin
 
 from .models import GlossaryEntry, CorpusEntry, SystemConfiguration, Translation, CustomUser, EvalRow
 
 @admin.register(GlossaryEntry)
-class GlossaryEntryAdmin(admin.ModelAdmin):
+class GlossaryEntryAdmin(ModelAdmin):
     list_display = ('english_key', 'translated_entry', 'created_at')
     search_fields = ('english_key', 'translated_entry')
     list_filter = ('created_at',)
     date_hierarchy = 'created_at'
     ordering = ('-created_at',)
     change_list_template = 'translations/glossary_changelist.html'
+    readonly_fields = ('created_at',)
+    fieldsets = (
+        ("Entry", {
+            "fields": ("english_key", "translated_entry"),
+        }),
+        ("Metadata", {
+            "fields": ("created_at",),
+        }),
+    )
 
     def get_urls(self):
         urls = super().get_urls()
@@ -63,7 +73,7 @@ class ImportCorpusEntryForm(forms.Form):
 
 
 @admin.register(CorpusEntry)
-class CorpusEntryAdmin(admin.ModelAdmin):
+class CorpusEntryAdmin(ModelAdmin):
     list_display = ('english_text', 'translated_text', 'created_at')
     search_fields = ('english_text', 'translated_text')
     list_filter = ('created_at', 'source')
@@ -71,6 +81,15 @@ class CorpusEntryAdmin(admin.ModelAdmin):
     ordering = ('-created_at',)
 
     change_list_template = 'translations/corpusentry_changelist.html'
+    readonly_fields = ('created_at', 'updated_at')
+    fieldsets = (
+        ("Entry", {
+            "fields": ("english_text", "translated_text", "source"),
+        }),
+        ("Timestamps", {
+            "fields": ("created_at", "updated_at"),
+        }),
+    )
 
     def get_urls(self):
         urls = super().get_urls()
@@ -106,19 +125,30 @@ class CorpusEntryAdmin(admin.ModelAdmin):
         )
 
 @admin.register(Translation)
-class Translation(admin.ModelAdmin):
+class Translation(ModelAdmin):
     list_display = ('source_text', 'final_translation', 'created_by', 'created_at', 'num_TM')
     search_fields = ('source_text', 'final_translation')
     date_hierarchy = 'created_at'
     ordering = ('-created_at',)
-    readonly_fields = ['source_text', 'mt_translation', 'final_translation', 'glossary_entries', 'corpus_entries', 'created_by']
+    readonly_fields = ['source_text', 'mt_translation', 'final_translation', 'glossary_entries', 'corpus_entries', 'created_by', 'created_at']
+    fieldsets = (
+        ("Source", {
+            "fields": ("source_text", "mt_translation"),
+        }),
+        ("Final", {
+            "fields": ("final_translation",),
+        }),
+        ("Context", {
+            "fields": ("glossary_entries", "corpus_entries", "created_by", "created_at"),
+        }),
+    )
 
     def num_TM(self, obj):
         return obj.corpus_entries.count()
 
 
 @admin.register(SystemConfiguration)
-class SystemConfigurationAdmin(admin.ModelAdmin):
+class SystemConfigurationAdmin(ModelAdmin):
     readonly_fields = ['created_at', 'updated_at']
     
     def has_add_permission(self, request):
@@ -140,7 +170,7 @@ class SystemConfigurationAdmin(admin.ModelAdmin):
         return super().changelist_view(request, extra_context)
 
 @admin.register(CustomUser)
-class CustomUserAdmin(admin.ModelAdmin):
+class CustomUserAdmin(ModelAdmin):
     add_form_template = "admin/auth/user/add_form.html"
     change_user_password_template = None
     fieldsets = (
@@ -179,5 +209,6 @@ class CustomUserAdmin(admin.ModelAdmin):
         return super().get_form(request, obj, **defaults)
 
 @admin.register(EvalRow)
-class EvalRowAdmin(admin.ModelAdmin):
+class EvalRowAdmin(ModelAdmin):
     list_display = ('en', 'tgt')
+    search_fields = ('en', 'tgt')

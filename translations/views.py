@@ -6,6 +6,7 @@ from django.contrib.auth.decorators import login_required
 from django.http import StreamingHttpResponse
 from django.http import JsonResponse
 from asgiref.sync import sync_to_async
+import litellm
 
 from translations.utils import TranslatorGoogle, TranslatorHuggingFace
 from .models import GlossaryEntry, CorpusEntry, SystemConfiguration, Translation, EvalRow
@@ -33,12 +34,16 @@ def translate_view(request):
     if request.headers.get('accept') == 'text/event-stream':
         # This is the SSE request
         source_text = request.GET.get('source_text')
-        if translator is None:
+        use_mt = request.GET.get('use_mt', '1').lower() not in ('0', 'false', 'off', 'no')
+        user = request.user if request.user.is_authenticated else None
+        if use_mt and translator is None:
             initialize_resources()
         
         async def event_stream():
-            # Send MT translation
-            mt_translation = translator.translate(source_text)
+            # Send MT translation if enabled; otherwise, follow pure LLM path.
+            mt_translation = ''
+            if use_mt:
+                mt_translation = translator.translate(source_text)
             yield f"data: {json.dumps({'type': 'mt_translation', 'data': mt_translation})}\n\n"
 
             # Send glossary entries
@@ -46,22 +51,58 @@ def translate_view(request):
             yield f"data: {json.dumps({'type': 'glossary_entries', 'data': [gloss_entry.as_dict() for gloss_entry in glossary_entries]})}\n\n"
             
             # Send similar sentences
-            similar_sentences = await sync_to_async(CorpusEntry.get_top_similar_bm25)(source_text, translator.config.num_sentences_retrieved)
+            similar_sentences = await sync_to_async(CorpusEntry.get_top_similar_bm25)(source_text, config.num_sentences_retrieved)
             serialized_similar_sentences = [line.as_dict() for line in similar_sentences]
             yield f"data: {json.dumps({'type': 'similar_sentences', 'data': serialized_similar_sentences})}\n\n"
             
             # Send final translation
-            ai_response = await translator.get_post_edited_translation(source_text, similar_sentences, glossary_entries)
-            final_translation = ai_response['final_translation']
+            if use_mt:
+                ai_response = await translator.get_post_edited_translation(source_text, similar_sentences, glossary_entries)
+                final_translation = ai_response['final_translation']
+                corrections = [c.as_dict() for c in ai_response['corrections']]
+            else:
+                user_message = ''
+                if glossary_entries:
+                    user_message += "<glossary entries>\n"
+                    for i, entry in enumerate(glossary_entries):
+                        user_message += f"no {i}: {entry.as_txt()}\n"
+                    user_message += "</glossary entries>\n\n"
+
+                user_message += "<past translations>\n"
+                for sentence in similar_sentences:
+                    user_message += (
+                        f"English: {sentence.english_text}\n"
+                        f"{config.target_language_name}: {sentence.translated_text}\n\n"
+                    )
+                user_message += "</past translations>\n\n"
+                user_message += (
+                    "Translate the following text directly. "
+                    "Do not include explanations.\n\n"
+                    "Text to translate:\n"
+                    f"English: {source_text}\n"
+                    f"{config.target_language_name}: "
+                )
+
+                response = litellm.completion(
+                    model=config.post_editing_model,
+                    messages=[
+                        {'role': 'system', 'content': config.translation_prompt},
+                        {'role': 'user', 'content': user_message},
+                    ],
+                    temperature=0.5,
+                )
+                final_translation = response.choices[0].message.content.strip()
+                corrections = []
+
             yield f"data: {json.dumps({'type': 'final_translation', 'data': final_translation})}\n\n"
 
-            yield f"data: {json.dumps({'type': 'corrections', 'data': [c.as_dict() for c in ai_response['corrections']]})}\n\n"
+            yield f"data: {json.dumps({'type': 'corrections', 'data': corrections})}\n\n"
 
             translation = await sync_to_async(Translation.objects.create)(
                 source_text=source_text,
                 mt_translation=mt_translation,
                 final_translation=final_translation,
-                created_by=request.user if request.user.is_authenticated else None
+                created_by=user
             )
             await sync_to_async(translation.glossary_entries.set)(glossary_entries)
             await sync_to_async(translation.corpus_entries.set)(similar_sentences)

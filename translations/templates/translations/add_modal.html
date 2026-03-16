@@ -1,39 +1,45 @@
 
-<div role="alert" class="alert alert-success alert-soft bottom-4 left-1/2 -translate-x-1/2 z-50" id="success-message" style="display: none;"
+<div role="alert" class="alert alert-success alert-soft bottom-4 left-1/2 -translate-x-1/2 z-50" id="success-message" style="display: none;">
   <span>Added to the Translation Memory!</span>
 </div>
 <dialog id="translation_modal" class="modal">
-  <div class="modal-box w-11/12 max-w-[800px]">
-    <!-- Header -->
-    <h3 class="font-bold text-lg">Add as translation memory</h3>
-    <p class="py-2 text-sm text-gray-600">Save this translation for future use in AI post-editing.</p>
+  <div class="modal-box w-11/12 max-w-[820px] p-0 overflow-hidden">
+    <div class="px-6 py-5 border-b border-slate-200 bg-gradient-to-r from-slate-50 to-white">
+      <div class="flex items-center gap-3">
+        <div class="w-10 h-10 rounded-xl bg-blue-600 text-white flex items-center justify-center font-semibold">
+          TM
+        </div>
+        <div>
+          <h3 class="font-semibold text-lg">Add to Translation Memory</h3>
+          <p class="text-sm text-slate-600">Save this pair for reuse in AI post-editing and matching.</p>
+        </div>
+      </div>
+    </div>
 
-    <!-- Content -->
-    <div class="py-4 space-y-4">
-      <!-- English Text Area -->
+    <div class="px-6 py-5 space-y-4 bg-white">
       <div class="space-y-2">
-        <label for="english-text" class="text-sm font-medium">English Text</label>
+        <label for="english-text" class="text-sm font-medium text-slate-700">English Text</label>
         <textarea
           id="modal-english-text"
           placeholder="Enter English text here..."
-          class="textarea textarea-bordered w-full h-32 p-2 border rounded-md shadow-sm focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+          class="textarea textarea-bordered w-full h-32 p-3 border rounded-xl shadow-sm focus:ring-2 focus:ring-blue-500 focus:border-blue-500 bg-white"
         ></textarea>
       </div>
 
       <div class="space-y-2">
-        <label for="modal-tgt-translation" class="text-sm font-medium">Translation</label>
+        <label for="modal-tgt-translation" class="text-sm font-medium text-slate-700">Translation</label>
         <textarea
           id="modal-tgt-translation"
           placeholder="Enter translation here..."
-          class="textarea textarea-bordered w-full h-32 p-2 border rounded-md shadow-sm focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+          class="textarea textarea-bordered w-full h-32 p-3 border rounded-xl shadow-sm focus:ring-2 focus:ring-blue-500 focus:border-blue-500 bg-white"
         ></textarea>
       </div>
     </div>
 
-    <div class="modal-action">
+    <div class="modal-action px-6 py-4 bg-slate-50 border-t border-slate-200">
       <form method="dialog" class="space-x-2">
         <button class="btn btn-ghost" type="button" onclick="translation_modal.close()">Cancel</button>
-        <button class="btn btn-primary" type="submit">Submit</button>
+        <button class="btn btn-primary" type="submit">Save to Memory</button>
       </form>
     </div>
   </div>

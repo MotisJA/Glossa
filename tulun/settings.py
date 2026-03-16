@@ -34,6 +34,7 @@ ALLOWED_HOSTS = os.environ.get('DJANGO_ALLOWED_HOSTS', 'localhost 127.0.0.1').sp
 
 INSTALLED_APPS = [
     "daphne",
+    "unfold",
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -139,6 +140,14 @@ SECURE_SSL_REDIRECT = os.environ.get('DJANGO_SECURE_SSL_REDIRECT', '') == 'True'
 SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
 
 LOGIN_REDIRECT_URL = '/'
+
+UNFOLD = {
+    "SITE_TITLE": "Glossa Admin",
+    "SITE_HEADER": "Glossa",
+    "SITE_SUBHEADER": "Translation Operations",
+    "SITE_URL": "/",
+    "THEME": "light",
+}
 
 if not DEBUG and os.environ.get('SENTRY_URL', ''):
     import sentry_sdk

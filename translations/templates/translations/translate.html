@@ -13,14 +13,104 @@
     {% comment %} Customize at https://v5.daisyui.com/docs/cdn/ {% endcomment %}
     <link href="https://cdn.jsdelivr.net/combine/npm/daisyui@beta/base/properties.css,npm/daisyui@beta/base/reset.css,npm/daisyui@beta/base/rootcolor.css,npm/daisyui@beta/base/rootscrollgutter.css,npm/daisyui@beta/base/rootscrolllock.css,npm/daisyui@beta/base/scrollbar.css,npm/daisyui@beta/base/svg.css,npm/daisyui@beta/components/button.css,npm/daisyui@beta/components/checkbox.css,npm/daisyui@beta/components/input.css,npm/daisyui@beta/components/menu.css,npm/daisyui@beta/components/modal.css,npm/daisyui@beta/components/tooltip.css,npm/daisyui@beta/components/loading.css,npm/daisyui@beta/components/select.css,npm/daisyui@beta/components/toggle.css,npm/daisyui@beta/theme/light.css,npm/daisyui@5/components/alert.css" rel="stylesheet" type="text/css" />
     <link rel= "stylesheet" href= "https://maxst.icons8.com/vue-static/landings/line-awesome/line-awesome/1.3.0/css/line-awesome.min.css" >
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --ink: #10162f;
+            --muted: #5b6173;
+            --panel: #ffffff;
+            --panel-2: #f8fafc;
+            --accent: #2563eb;
+            --accent-2: #22c55e;
+            --border: #e2e8f0;
+            --shadow: 0 20px 60px rgba(15, 23, 42, 0.12);
+        }
+        body {
+            font-family: "Space Grotesk", system-ui, -apple-system, sans-serif;
+            color: var(--ink);
+            background:
+                radial-gradient(1200px 600px at 10% -20%, rgba(59, 130, 246, 0.15), transparent 60%),
+                radial-gradient(800px 500px at 110% 20%, rgba(34, 197, 94, 0.12), transparent 55%),
+                linear-gradient(180deg, #f8fafc 0%, #eef2ff 100%);
+        }
+        .panel {
+            background: var(--panel);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            box-shadow: var(--shadow);
+        }
+        .panel-soft {
+            background: var(--panel-2);
+            border: 1px dashed var(--border);
+            border-radius: 14px;
+        }
+        .fade-in {
+            animation: fadeIn 420ms ease-out both;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(6px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .mono {
+            font-family: "IBM Plex Mono", ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+        }
+        .brand-badge {
+            background: linear-gradient(135deg, #2563eb 0%, #0ea5e9 100%);
+            color: #fff;
+        }
+        .section-title {
+            letter-spacing: 0.04em;
+        }
+        .switch {
+            position: relative;
+            display: inline-block;
+            width: 42px;
+            height: 24px;
+        }
+        .switch input {
+            opacity: 0;
+            width: 0;
+            height: 0;
+        }
+        .switch-slider {
+            position: absolute;
+            inset: 0;
+            cursor: pointer;
+            background-color: #cbd5e1;
+            border-radius: 9999px;
+            transition: background-color 180ms ease;
+        }
+        .switch-slider::before {
+            content: "";
+            position: absolute;
+            height: 18px;
+            width: 18px;
+            left: 3px;
+            top: 3px;
+            background-color: #ffffff;
+            border-radius: 9999px;
+            box-shadow: 0 1px 3px rgba(15, 23, 42, 0.25);
+            transition: transform 180ms ease;
+        }
+        .switch input:checked + .switch-slider {
+            background-color: #2563eb;
+        }
+        .switch input:checked + .switch-slider::before {
+            transform: translateX(18px);
+        }
+        .switch input:focus-visible + .switch-slider {
+            outline: 2px solid #1d4ed8;
+            outline-offset: 2px;
+        }
+    </style>
 </head>
-<body class="bg-gray-50">
+<body>
     {% if user.is_authenticated %}
-    <nav class="bg-white shadow-sm">
-        <div class="container mx-auto px-4 py-2 flex justify-end">
+    <nav class="bg-white/80 backdrop-blur border-b border-slate-200">
+        <div class="max-w-6xl mx-auto px-4 py-3 flex justify-end">
             <form method="post" action="{% url 'logout' %}">
                 {% csrf_token %}
-                <button type="submit" class="text-gray-600 hover:text-gray-900 cursor-pointer">
+                <button type="submit" class="text-slate-600 hover:text-slate-900 cursor-pointer">
                     <i class="las la-sign-out-alt"></i> Logout
                 </button>
             </form>
@@ -28,20 +118,41 @@
     </nav>
     {% endif %}
     {% include "translations/add_modal.html" %}
-    <div class="container mx-auto p-4 space-y-6">
-        <h1 class="text-3xl font-bold text-center mb-6">{{config.site_title}}</h1>
+    <div class="max-w-6xl mx-auto px-4 py-6 space-y-5">
+        <div class="panel p-6 md:p-8 flex flex-col md:flex-row md:items-center md:justify-between gap-4 fade-in">
+            <div class="flex items-start gap-4">
+                <div class="brand-badge w-12 h-12 rounded-2xl flex items-center justify-center text-lg font-semibold shadow">
+                    G
+                </div>
+                <div class="space-y-2">
+                    <div class="inline-flex items-center gap-2 text-xs uppercase tracking-widest text-slate-500 section-title">
+                        <span class="w-2 h-2 rounded-full bg-emerald-500"></span>
+                        Live Translate Studio
+                    </div>
+                    <h1 class="text-3xl md:text-4xl font-semibold">{{config.site_title}}</h1>
+                    <p class="text-slate-600">一个轻量、可靠的翻译工作台：即时生成翻译、术语匹配与记忆回溯，减少空白等待。</p>
+                </div>
+            </div>
+            <div class="flex items-center gap-3 panel-soft px-4 py-3">
+                <i class="las la-lightning-bolt text-xl text-blue-600"></i>
+                <div>
+                    <div class="text-sm font-medium">实时流式输出</div>
+                    <div class="text-xs text-slate-500">Glossary 与 TM 同步呈现</div>
+                </div>
+            </div>
+        </div>
 
-        <form id="translateForm" class="space-y-6">
+        <form id="translateForm" class="panel p-5 md:p-7 space-y-6 fade-in">
             {% csrf_token %}
             
             <div class="grid md:grid-cols-2 gap-4">
                 <div class="space-y-2">
-                    <label for="source_text" class="block text-sm font-medium">English Text</label>
+                    <label for="source_text" class="block text-sm font-medium text-slate-700">English Text</label>
                     <div class="relative">
                         <textarea 
                             id="source_text" 
                             name="source_text" 
-                            class="w-full h-42 p-2 border rounded-md shadow-sm focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                            class="w-full h-44 p-3 border border-slate-200 rounded-xl shadow-sm focus:ring-2 focus:ring-blue-500 focus:border-blue-500 bg-white"
                             placeholder="{{config.placeholder}}"
                             maxlength="1000"
                         ></textarea>
@@ -49,24 +160,24 @@
                     </div>
                 </div>
                 <div class="space-y-2">
-                    <label class="block text-sm font-medium">{{config.target_language_name}} Translation</label>
+                    <label class="block text-sm font-medium text-slate-700">{{config.target_language_name}} Translation</label>
                     <div class="flex flex-col space-y-2">
                         <div class="relative">
                             <div
                                 id="mt-translation"
-                                class="w-full min-h-16 h-fit pt-3 px-2 pb-2 border border-dashed rounded-md bg-gray-50 text-sm text-gray-600"
+                                class="w-full min-h-20 h-fit pt-3 px-3 pb-2 border border-dashed border-slate-200 rounded-xl bg-slate-50 text-sm text-slate-600 mono"
                             ></div>
                             <div class="absolute -top-1 right-2">
-                                <span class="text-xs text-gray-400 bg-white px-1">MT Version</span>
+                                <span class="text-xs text-slate-400 bg-white px-1">MT Version</span>
                             </div>
                         </div>
                         <div class="relative">
                             <div
                                 id="final-translation" 
-                                class="w-full min-h-24 h-fit pt-3 px-2 pb-2 border rounded-md bg-gray-50"
+                                class="w-full min-h-28 h-fit pt-3 px-3 pb-2 border border-slate-200 rounded-xl bg-white"
                             ></div>
                             <div class="absolute -top-1 right-2">
-                                <span class="text-xs text-gray-700 bg-white px-1">AI-edited version</span>
+                                <span class="text-xs text-slate-700 bg-white px-1">AI-edited version</span>
                             </div>
                             {% if perms.translations.change_corpusentry %}
                             <div class="absolute bottom-2 right-2">
@@ -80,50 +191,70 @@
                 </div>
             </div>
 
-            <div class="text-center">
+            <div class="flex items-center justify-between flex-wrap gap-3">
+                <div class="flex items-center gap-3 flex-wrap">
+                    <div class="text-xs text-slate-500">输入后可立即流式返回结果</div>
+                    <label for="use-mt-toggle" class="flex items-center gap-2 text-sm text-slate-700 cursor-pointer">
+                        <span class="switch" aria-hidden="true">
+                            <input
+                                id="use-mt-toggle"
+                                name="use_mt"
+                                type="checkbox"
+                                value="1"
+                                checked
+                            >
+                            <span class="switch-slider"></span>
+                        </span>
+                        <span>先使用 MT 再进行 LLM 译后编辑</span>
+                    </label>
+                </div>
                 <button 
                     type="submit"
                     id="translate-button"
-                    class="btn btn-primary"
+                    class="btn btn-primary px-6 rounded-full shadow"
                 >
                     Translate
                 </button>
             </div>
         </form>
 
-        <div id="results" style="display: none" class="grid md:grid-cols-2 gap-6">
-            <div class="bg-white p-6 rounded-lg shadow">
-                <div class="border-b pb-4 mb-4">
+        <div id="results" class="grid md:grid-cols-2 gap-5 fade-in">
+            <div class="panel p-6">
+                <div class="border-b border-slate-200 pb-4 mb-4">
                     <h2 class="text-xl font-semibold flex items-center gap-2">
                         Glossary
                         {% if perms.translations.change_glossaryentry %}
                         <div class="tooltip" data-tip="Edit glossary entries">
                             <a href="/admin/translations/glossaryentry/" target="_blank" class="hover:text-blue-600">
-                                <i class="las la-pen text-sm border border-gray-400 p-1 rounded"></i>
+                                <i class="las la-pen text-sm border border-slate-400 p-1 rounded"></i>
                             </a>
                         </div>
                         {% endif %}
                     </h2>
-                    <p class="text-sm text-gray-600">Entries retrieved that are relevant to this translation</p>
+                    <p class="text-sm text-slate-600">Entries retrieved that are relevant to this translation</p>
                 </div>
-                <ul id="glossary-entries" class="space-y-2"></ul>
+                <ul id="glossary-entries" class="space-y-2 text-sm text-slate-600">
+                    <li class="panel-soft px-3 py-2">等待翻译后展示相关术语。</li>
+                </ul>
             </div>
 
-            <div class="bg-white p-6 rounded-lg shadow">
-                <div class="border-b pb-4 mb-4">
+            <div class="panel p-6">
+                <div class="border-b border-slate-200 pb-4 mb-4">
                     <h2 class="text-xl font-semibold">
                         Translation memories
                         {% if perms.translations.change_corpusentry %}
                         <div class="tooltip" data-tip="Edit translation memory">
                             <a href="/admin/translations/corpusentry/" target="_blank" class="hover:text-blue-600">
-                                <i class="las la-pen text-sm border border-gray-400 p-1 rounded"></i>
+                                <i class="las la-pen text-sm border border-slate-400 p-1 rounded"></i>
                             </a>
                         </div>
                         {% endif %}
                     </h2>
-                    <p class="text-sm text-gray-600">Past translations that are relevant to this translation</p>
+                    <p class="text-sm text-slate-600">Past translations that are relevant to this translation</p>
                 </div>
-                <ul id="similar-sentences" class="space-y-3"></ul>
+                <ul id="similar-sentences" class="space-y-3 text-sm text-slate-600">
+                    <li class="panel-soft px-3 py-2">等待翻译后展示相似记忆。</li>
+                </ul>
             </div>
         </div>
     </div>
@@ -163,8 +294,6 @@
             document.getElementById('glossary-entries').innerHTML = '';
             document.getElementById('similar-sentences').innerHTML = '';
             
-            // Show results section
-            document.getElementById('results').style.display = 'grid';
             // add a spinner to translate-button
             document.getElementById('translate-button').classList.add('loading', 'loading-dots', 'loading-xs');
 
@@ -180,7 +309,9 @@
                 window.translationEventSource.close();
             }
 
-            const eventSource = new EventSource(`/translate/?source_text=${encodeURIComponent(sourceText)}`);
+            const useMTToggle = document.getElementById('use-mt-toggle');
+            const useMT = Boolean(useMTToggle && useMTToggle.checked);
+            const eventSource = new EventSource(`/translate/?source_text=${encodeURIComponent(sourceText)}&use_mt=${useMT ? '1' : '0'}`);
             window.translationEventSource = eventSource;
 
             eventSource.onmessage = function(event) {
@@ -188,10 +319,15 @@
                 
                 switch(data.type) {
                     case 'mt_translation':
-                        document.getElementById('mt-translation').textContent = data.data;
+                        document.getElementById('mt-translation').textContent = data.data || '已跳过 MT（纯 LLM 翻译）';
                         break;
                     case 'glossary_entries':
                         const glossaryList = document.getElementById('glossary-entries');
+                        glossaryList.innerHTML = '';
+                        if (!data.data.length) {
+                            glossaryList.innerHTML = '<li class="panel-soft px-3 py-2 text-sm text-slate-500">未找到相关术语。</li>';
+                            break;
+                        }
                         data.data.forEach(entry => {
                             const li = document.createElement('li');
                             let value = formatMarkdown(entry.tgt);
@@ -206,6 +342,11 @@
                         break;
                     case 'similar_sentences':
                         const similarList = document.getElementById('similar-sentences');
+                        similarList.innerHTML = '';
+                        if (!data.data.length) {
+                            similarList.innerHTML = '<li class="panel-soft px-3 py-2 text-sm text-slate-500">未找到相似记忆。</li>';
+                            break;
+                        }
                         data.data.forEach(sentence => {
                             const li = document.createElement('li');
                             li.className = 'border-b pb-2 last:border-b-0';
