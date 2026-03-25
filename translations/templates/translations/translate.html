@@ -32,6 +32,12 @@
                 radial-gradient(1200px 600px at 10% -20%, rgba(59, 130, 246, 0.15), transparent 60%),
                 radial-gradient(800px 500px at 110% 20%, rgba(34, 197, 94, 0.12), transparent 55%),
                 linear-gradient(180deg, #f8fafc 0%, #eef2ff 100%);
+            min-height: 100vh;
+            overflow-y: auto;
+            overflow-x: hidden;
+        }
+        html {
+            min-height: 100%;
         }
         .panel {
             background: var(--panel);
@@ -102,6 +108,28 @@
             outline: 2px solid #1d4ed8;
             outline-offset: 2px;
         }
+        #mt-translation,
+        #final-translation {
+            max-height: 34vh;
+            overflow-y: auto;
+            overflow-wrap: anywhere;
+        }
+        #glossary-entries,
+        #similar-sentences {
+            max-height: 46vh;
+            overflow-y: auto;
+            padding-right: 0.25rem;
+        }
+        @media (max-width: 768px) {
+            #mt-translation,
+            #final-translation {
+                max-height: 28vh;
+            }
+            #glossary-entries,
+            #similar-sentences {
+                max-height: none;
+            }
+        }
     </style>
 </head>
 <body>
@@ -118,7 +146,7 @@
     </nav>
     {% endif %}
     {% include "translations/add_modal.html" %}
-    <div class="max-w-6xl mx-auto px-4 py-6 space-y-5">
+    <div class="w-[96vw] max-w-[1500px] mx-auto px-3 md:px-4 py-6 space-y-5">
         <div class="panel p-6 md:p-8 flex flex-col md:flex-row md:items-center md:justify-between gap-4 fade-in">
             <div class="flex items-start gap-4">
                 <div class="brand-badge w-12 h-12 rounded-2xl flex items-center justify-center text-lg font-semibold shadow">
@@ -157,6 +185,10 @@
                             maxlength="1000"
                         ></textarea>
                         {% include "translations/eval_browser.html" %}
+                    </div>
+                    <div class="panel-soft p-3">
+                        <div class="text-xs text-slate-500 mb-1">术语高亮预览</div>
+                        <div id="source-highlight" class="text-sm text-slate-700 min-h-8 leading-6"></div>
                     </div>
                 </div>
                 <div class="space-y-2">
@@ -198,15 +230,37 @@
                         <span class="switch" aria-hidden="true">
                             <input
                                 id="use-mt-toggle"
-                                name="use_mt"
+                                name="llm_post_edit"
                                 type="checkbox"
                                 value="1"
                                 checked
                             >
                             <span class="switch-slider"></span>
                         </span>
-                        <span>先使用 MT 再进行 LLM 译后编辑</span>
+                        <span>LLM 译后编辑</span>
                     </label>
+                    <label for="nmt-only-toggle" class="flex items-center gap-2 text-sm text-slate-700 cursor-pointer">
+                        <span class="switch" aria-hidden="true">
+                            <input
+                                id="nmt-only-toggle"
+                                name="nmt_only"
+                                type="checkbox"
+                                value="1"
+                            >
+                            <span class="switch-slider"></span>
+                        </span>
+                        <span>仅 NMT</span>
+                    </label>
+                </div>
+                <div class="flex items-center gap-2 w-full md:w-auto">
+                    <label for="domain_hint" class="text-sm text-slate-600 whitespace-nowrap">领域（可选）</label>
+                    <input
+                        id="domain_hint"
+                        name="domain_hint"
+                        type="text"
+                        placeholder="例如：法律 / 医疗 / 电子商务"
+                        class="input input-bordered rounded-xl w-full md:w-72"
+                    />
                 </div>
                 <button 
                     type="submit"
@@ -260,12 +314,74 @@
     </div>
 
     <script>
+        function escapeHtml(raw) {
+            const div = document.createElement('div');
+            div.textContent = raw;
+            return div.innerHTML;
+        }
+
         function formatMarkdown(text) {
             return text
                 // Bold: **text** or __text__
                 .replace(/(\*\*|__)(.*?)\1/g, '<strong>$2</strong>')
                 // Italic: *text* or _text_
                 .replace(/(\*|_)(.*?)\1/g, '<em>$2</em>');
+        }
+
+        function renderSourceHighlight(sourceText, glossaryEntries) {
+            const container = document.getElementById('source-highlight');
+            if (!sourceText) {
+                container.textContent = '';
+                return;
+            }
+            if (!glossaryEntries || !glossaryEntries.length) {
+                container.textContent = sourceText;
+                return;
+            }
+
+            const lower = sourceText.toLowerCase();
+            const spans = [];
+            glossaryEntries.forEach(entry => {
+                const term = (entry.en || '').trim();
+                if (!term) {
+                    return;
+                }
+                const termLower = term.toLowerCase();
+                let start = 0;
+                while (start < lower.length) {
+                    const idx = lower.indexOf(termLower, start);
+                    if (idx === -1) {
+                        break;
+                    }
+                    spans.push({ start: idx, end: idx + termLower.length, term });
+                    start = idx + termLower.length;
+                }
+            });
+
+            if (!spans.length) {
+                container.textContent = sourceText;
+                return;
+            }
+
+            spans.sort((a, b) => (a.start - b.start) || ((b.end - b.start) - (a.end - a.start)));
+            const selected = [];
+            let currentEnd = -1;
+            spans.forEach(span => {
+                if (span.start >= currentEnd) {
+                    selected.push(span);
+                    currentEnd = span.end;
+                }
+            });
+
+            let cursor = 0;
+            let html = '';
+            selected.forEach(span => {
+                html += escapeHtml(sourceText.slice(cursor, span.start));
+                html += `<mark class="bg-amber-200 text-slate-900 rounded px-1" title="${escapeHtml(span.term)}">${escapeHtml(sourceText.slice(span.start, span.end))}</mark>`;
+                cursor = span.end;
+            });
+            html += escapeHtml(sourceText.slice(cursor));
+            container.innerHTML = html;
         }
         function addCorrections(corrections) {
             // for each correction, get the 'mt' key, and change the text in #mt-translation to have a span with class 'bg-pink-400 bg-opacity-20 border-b-2 border-mtc_pink-300' around that word
@@ -285,12 +401,28 @@
             document.getElementById('mt-translation').innerHTML = newMtText;
             document.getElementById('final-translation').innerHTML = newFinalText;
         }
+        const llmPostEditToggle = document.getElementById('use-mt-toggle');
+        const nmtOnlyToggle = document.getElementById('nmt-only-toggle');
+
+        function syncTranslationModeToggles() {
+            if (nmtOnlyToggle.checked) {
+                llmPostEditToggle.checked = false;
+                llmPostEditToggle.disabled = true;
+            } else {
+                llmPostEditToggle.disabled = false;
+            }
+        }
+
+        nmtOnlyToggle.addEventListener('change', syncTranslationModeToggles);
+        syncTranslationModeToggles();
+
         document.getElementById('translateForm').addEventListener('submit', function(e) {
             e.preventDefault();
             
             // Clear previous results
             document.getElementById('mt-translation').textContent = '';
             document.getElementById('final-translation').textContent = '';
+            document.getElementById('source-highlight').textContent = '';
             document.getElementById('glossary-entries').innerHTML = '';
             document.getElementById('similar-sentences').innerHTML = '';
             
@@ -309,9 +441,13 @@
                 window.translationEventSource.close();
             }
 
-            const useMTToggle = document.getElementById('use-mt-toggle');
-            const useMT = Boolean(useMTToggle && useMTToggle.checked);
-            const eventSource = new EventSource(`/translate/?source_text=${encodeURIComponent(sourceText)}&use_mt=${useMT ? '1' : '0'}`);
+            syncTranslationModeToggles();
+            const llmPostEdit = Boolean(llmPostEditToggle && llmPostEditToggle.checked);
+            const nmtOnly = Boolean(nmtOnlyToggle && nmtOnlyToggle.checked);
+            const domainHint = (document.getElementById('domain_hint').value || '').trim();
+            const eventSource = new EventSource(
+                `/translate/?source_text=${encodeURIComponent(sourceText)}&llm_post_edit=${llmPostEdit ? '1' : '0'}&nmt_only=${nmtOnly ? '1' : '0'}&domain_hint=${encodeURIComponent(domainHint)}`
+            );
             window.translationEventSource = eventSource;
 
             eventSource.onmessage = function(event) {
@@ -324,6 +460,7 @@
                     case 'glossary_entries':
                         const glossaryList = document.getElementById('glossary-entries');
                         glossaryList.innerHTML = '';
+                        renderSourceHighlight(sourceText, data.data || []);
                         if (!data.data.length) {
                             glossaryList.innerHTML = '<li class="panel-soft px-3 py-2 text-sm text-slate-500">未找到相关术语。</li>';
                             break;

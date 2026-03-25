@@ -1,7 +1,26 @@
-
 <div role="alert" class="alert alert-success alert-soft bottom-4 left-1/2 -translate-x-1/2 z-50" id="success-message" style="display: none;">
   <span>Added to the Translation Memory!</span>
 </div>
+<style>
+  .term-panel {
+    border: 1px solid #dbe3ef;
+    background: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0 10px 24px rgba(15, 23, 42, 0.08);
+  }
+  .term-panel-soft {
+    border: 1px solid #dbe3ef;
+    background: #f8fafc;
+    border-radius: 12px;
+  }
+  .term-row {
+    border: 1px solid #e2e8f0;
+    border-radius: 10px;
+    background: #ffffff;
+    padding: 0.65rem;
+  }
+</style>
+
 <dialog id="translation_modal" class="modal">
   <div class="modal-box w-11/12 max-w-[820px] p-0 overflow-hidden">
     <div class="px-6 py-5 border-b border-slate-200 bg-gradient-to-r from-slate-50 to-white">
@@ -34,77 +53,386 @@
           class="textarea textarea-bordered w-full h-32 p-3 border rounded-xl shadow-sm focus:ring-2 focus:ring-blue-500 focus:border-blue-500 bg-white"
         ></textarea>
       </div>
+
+      <div class="panel-soft p-4 space-y-3">
+        <div class="flex items-center justify-between gap-2 flex-wrap">
+          <button id="open-term-form-btn" type="button" class="btn btn-sm btn-outline">录入术语</button>
+          <span id="term-count-status" class="text-xs text-slate-500">当前术语条目: 0</span>
+        </div>
+        <div id="term-preview-list" class="text-xs text-slate-600 space-y-1"></div>
+      </div>
     </div>
 
     <div class="modal-action px-6 py-4 bg-slate-50 border-t border-slate-200">
-      <form method="dialog" class="space-x-2">
+      <form id="translation-modal-form" method="dialog" class="space-x-2">
         <button class="btn btn-ghost" type="button" onclick="translation_modal.close()">Cancel</button>
         <button class="btn btn-primary" type="submit">Save to Memory</button>
       </form>
     </div>
   </div>
-
-  <script>
-    document.querySelector('.modal-action form').addEventListener('submit', async function(e) {
-      e.preventDefault();
-      
-      const submitBtn = this.querySelector('button[type="submit"]');
-      submitBtn.classList.add('loading', 'loading-dots', 'loading-xs');
-      
-      const englishText = document.getElementById('modal-english-text').value;
-      const tgtTranslation = document.getElementById('modal-tgt-translation').value;
-
-      // Get CSRF token from cookie
-      function getCookie(name) {
-        let cookieValue = null;
-        if (document.cookie && document.cookie !== '') {
-          const cookies = document.cookie.split(';');
-          for (let i = 0; i < cookies.length; i++) {
-            const cookie = cookies[i].trim();
-            if (cookie.substring(0, name.length + 1) === (name + '=')) {
-              cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
-              break;
-            }
-          }
-        }
-        return cookieValue;
-      }
-
-      try {
-        const response = await fetch('/api/corpus-entry/', {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/x-www-form-urlencoded',
-            'X-CSRFToken': getCookie('csrftoken')
-          },
-          body: new URLSearchParams({
-            'src': englishText,
-            'translation': tgtTranslation
-          })
-        });
-
-        if (!response.ok) {
-          throw new Error('Network response was not ok');
-        }
-
-        document.getElementById('final-translation').textContent = tgtTranslation;
-        translation_modal.close();
-
-        // success message: show for 5 secs
-        successMessage = document.getElementById('success-message');
-
-        // remove the style attribute to show the message
-        successMessage.removeAttribute('style');
-        successMessage.classList.add('fixed');
-        setTimeout(() => {
-          successMessage.style.display = 'none';
-          successMessage.classList.remove('fixed');
-        }, 5000);
-      } catch (error) {
-        console.error('Error:', error);
-      } finally {
-        submitBtn.classList.remove('loading', 'loading-dots', 'loading-xs');
-      }
-    });
-  </script>
 </dialog>
+
+<dialog id="term_entry_modal" class="modal">
+  <div class="modal-box w-11/12 max-w-[1100px] p-0 overflow-hidden term-panel">
+    <div class="px-6 py-4 border-b border-slate-200 bg-gradient-to-r from-white to-slate-50">
+      <h3 class="font-semibold text-lg">术语录入表单</h3>
+      <p class="text-sm text-slate-600">可新增、删除、修改术语条目；也可先做词对齐分析自动预加载候选。</p>
+    </div>
+
+    <div class="px-6 py-4 bg-white space-y-3 max-h-[70vh] overflow-y-auto" id="term-form-scroll-area">
+      <div class="term-panel-soft p-3 space-y-2">
+        <div class="text-sm font-medium text-slate-700">当前中英句对（用户可编辑后的内容）</div>
+        <div class="grid md:grid-cols-2 gap-3">
+          <div class="space-y-1">
+            <div class="flex items-center justify-between">
+              <label class="text-xs text-slate-500">English</label>
+              <button id="copy-current-source-btn" type="button" class="btn btn-xs btn-outline">复制源文</button>
+            </div>
+            <textarea id="current-pair-source" class="textarea textarea-bordered w-full h-24 text-sm bg-white" readonly></textarea>
+          </div>
+          <div class="space-y-1">
+            <div class="flex items-center justify-between">
+              <label class="text-xs text-slate-500">Translation</label>
+              <button id="copy-current-target-btn" type="button" class="btn btn-xs btn-outline">复制译文</button>
+            </div>
+            <textarea id="current-pair-target" class="textarea textarea-bordered w-full h-24 text-sm bg-white" readonly></textarea>
+          </div>
+        </div>
+      </div>
+
+      <div class="term-panel-soft p-3 space-y-3">
+        <div class="flex items-center gap-2 flex-wrap">
+          <button id="term-analyze-btn" type="button" class="btn btn-sm btn-outline">词对齐分析术语建议</button>
+          <button id="add-term-row-btn" type="button" class="btn btn-sm btn-ghost">新增条目</button>
+          <span id="term-analysis-status" class="text-xs text-slate-500"></span>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-[1fr_1fr_auto] gap-2 text-xs text-slate-500 px-1">
+          <div>Source Term</div>
+          <div>Target Term</div>
+          <div>操作</div>
+        </div>
+        <div id="term-entry-list" class="space-y-2"></div>
+        <div class="text-xs text-slate-500">提示：先点“词对齐分析术语建议”，再手工微调后保存。</div>
+      </div>
+    </div>
+
+    <div class="modal-action px-6 py-4 bg-slate-50 border-t border-slate-200">
+      <button type="button" class="btn btn-ghost" onclick="term_entry_modal.close()">取消</button>
+      <button type="button" id="save-term-form-btn" class="btn btn-primary">保存术语</button>
+    </div>
+  </div>
+</dialog>
+
+<script>
+  const openTermFormBtn = document.getElementById('open-term-form-btn');
+  const termCountStatus = document.getElementById('term-count-status');
+  const termPreviewList = document.getElementById('term-preview-list');
+
+  const termEntryModal = document.getElementById('term_entry_modal');
+  const termEntryList = document.getElementById('term-entry-list');
+  const termAnalyzeBtn = document.getElementById('term-analyze-btn');
+  const addTermRowBtn = document.getElementById('add-term-row-btn');
+  const saveTermFormBtn = document.getElementById('save-term-form-btn');
+  const termStatus = document.getElementById('term-analysis-status');
+  const currentPairSource = document.getElementById('current-pair-source');
+  const currentPairTarget = document.getElementById('current-pair-target');
+  const copyCurrentSourceBtn = document.getElementById('copy-current-source-btn');
+  const copyCurrentTargetBtn = document.getElementById('copy-current-target-btn');
+
+  let termPairsDraft = [];
+  let activeTermInput = null;
+
+  function escapeHtml(raw) {
+    const div = document.createElement('div');
+    div.textContent = raw || '';
+    return div.innerHTML;
+  }
+
+  function getCookie(name) {
+    let cookieValue = null;
+    if (document.cookie && document.cookie !== '') {
+      const cookies = document.cookie.split(';');
+      for (let i = 0; i < cookies.length; i++) {
+        const cookie = cookies[i].trim();
+        if (cookie.substring(0, name.length + 1) === (name + '=')) {
+          cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+          break;
+        }
+      }
+    }
+    return cookieValue;
+  }
+
+  function normalizeTermPair(pair) {
+    const source = (pair.source || pair.source_term || '').trim();
+    const target = (pair.target || pair.target_term || '').trim();
+    const confidence = Number(pair.confidence || 0);
+    return {
+      source_term: source,
+      target_term: target,
+      confidence: Number.isFinite(confidence) ? confidence : 0,
+    };
+  }
+
+  function dedupeTermPairs(pairs) {
+    const seen = new Set();
+    const result = [];
+    pairs.forEach((item) => {
+      const pair = normalizeTermPair(item);
+      if (!pair.source_term || !pair.target_term) {
+        return;
+      }
+      const key = `${pair.source_term.toLowerCase()}|||${pair.target_term.toLowerCase()}`;
+      if (seen.has(key)) {
+        return;
+      }
+      seen.add(key);
+      result.push(pair);
+    });
+    return result;
+  }
+
+  function renderTermPreview() {
+    termCountStatus.textContent = `当前术语条目: ${termPairsDraft.length}`;
+    termPreviewList.innerHTML = '';
+    if (!termPairsDraft.length) {
+      termPreviewList.innerHTML = '<div class="text-xs text-slate-500">尚未录入术语。</div>';
+      return;
+    }
+    termPairsDraft.slice(0, 4).forEach((pair) => {
+      const line = document.createElement('div');
+      line.innerHTML = `${escapeHtml(pair.source_term)} -> <strong>${escapeHtml(pair.target_term)}</strong>`;
+      termPreviewList.appendChild(line);
+    });
+    if (termPairsDraft.length > 4) {
+      const line = document.createElement('div');
+      line.className = 'text-slate-400';
+      line.textContent = `... 还有 ${termPairsDraft.length - 4} 条`;
+      termPreviewList.appendChild(line);
+    }
+  }
+
+  function buildTermRow(pair = { source_term: '', target_term: '', confidence: 0 }) {
+    const row = document.createElement('div');
+    row.className = 'term-row grid grid-cols-1 md:grid-cols-[1fr_1fr_auto] gap-2 items-start';
+    row.innerHTML = `
+      <input
+        type="text"
+        class="input input-bordered input-sm term-source"
+        placeholder="Source term (English)"
+        value="${escapeHtml(pair.source_term || '')}"
+      />
+      <div class="space-y-1">
+        <input
+          type="text"
+          class="input input-bordered input-sm term-target"
+          placeholder="Target term"
+          value="${escapeHtml(pair.target_term || '')}"
+        />
+        <div class="text-[11px] text-slate-400">置信度: ${Number(pair.confidence || 0).toFixed(2)}</div>
+      </div>
+      <button type="button" class="btn btn-sm btn-error btn-outline remove-term-row">删除</button>
+    `;
+
+    row.querySelector('.remove-term-row').addEventListener('click', () => {
+      row.remove();
+    });
+    row.querySelectorAll('.term-source, .term-target').forEach((input) => {
+      input.addEventListener('focus', () => {
+        activeTermInput = input;
+      });
+    });
+
+    return row;
+  }
+
+  function renderTermEntryList() {
+    termEntryList.innerHTML = '';
+    if (!termPairsDraft.length) {
+      termEntryList.appendChild(buildTermRow());
+      return;
+    }
+    termPairsDraft.forEach((pair) => {
+      termEntryList.appendChild(buildTermRow(pair));
+    });
+  }
+
+  function collectTermsFromForm() {
+    const rows = termEntryList.querySelectorAll('div.grid');
+    const collected = [];
+    rows.forEach((row) => {
+      const sourceInput = row.querySelector('.term-source');
+      const targetInput = row.querySelector('.term-target');
+      const sourceTerm = (sourceInput?.value || '').trim();
+      const targetTerm = (targetInput?.value || '').trim();
+      if (!sourceTerm || !targetTerm) {
+        return;
+      }
+      collected.push({ source_term: sourceTerm, target_term: targetTerm, confidence: 0 });
+    });
+    return dedupeTermPairs(collected);
+  }
+
+  function syncCurrentPairPreview() {
+    const englishText = (document.getElementById('modal-english-text').value || '').trim();
+    const tgtTranslation = (document.getElementById('modal-tgt-translation').value || '').trim();
+    currentPairSource.value = englishText;
+    currentPairTarget.value = tgtTranslation;
+  }
+
+  async function copyText(text) {
+    const content = (text || '').trim();
+    if (!content) {
+      return false;
+    }
+    try {
+      await navigator.clipboard.writeText(content);
+      return true;
+    } catch (error) {
+      return false;
+    }
+  }
+
+  function fillActiveFieldFromCurrent(kind) {
+    if (!activeTermInput) {
+      return;
+    }
+    const value = kind === 'source' ? currentPairSource.value : currentPairTarget.value;
+    if (!value) {
+      return;
+    }
+    activeTermInput.value = value;
+  }
+
+  openTermFormBtn.addEventListener('click', () => {
+    renderTermEntryList();
+    termStatus.textContent = '';
+    syncCurrentPairPreview();
+    termEntryModal.showModal();
+  });
+
+  document.getElementById('modal-english-text').addEventListener('input', syncCurrentPairPreview);
+  document.getElementById('modal-tgt-translation').addEventListener('input', syncCurrentPairPreview);
+
+  copyCurrentSourceBtn.addEventListener('click', async () => {
+    const ok = await copyText(currentPairSource.value);
+    termStatus.textContent = ok ? '已复制源文，可粘贴到术语字段。' : '复制失败，请手动复制。';
+    fillActiveFieldFromCurrent('source');
+  });
+
+  copyCurrentTargetBtn.addEventListener('click', async () => {
+    const ok = await copyText(currentPairTarget.value);
+    termStatus.textContent = ok ? '已复制译文，可粘贴到术语字段。' : '复制失败，请手动复制。';
+    fillActiveFieldFromCurrent('target');
+  });
+
+  addTermRowBtn.addEventListener('click', () => {
+    termEntryList.appendChild(buildTermRow());
+    const scrollArea = document.getElementById('term-form-scroll-area');
+    scrollArea.scrollTop = scrollArea.scrollHeight;
+  });
+
+  saveTermFormBtn.addEventListener('click', () => {
+    termPairsDraft = collectTermsFromForm();
+    renderTermPreview();
+    termEntryModal.close();
+  });
+
+  termAnalyzeBtn.addEventListener('click', async () => {
+    const englishText = document.getElementById('modal-english-text').value.trim();
+    const tgtTranslation = document.getElementById('modal-tgt-translation').value.trim();
+
+    if (!englishText || !tgtTranslation) {
+      termStatus.textContent = '请先填写源文和译文。';
+      return;
+    }
+
+    termAnalyzeBtn.classList.add('loading', 'loading-dots', 'loading-xs');
+    termStatus.textContent = '分析中...';
+
+    try {
+      const response = await fetch('/api/suggest-terms/', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/x-www-form-urlencoded',
+          'X-CSRFToken': getCookie('csrftoken')
+        },
+        body: new URLSearchParams({
+          src: englishText,
+          translation: tgtTranslation
+        })
+      });
+
+      if (!response.ok) {
+        throw new Error('Term analysis failed');
+      }
+
+      const data = await response.json();
+      const suggestions = Array.isArray(data.candidates) ? data.candidates.map(normalizeTermPair) : [];
+      const manual = collectTermsFromForm();
+      termPairsDraft = dedupeTermPairs([ ...manual, ...suggestions ]);
+      renderTermEntryList();
+      const embeddingHint = data.embedding_error ? `，embedding: ${data.embedding_error}` : '';
+      termStatus.textContent = `方法: ${data.method || 'unknown'}，耗时: ${data.latency_ms || 0}ms，新增建议: ${suggestions.length}${embeddingHint}`;
+    } catch (error) {
+      console.error('Term analysis error:', error);
+      termStatus.textContent = '术语分析失败，请稍后重试。';
+    } finally {
+      termAnalyzeBtn.classList.remove('loading', 'loading-dots', 'loading-xs');
+    }
+  });
+
+  document.getElementById('translation-modal-form').addEventListener('submit', async function(e) {
+    e.preventDefault();
+
+    const submitBtn = this.querySelector('button[type="submit"]');
+    submitBtn.classList.add('loading', 'loading-dots', 'loading-xs');
+
+    termPairsDraft = collectTermsFromForm().length ? collectTermsFromForm() : termPairsDraft;
+
+    const englishText = document.getElementById('modal-english-text').value;
+    const tgtTranslation = document.getElementById('modal-tgt-translation').value;
+
+    try {
+      const response = await fetch('/api/corpus-entry/', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/x-www-form-urlencoded',
+          'X-CSRFToken': getCookie('csrftoken')
+        },
+        body: new URLSearchParams({
+          src: englishText,
+          translation: tgtTranslation,
+          term_pairs: JSON.stringify(termPairsDraft)
+        })
+      });
+
+      if (!response.ok) {
+        throw new Error('Network response was not ok');
+      }
+
+      document.getElementById('final-translation').textContent = tgtTranslation;
+      translation_modal.close();
+
+      const successMessage = document.getElementById('success-message');
+      successMessage.removeAttribute('style');
+      successMessage.classList.add('fixed');
+      setTimeout(() => {
+        successMessage.style.display = 'none';
+        successMessage.classList.remove('fixed');
+      }, 5000);
+
+      termPairsDraft = [];
+      renderTermPreview();
+      termEntryList.innerHTML = '';
+      termStatus.textContent = '';
+    } catch (error) {
+      console.error('Error:', error);
+    } finally {
+      submitBtn.classList.remove('loading', 'loading-dots', 'loading-xs');
+    }
+  });
+
+  renderTermPreview();
+</script>

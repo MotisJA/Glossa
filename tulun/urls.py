@@ -19,7 +19,7 @@ from django.urls import path, reverse_lazy
 from django.contrib.auth import views as auth_views
 from django.shortcuts import redirect
 from django.http import HttpResponse
-from translations.views import translate_view, create_corpus_entry
+from translations.views import translate_view, create_corpus_entry, suggest_terms
 
 def healthcheck(request):
     return HttpResponse("OK")
@@ -32,5 +32,6 @@ urlpatterns = [
     # redirect to translate view
     path('', lambda request: redirect(reverse_lazy('translate')), name='home'),
     path('api/corpus-entry/', create_corpus_entry, name='create_corpus_entry'),
+    path('api/suggest-terms/', suggest_terms, name='suggest_terms'),
     path('healthcheck/', healthcheck, name='healthcheck'),
 ]

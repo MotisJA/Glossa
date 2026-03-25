@@ -60,9 +60,31 @@ class TranslatorMixin:
         with open(self.memory_filename, 'w') as f:
             json.dump(self._translation_memory, f, indent=2)
 
-    async def construct_prompt_post_edit(self, sent: str, sent_mt: str, top_similar_sentences: List[CorpusEntry], glossary_entries: List[GlossaryEntry]) -> List[Message]:
+    @staticmethod
+    def build_domain_instruction(domain_hint: Optional[str]) -> str:
+        if domain_hint:
+            return (
+                f"Domain hint provided by user: {domain_hint}. "
+                "Apply domain-appropriate terminology and style consistently."
+            )
+        return (
+            "First infer the most likely domain from the source text internally, "
+            "then translate using that domain's terminology. Do not output the inferred domain."
+        )
+
+    async def construct_prompt_post_edit(
+        self,
+        sent: str,
+        sent_mt: str,
+        top_similar_sentences: List[CorpusEntry],
+        glossary_entries: List[GlossaryEntry],
+        domain_hint: Optional[str] = None,
+    ) -> List[Message]:
         messages = [
-            Message(role='system', content=config.translation_prompt),
+            Message(
+                role='system',
+                content=f"{config.translation_prompt}\n\n{self.build_domain_instruction(domain_hint)}",
+            ),
         ]
 
         user_message = ''
@@ -88,9 +110,9 @@ class TranslatorMixin:
         #     print(f"{m.role}: {m.content}")
         return messages
 
-    async def get_post_edited_translation(self, input_text: str, similar_sentences, glossary_entries) -> str:
+    async def get_post_edited_translation(self, input_text: str, similar_sentences, glossary_entries, domain_hint: Optional[str] = None) -> str:
         if config.dspy_config:
-            return await self.get_post_edited_translation_dspy(input_text, similar_sentences, glossary_entries)
+            return await self.get_post_edited_translation_dspy(input_text, similar_sentences, glossary_entries, domain_hint=domain_hint)
 
         sent_mt = self.translate(input_text)
         messages = await self.construct_prompt_post_edit(
@@ -98,6 +120,7 @@ class TranslatorMixin:
             sent_mt,
             similar_sentences,
             glossary_entries=glossary_entries,
+            domain_hint=domain_hint,
         )
 
         response = litellm.completion(
@@ -113,7 +136,13 @@ class TranslatorMixin:
             "corrections": Correction.from_string_matching(sent_mt, final_translation),
         }
 
-    async def get_post_edited_translation_dspy(self, input_text: str, similar_sentences: List[CorpusEntry], glossary_entries: List[GlossaryEntry]) -> str:
+    async def get_post_edited_translation_dspy(
+        self,
+        input_text: str,
+        similar_sentences: List[CorpusEntry],
+        glossary_entries: List[GlossaryEntry],
+        domain_hint: Optional[str] = None,
+    ) -> str:
 
         predictor = dspy.Predict(PostEditSignature)
         predictor.load_state(json.loads(config.dspy_config))
