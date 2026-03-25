@@ -1,4 +1,5 @@
 # Glossa
+<<<<<<< HEAD
 This project is for adaptive and interactive machine translation based on tulun.
 
 ## Local installation
@@ -23,3 +24,5 @@ GEMINI_API_KEY='<api-key>'
 eval $(poetry env activate)
 ./manage.py migrate && ./manage.py runserver
 ```
+=======
+>>>>>>> 4739c4de34c47cf785a434a526d18dba2a095b7a
