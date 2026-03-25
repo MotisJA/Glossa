@@ -176,3 +176,5 @@ cython_debug/
 datafiles/*
 staticfiles/*
 gen-lang-client-*.json
+
+google_translate_api.json
