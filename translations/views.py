@@ -73,7 +73,11 @@ def translate_view(request):
                 yield f"data: {json.dumps({'type': 'glossary_entries', 'data': [gloss_entry.as_dict() for gloss_entry in glossary_entries]})}\n\n"
 
                 # Send similar sentences
-                similar_sentences = await sync_to_async(CorpusEntry.get_top_similar_bm25)(source_text, config.num_sentences_retrieved)
+                similar_sentences = await sync_to_async(CorpusEntry.get_top_similar_hybrid)(
+                    source_text,
+                    top_k=config.num_sentences_retrieved,
+                    recall_n=20,
+                )
                 serialized_similar_sentences = [line.as_dict() for line in similar_sentences]
                 yield f"data: {json.dumps({'type': 'similar_sentences', 'data': serialized_similar_sentences})}\n\n"
             else:

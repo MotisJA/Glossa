@@ -2,10 +2,12 @@ from dataclasses import dataclass
 from typing import Callable, Dict, List, Sequence, Tuple
 from unittest.mock import patch
 
-from django.test import SimpleTestCase
+from django.core.cache import cache
+from django.test import SimpleTestCase, TestCase
 import torch
 
 from translations import alignment
+from translations.models import GlossaryEntry
 
 
 @dataclass
@@ -187,3 +189,75 @@ class AlignmentSentencePairTests(SimpleTestCase):
         print("")
         print(f"[SUMMARY] overall_hits={total_hits}/{total_expected} overall_recall={overall_recall:.2%}")
         self.assertGreaterEqual(overall_recall, 0.85, "Overall term extraction recall is lower than expected")
+
+
+class GlossaryTrieExtractionTests(TestCase):
+    def setUp(self):
+        cache.clear()
+        GlossaryEntry._trie_local = None
+        GlossaryEntry._trie_local_version = None
+
+    def test_forward_maximum_matching_supports_multi_word_terms(self):
+        llm = GlossaryEntry.objects.create(
+            english_key="large language model",
+            translated_entry="大型语言模型",
+        )
+        GlossaryEntry.objects.create(
+            english_key="language model",
+            translated_entry="语言模型",
+        )
+
+        matches = GlossaryEntry.get_entries("A Large Language Model can assist translators.")
+
+        self.assertEqual([entry.pk for entry in matches], [llm.pk])
+
+    def test_boundary_check_prevents_partial_substring_match(self):
+        cat = GlossaryEntry.objects.create(english_key="cat", translated_entry="猫")
+
+        matches = GlossaryEntry.get_entries("The category is broad.")
+
+        self.assertNotIn(cat.pk, [entry.pk for entry in matches])
+
+    def test_forward_scan_handles_nested_terms_without_overlap(self):
+        hr = GlossaryEntry.objects.create(
+            english_key="human rights",
+            translated_entry="人权",
+        )
+        GlossaryEntry.objects.create(
+            english_key="rights",
+            translated_entry="权利",
+        )
+        law = GlossaryEntry.objects.create(
+            english_key="law",
+            translated_entry="法律",
+        )
+
+        matches = GlossaryEntry.get_entries("Human rights law")
+
+        self.assertEqual([entry.pk for entry in matches], [hr.pk, law.pk])
+
+    def test_signal_invalidation_supports_realtime_updates(self):
+        sentence = "Transformer model"
+
+        self.assertEqual(GlossaryEntry.get_entries(sentence), [])
+
+        with self.captureOnCommitCallbacks(execute=True):
+            created = GlossaryEntry.objects.create(
+                english_key="transformer model",
+                translated_entry="Transformer 模型",
+            )
+        matches_after_create = GlossaryEntry.get_entries(sentence)
+        self.assertEqual([entry.pk for entry in matches_after_create], [created.pk])
+
+        created.translated_entry = "变换器模型"
+        with self.captureOnCommitCallbacks(execute=True):
+            created.save(update_fields=["translated_entry"])
+        matches_after_update = GlossaryEntry.get_entries(sentence)
+        self.assertEqual(
+            [entry.translated_entry for entry in matches_after_update],
+            ["变换器模型"],
+        )
+
+        with self.captureOnCommitCallbacks(execute=True):
+            created.delete()
+        self.assertEqual(GlossaryEntry.get_entries(sentence), [])

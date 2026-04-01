@@ -1,18 +1,29 @@
 import re
 import time
+import threading
+import logging
+import sqlite3
 import tantivy
-from typing import List, Optional
+from statistics import mean
+from typing import Dict, List, Optional, Sequence, Tuple
+
+import numpy as np
 import spacy
-from asgiref.sync import sync_to_async
+from django.db.models import Count, Max
 
 from django.db import models
-from django.db.utils import OperationalError
+from django.core.cache import cache
 from django.core.exceptions import ValidationError
 from django.contrib.auth.models import AbstractUser
 from django.contrib.auth import get_user_model
 from django.utils.functional import LazyObject
 
+from sentence_transformers import SentenceTransformer
+
+from .trie import Trie
+
 nlp = spacy.load('en_core_web_sm')
+logger = logging.getLogger(__name__)
 
 
 class CustomUser(AbstractUser):
@@ -26,6 +37,10 @@ class GlossaryEntry(models.Model):
     english_key = models.CharField(max_length=200)
     translated_entry = models.CharField(max_length=200)
     created_at = models.DateTimeField(auto_now_add=True)
+    _TRIE_VERSION_KEY = "translations:glossary_trie_version"
+    _trie_lock = threading.Lock()
+    _trie_local: Optional[Trie] = None
+    _trie_local_version: Optional[int] = None
 
     class Meta:
         unique_together = ['english_key', 'translated_entry']
@@ -43,15 +58,58 @@ class GlossaryEntry(models.Model):
             'en': self.english_key,
             'tgt': self.translated_entry,
         }
-    
+
+    @classmethod
+    def _get_trie_version(cls) -> int:
+        version = cache.get(cls._TRIE_VERSION_KEY)
+        if version is None:
+            cache.add(cls._TRIE_VERSION_KEY, 1, timeout=None)
+            version = cache.get(cls._TRIE_VERSION_KEY, 1)
+        return int(version)
+
+    @classmethod
+    def _build_trie(cls) -> Trie:
+        trie = Trie()
+        entries = cls.objects.only('id', 'english_key', 'translated_entry')
+        trie.build(entries)
+        return trie
+
+    @classmethod
+    def _get_trie(cls) -> Trie:
+        cache_version = cls._get_trie_version()
+        if cls._trie_local is not None and cls._trie_local_version == cache_version:
+            return cls._trie_local
+
+        with cls._trie_lock:
+            # Double-check to avoid duplicate rebuild under concurrency.
+            cache_version = cls._get_trie_version()
+            if cls._trie_local is not None and cls._trie_local_version == cache_version:
+                return cls._trie_local
+
+            cls._trie_local = cls._build_trie()
+            cls._trie_local_version = cache_version
+            return cls._trie_local
+
+    @classmethod
+    def invalidate_trie_cache(cls) -> None:
+        cls._trie_local = None
+        cls._trie_local_version = None
+        if cache.add(cls._TRIE_VERSION_KEY, 1, timeout=None):
+            return
+
+        try:
+            cache.incr(cls._TRIE_VERSION_KEY)
+        except ValueError:
+            # Some cache backends can lose keys under eviction; reset safely.
+            cache.set(cls._TRIE_VERSION_KEY, 1, timeout=None)
+
     @classmethod
     def get_entries(cls, sentence: str) -> List['GlossaryEntry']:
-        doc = nlp(sentence)
-        tokens = [token.lemma_.lower() for token in doc]
-        bigrams = [f"{tokens[i]} {tokens[i + 1]}" for i in range(len(tokens) - 1)]
-        bigrams_nolemma = [f"{token.text.lower()} {token.nbor().text.lower()}" for token in doc[:-1]]
-        entries = cls.objects.filter(english_key__in=(tokens + bigrams + bigrams_nolemma)).distinct()
-        return list(entries)
+        if not sentence:
+            return []
+
+        trie = cls._get_trie()
+        return trie.extract_longest_matches(sentence)
 
 
 class CorpusEntry(models.Model):
@@ -60,6 +118,13 @@ class CorpusEntry(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
     source = models.CharField(max_length=200)
+    _st_model_name = "all-MiniLM-L6-v2"
+    _st_model: Optional[SentenceTransformer] = None
+    _st_lock = threading.Lock()
+    _dense_lock = threading.Lock()
+    _dense_embeddings: Optional[np.ndarray] = None
+    _dense_entries: List["CorpusEntry"] = []
+    _dense_signature: Optional[Tuple[int, Optional[int], Optional[float]]] = None
 
     @property
     def tokens(self):
@@ -81,6 +146,37 @@ class CorpusEntry(models.Model):
         return self.as_txt()
 
     @classmethod
+    def _get_sentence_transformer(cls) -> SentenceTransformer:
+        """Lazy-load and cache the dense encoder model."""
+        if cls._st_model is not None:
+            return cls._st_model
+
+        with cls._st_lock:
+            if cls._st_model is None:
+                cls._st_model = SentenceTransformer(cls._st_model_name)
+        return cls._st_model
+
+    @classmethod
+    def _get_dense_signature(cls) -> Tuple[int, Optional[int], Optional[float]]:
+        """
+        Build a lightweight corpus fingerprint.
+
+        If this signature changes, the in-memory dense index must be rebuilt.
+        """
+        stats = cls.objects.aggregate(
+            count=Count("id"),
+            max_id=Max("id"),
+            max_updated=Max("updated_at"),
+        )
+        max_updated = stats["max_updated"]
+        updated_ts = max_updated.timestamp() if max_updated else None
+        return (
+            int(stats["count"] or 0),
+            int(stats["max_id"]) if stats["max_id"] is not None else None,
+            updated_ts,
+        )
+
+    @classmethod
     def init_tantivy_index(cls, lines: List['CorpusEntry']) -> tantivy.Index:
         """ Initialize the Tantivy BM25 index for all corpus entries """
         schema_builder = tantivy.SchemaBuilder()
@@ -95,26 +191,137 @@ class CorpusEntry(models.Model):
         for i, line in enumerate(lines):
             writer.add_document(tantivy.Document(
                 text=line.english_text,
-                tgt_text=line.translated_text,
+                translated_text=line.translated_text,
                 id=i  # Store the index
             ))
         writer.commit()
         writer.wait_merging_threads()
 
         return index
-    
+
+    @classmethod
+    def init_dense_index(
+        cls,
+        lines: Optional[Sequence["CorpusEntry"]] = None,
+        force_rebuild: bool = False,
+    ) -> None:
+        """
+        Initialize or refresh the in-memory dense vector index.
+
+        This method is intentionally lightweight and zero-cost to deploy:
+        vectors are kept in process memory and cosine search is done via NumPy.
+        """
+        signature = cls._get_dense_signature()
+        if not force_rebuild and cls._dense_embeddings is not None and cls._dense_signature == signature:
+            return
+
+        with cls._dense_lock:
+            signature = cls._get_dense_signature()
+            if not force_rebuild and cls._dense_embeddings is not None and cls._dense_signature == signature:
+                return
+
+            if lines is None:
+                lines = list(cls.objects.all().order_by("id"))
+            else:
+                lines = list(lines)
+
+            if not lines:
+                cls._dense_embeddings = None
+                cls._dense_entries = []
+                cls._dense_signature = signature
+                return
+
+            model = cls._get_sentence_transformer()
+            embeddings = model.encode(
+                [line.english_text for line in lines],
+                convert_to_numpy=True,
+                normalize_embeddings=True,
+                show_progress_bar=False,
+            )
+
+            cls._dense_embeddings = embeddings.astype(np.float32, copy=False)
+            cls._dense_entries = list(lines)
+            cls._dense_signature = signature
+
+    @classmethod
+    def upsert_dense_index_sqlite(
+        cls,
+        db_path: str = "datafiles/tm_dense.sqlite3",
+        extension: str = "sqlite-vec",
+    ) -> None:
+        """
+        Optional persistence demo using SQLite vector extensions.
+
+        - For `sqlite-vec`, create a regular table with `FLOAT32` vector bytes.
+        - For `sqlite-vss`, load extension then create a `vss0` virtual table.
+        """
+        lines = list(cls.objects.all().only("id", "english_text").order_by("id"))
+        if not lines:
+            return
+
+        cls.init_dense_index(lines=lines)
+        if cls._dense_embeddings is None:
+            return
+
+        conn = sqlite3.connect(db_path)
+        try:
+            cur = conn.cursor()
+            cur.execute(
+                """
+                CREATE TABLE IF NOT EXISTS corpus_dense (
+                    entry_id INTEGER PRIMARY KEY,
+                    english_text TEXT NOT NULL,
+                    embedding BLOB NOT NULL
+                )
+                """
+            )
+            cur.executemany(
+                """
+                INSERT INTO corpus_dense (entry_id, english_text, embedding)
+                VALUES (?, ?, ?)
+                ON CONFLICT(entry_id) DO UPDATE SET
+                    english_text=excluded.english_text,
+                    embedding=excluded.embedding
+                """,
+                [
+                    (
+                        entry.id,
+                        entry.english_text,
+                        cls._dense_embeddings[i].astype(np.float32).tobytes(),
+                    )
+                    for i, entry in enumerate(lines)
+                ],
+            )
+            conn.commit()
+        finally:
+            conn.close()
+
+        if extension not in {"sqlite-vec", "sqlite-vss"}:
+            logger.warning("Unknown SQLite vector extension: %s", extension)
+            return
+
+        logger.info(
+            "Dense vectors persisted to %s. You can attach %s for ANN search.",
+            db_path,
+            extension,
+        )
+
     @classmethod
     def get_top_similar_bm25(cls, sent: str, top_n: int = 10) -> List['CorpusEntry']:
-        lines = cls.objects.all()
+        lines = list(cls.objects.all())
+        if not lines or not sent:
+            return []
 
         index = cls.init_tantivy_index(lines)
         searcher = index.searcher()
         query_tokens = cls(english_text=sent, translated_text=None).tokens
+        if not query_tokens:
+            return lines[:top_n]
         query = index.parse_query(' '.join(query_tokens), ["text"])
         search_results = searcher.search(query, top_n).hits
         if not search_results:
             # race condition: the index is not ready yet
-            print("Tantivy: Index not ready, retrying...")
+            logger.info("Tantivy index not ready, retrying once")
             time.sleep(0.5)
             searcher = index.searcher()
             query_tokens = cls(english_text=sent, translated_text=None).tokens
@@ -129,6 +336,150 @@ class CorpusEntry(models.Model):
             results.append(lines[doc_id])
 
         return results
+
+    @staticmethod
+    def _levenshtein_ratio_fallback(text_a: str, text_b: str) -> float:
+        """Normalized edit-distance similarity in [0, 1]."""
+        if text_a == text_b:
+            return 1.0
+        len_a = len(text_a)
+        len_b = len(text_b)
+        if len_a == 0 or len_b == 0:
+            return 0.0
+
+        prev = list(range(len_b + 1))
+        for i, char_a in enumerate(text_a, start=1):
+            current = [i]
+            for j, char_b in enumerate(text_b, start=1):
+                cost = 0 if char_a == char_b else 1
+                current.append(
+                    min(
+                        prev[j] + 1,
+                        current[j - 1] + 1,
+                        prev[j - 1] + cost,
+                    )
+                )
+            prev = current
+
+        distance = prev[-1]
+        max_len = max(len_a, len_b)
+        return 1.0 - (distance / max_len)
+
+    @classmethod
+    def _led_similarity(cls, text_a: str, text_b: str) -> float:
+        """Use python-Levenshtein when available, else fallback implementation."""
+        try:
+            import Levenshtein  # type: ignore
+
+            return float(Levenshtein.ratio(text_a, text_b))
+        except Exception:
+            return cls._levenshtein_ratio_fallback(text_a, text_b)
+
+    @classmethod
+    def get_top_similar_dense(
+        cls,
+        sent: str,
+        top_n: int = 20,
+    ) -> List["CorpusEntry"]:
+        """Dense retrieval using `all-MiniLM-L6-v2` + cosine similarity."""
+        if not sent:
+            return []
+
+        cls.init_dense_index()
+        if cls._dense_embeddings is None or not cls._dense_entries:
+            return []
+
+        model = cls._get_sentence_transformer()
+        query_emb = model.encode(
+            [sent],
+            convert_to_numpy=True,
+            normalize_embeddings=True,
+            show_progress_bar=False,
+        )[0].astype(np.float32, copy=False)
+
+        similarities = cls._dense_embeddings @ query_emb
+        if top_n >= len(similarities):
+            ranked_idx = np.argsort(-similarities)
+        else:
+            top_idx = np.argpartition(similarities, -top_n)[-top_n:]
+            ranked_idx = top_idx[np.argsort(-similarities[top_idx])]
+
+        return [cls._dense_entries[i] for i in ranked_idx]
+
+    @classmethod
+    def get_top_similar_hybrid(
+        cls,
+        sent: str,
+        top_k: int = 10,
+        recall_n: int = 20,
+        alpha: float = 0.1,
+    ) -> List["CorpusEntry"]:
+        """
+        Dual-recall + RRF + contrastive reranking.
+
+        1) BM25 lexical recall (Top `recall_n`)
+        2) Dense cosine recall (Top `recall_n`)
+        3) RRF fusion: 1 / (60 + rank_bm25) + 1 / (60 + rank_dense)
+        4) Greedy contrastive reranking with LED similarity penalty.
+        """
+        if not sent or top_k <= 0 or recall_n <= 0:
+            return []
+
+        bm25_hits = cls.get_top_similar_bm25(sent, top_n=recall_n)
+        dense_hits = cls.get_top_similar_dense(sent, top_n=recall_n)
+
+        if not bm25_hits and not dense_hits:
+            return []
+
+        bm25_rank: Dict[int, int] = {
+            entry.id: rank for rank, entry in enumerate(bm25_hits, start=1)
+        }
+        dense_rank: Dict[int, int] = {
+            entry.id: rank for rank, entry in enumerate(dense_hits, start=1)
+        }
+
+        candidates: Dict[int, CorpusEntry] = {}
+        for entry in bm25_hits + dense_hits:
+            candidates[entry.id] = entry
+
+        rrf_scores: List[Tuple[CorpusEntry, float]] = []
+        for entry_id, entry in candidates.items():
+            score = 0.0
+            if entry_id in bm25_rank:
+                score += 1.0 / (60 + bm25_rank[entry_id])
+            if entry_id in dense_rank:
+                score += 1.0 / (60 + dense_rank[entry_id])
+            rrf_scores.append((entry, score))
+
+        rrf_scores.sort(key=lambda item: item[1], reverse=True)
+        if top_k >= len(rrf_scores):
+            return [entry for entry, _ in rrf_scores]
+
+        selected: List[CorpusEntry] = []
+        remaining = rrf_scores.copy()
+
+        first_entry, _ = remaining.pop(0)
+        selected.append(first_entry)
+
+        while remaining and len(selected) < top_k:
+            best_idx = 0
+            best_score = float("-inf")
+
+            for i, (entry, rrf_score) in enumerate(remaining):
+                avg_led = mean(
+                    cls._led_similarity(entry.english_text, chosen.english_text)
+                    for chosen in selected
+                )
+                contrastive_score = rrf_score - (alpha * avg_led)
+
+                if contrastive_score > best_score:
+                    best_score = contrastive_score
+                    best_idx = i
+
+            next_entry, _ = remaining.pop(best_idx)
+            selected.append(next_entry)
+
+        return selected
 
     class Meta:
         verbose_name = 'translation memory'
