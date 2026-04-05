@@ -178,3 +178,4 @@ staticfiles/*
 gen-lang-client-*.json
 
 google_translate_api.json
+stanza_models/*

@@ -19,6 +19,11 @@ sentence-transformers = ">=3.4.1,<4.0.0"
 litellm = ">=1.62.0,<2.0.0"
 torch = { version = ">=2.6.0,<3.0.0", source = "pytorch_cpu", platform = "linux" }
 en-core-web-sm = { url = "https://github.com/explosion/spacy-models/releases/download/en_core_web_sm-3.8.0/en_core_web_sm-3.8.0.tar.gz" }
+sacrebleu = "^2.6.0"
+stanza = "^1.11.1"
+nltk = "^3.9.4"
+scikit-learn = "^1.8.0"
+pymorphy3 = "^2.0.6"
 
 [[tool.poetry.source]]
 name = "pytorch_cpu"

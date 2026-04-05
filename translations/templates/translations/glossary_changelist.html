@@ -4,7 +4,10 @@
 {% block object-tools-items %}
     {{ block.super }}
     <li>
-        <a class="historylink" href="{% url 'admin:glossary_import_csv' %}">Import from CSV</a>
+        <a class="historylink" href="{% url 'admin:glossary_import_csv' %}">导入</a>
+    </li>
+    <li>
+        <a class="historylink" href="{% url 'admin:glossary_import_jsonl' %}">导入 JSONL</a>
     </li>
 {% endblock %}
 

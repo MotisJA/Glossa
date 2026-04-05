@@ -1,5 +1,5 @@
 <div role="alert" class="alert alert-success alert-soft bottom-4 left-1/2 -translate-x-1/2 z-50" id="success-message" style="display: none;">
-  <span>Added to the Translation Memory!</span>
+  <span>已加入翻译记忆库。</span>
 </div>
 <style>
   .term-panel {
@@ -29,27 +29,27 @@
           TM
         </div>
         <div>
-          <h3 class="font-semibold text-lg">Add to Translation Memory</h3>
-          <p class="text-sm text-slate-600">Save this pair for reuse in AI post-editing and matching.</p>
+          <h3 class="font-semibold text-lg">加入翻译记忆</h3>
+          <p class="text-sm text-slate-600">保存当前双语句对，便于后续检索和译后编辑复用。</p>
         </div>
       </div>
     </div>
 
     <div class="px-6 py-5 space-y-4 bg-white">
       <div class="space-y-2">
-        <label for="english-text" class="text-sm font-medium text-slate-700">English Text</label>
+        <label for="english-text" class="text-sm font-medium text-slate-700">英文原文</label>
         <textarea
           id="modal-english-text"
-          placeholder="Enter English text here..."
+          placeholder="请输入英文原文..."
           class="textarea textarea-bordered w-full h-32 p-3 border rounded-xl shadow-sm focus:ring-2 focus:ring-blue-500 focus:border-blue-500 bg-white"
         ></textarea>
       </div>
 
       <div class="space-y-2">
-        <label for="modal-tgt-translation" class="text-sm font-medium text-slate-700">Translation</label>
+        <label for="modal-tgt-translation" class="text-sm font-medium text-slate-700">目标译文</label>
         <textarea
           id="modal-tgt-translation"
-          placeholder="Enter translation here..."
+          placeholder="请输入目标译文..."
           class="textarea textarea-bordered w-full h-32 p-3 border rounded-xl shadow-sm focus:ring-2 focus:ring-blue-500 focus:border-blue-500 bg-white"
         ></textarea>
       </div>
@@ -65,8 +65,8 @@
 
     <div class="modal-action px-6 py-4 bg-slate-50 border-t border-slate-200">
       <form id="translation-modal-form" method="dialog" class="space-x-2">
-        <button class="btn btn-ghost" type="button" onclick="translation_modal.close()">Cancel</button>
-        <button class="btn btn-primary" type="submit">Save to Memory</button>
+        <button class="btn btn-ghost" type="button" onclick="translation_modal.close()">取消</button>
+        <button class="btn btn-primary" type="submit">保存到记忆库</button>
       </form>
     </div>
   </div>
@@ -85,14 +85,14 @@
         <div class="grid md:grid-cols-2 gap-3">
           <div class="space-y-1">
             <div class="flex items-center justify-between">
-              <label class="text-xs text-slate-500">English</label>
+              <label class="text-xs text-slate-500">英文原文</label>
               <button id="copy-current-source-btn" type="button" class="btn btn-xs btn-outline">复制源文</button>
             </div>
             <textarea id="current-pair-source" class="textarea textarea-bordered w-full h-24 text-sm bg-white" readonly></textarea>
           </div>
           <div class="space-y-1">
             <div class="flex items-center justify-between">
-              <label class="text-xs text-slate-500">Translation</label>
+              <label class="text-xs text-slate-500">目标译文</label>
               <button id="copy-current-target-btn" type="button" class="btn btn-xs btn-outline">复制译文</button>
             </div>
             <textarea id="current-pair-target" class="textarea textarea-bordered w-full h-24 text-sm bg-white" readonly></textarea>
@@ -108,8 +108,8 @@
         </div>
 
         <div class="grid grid-cols-1 md:grid-cols-[1fr_1fr_auto] gap-2 text-xs text-slate-500 px-1">
-          <div>Source Term</div>
-          <div>Target Term</div>
+          <div>源术语</div>
+          <div>目标术语</div>
           <div>操作</div>
         </div>
         <div id="term-entry-list" class="space-y-2"></div>
@@ -220,14 +220,14 @@
       <input
         type="text"
         class="input input-bordered input-sm term-source"
-        placeholder="Source term (English)"
+        placeholder="源术语（英文）"
         value="${escapeHtml(pair.source_term || '')}"
       />
       <div class="space-y-1">
         <input
           type="text"
           class="input input-bordered input-sm term-target"
-          placeholder="Target term"
+          placeholder="目标术语"
           value="${escapeHtml(pair.target_term || '')}"
         />
         <div class="text-[11px] text-slate-400">置信度: ${Number(pair.confidence || 0).toFixed(2)}</div>
@@ -365,7 +365,7 @@
       });
 
       if (!response.ok) {
-        throw new Error('Term analysis failed');
+        throw new Error('术语分析失败');
       }
 
       const data = await response.json();
@@ -409,7 +409,7 @@
       });
 
       if (!response.ok) {
-        throw new Error('Network response was not ok');
+        throw new Error('网络请求失败');
       }
 
       document.getElementById('final-translation').textContent = tgtTranslation;

@@ -7,7 +7,7 @@ from django.test import SimpleTestCase, TestCase
 import torch
 
 from translations import alignment
-from translations.models import GlossaryEntry
+from translations.models import CorpusEntry, GlossaryEntry
 
 
 @dataclass
@@ -261,3 +261,55 @@ class GlossaryTrieExtractionTests(TestCase):
         with self.captureOnCommitCallbacks(execute=True):
             created.delete()
         self.assertEqual(GlossaryEntry.get_entries(sentence), [])
+
+    # Added for target_language refactor verification; safe to delete after migration stabilizes.
+    def test_get_entries_filters_by_target_language(self):
+        zh_entry = GlossaryEntry.objects.create(
+            english_key="stroke",
+            translated_entry="卒中",
+            target_language="zh",
+        )
+        GlossaryEntry.objects.create(
+            english_key="stroke",
+            translated_entry="AVC",
+            target_language="fr",
+        )
+
+        matches_zh = GlossaryEntry.get_entries("Acute stroke care", target_language="zh")
+        matches_fr = GlossaryEntry.get_entries("Acute stroke care", target_language="fr")
+
+        self.assertEqual([entry.pk for entry in matches_zh], [zh_entry.pk])
+        self.assertEqual([entry.translated_entry for entry in matches_fr], ["AVC"])
+
+
+class CorpusRetrievalLanguageIsolationTests(TestCase):
+    # Added for target_language refactor verification; safe to delete after migration stabilizes.
+    def test_bm25_retrieval_filters_by_target_language(self):
+        CorpusEntry.objects.create(
+            english_text="Patient has severe fever and cough",
+            translated_text="患者有严重发热和咳嗽",
+            target_language="zh",
+            source="test",
+        )
+        CorpusEntry.objects.create(
+            english_text="Patient has severe fever and cough",
+            translated_text="Le patient a une forte fièvre et de la toux",
+            target_language="fr",
+            source="test",
+        )
+
+        zh_results = CorpusEntry.get_top_similar_bm25(
+            "severe fever and cough",
+            top_n=5,
+            target_language="zh",
+        )
+        fr_results = CorpusEntry.get_top_similar_bm25(
+            "severe fever and cough",
+            top_n=5,
+            target_language="fr",
+        )
+
+        self.assertTrue(zh_results)
+        self.assertTrue(fr_results)
+        self.assertTrue(all(entry.target_language == "zh" for entry in zh_results))
+        self.assertTrue(all(entry.target_language == "fr" for entry in fr_results))

@@ -6,11 +6,12 @@ import litellm
 import transformers
 from functools import cached_property
 from google.cloud import translate_v2 as translate
-from typing import List, Literal, Optional, Tuple
+from typing import Dict, List, Literal, Optional, Tuple
 from dataclasses import dataclass
 import spacy
 from tqdm import tqdm
 from dotenv import load_dotenv
+from asgiref.sync import sync_to_async
 load_dotenv()
 import dspy
 
@@ -27,8 +28,8 @@ class Message:
     content: str
 
     @staticmethod
-    def format_query(line: CorpusEntry, google_translated: str) -> 'Message':
-        return Message(role='user', content=f"<English>{line.english_text}\n<{config.target_language_name} MT>{google_translated}</{config.target_language_name} MT>")
+    def format_query(line: CorpusEntry) -> 'Message':
+        return Message(role='user', content=f"<English>{line.english_text}")
     
     @staticmethod
     def format_response(line: CorpusEntry) -> 'Message':
@@ -57,6 +58,9 @@ class TranslatorMixin:
             self._translation_memory = json.load(f)
     
     def save_translation_memory(self):
+        memory_dir = os.path.dirname(self.memory_filename)
+        if memory_dir:
+            os.makedirs(memory_dir, exist_ok=True)
         with open(self.memory_filename, 'w') as f:
             json.dump(self._translation_memory, f, indent=2)
 
@@ -72,6 +76,19 @@ class TranslatorMixin:
             "then translate using that domain's terminology. Do not output the inferred domain."
         )
 
+    @staticmethod
+    def build_resource_selection_instruction() -> str:
+        return (
+            "Before applying glossary entries or past translations, evaluate each candidate for "
+            "domain match and target-language match. Only use entries/examples that are clearly helpful."
+        )
+
+    async def translate_async(self, text: str) -> str:
+        return await sync_to_async(
+            self.translate,
+            thread_sensitive=True,
+        )(text)
+
     async def construct_prompt_post_edit(
         self,
         sent: str,
@@ -83,7 +100,11 @@ class TranslatorMixin:
         messages = [
             Message(
                 role='system',
-                content=f"{config.translation_prompt}\n\n{self.build_domain_instruction(domain_hint)}",
+                content=(
+                    f"{config.translation_prompt}\n\n"
+                    f"{self.build_resource_selection_instruction()}\n\n"
+                    f"{self.build_domain_instruction(domain_hint)}"
+                ),
             ),
         ]
 
@@ -96,9 +117,11 @@ class TranslatorMixin:
             user_message += "</glossary entries>\n\n"
 
         user_message += "<past translations>\n"
-        for i, sentence in enumerate(top_similar_sentences):
-            sentence_mt = self.translate(sentence.english_text)
-            user_message += f"English: {sentence.english_text}\nMachine translated: {sentence_mt}\n{config.target_language_name}: {sentence.translated_text}\n\n"
+        for sentence in top_similar_sentences:
+            user_message += (
+                f"English: {sentence.english_text}\n"
+                f"{config.target_language_name}: {sentence.translated_text}\n\n"
+            )
         user_message += "</past translations>\n\n"
         
         user_message += "Text to translate:\n"
@@ -114,7 +137,7 @@ class TranslatorMixin:
         if config.dspy_config:
             return await self.get_post_edited_translation_dspy(input_text, similar_sentences, glossary_entries, domain_hint=domain_hint)
 
-        sent_mt = self.translate(input_text)
+        sent_mt = await self.translate_async(input_text)
         messages = await self.construct_prompt_post_edit(
             input_text, 
             sent_mt,
@@ -147,7 +170,7 @@ class TranslatorMixin:
         predictor = dspy.Predict(PostEditSignature)
         predictor.load_state(json.loads(config.dspy_config))
 
-        machine_translated = self.translate(input_text)
+        machine_translated = await self.translate_async(input_text)
 
         input = Input(
             input_text=input_text,
@@ -166,15 +189,54 @@ class TranslatorMixin:
 
 class TranslatorGoogle(TranslatorMixin):
     def __init__(self) -> None:
-        self.memory_filename = 'datafiles/google_translations.json'
         self.gclient = translate.Client()
-        self.load_translation_memory()
+        self._memory_dir = "datafiles/google_translations"
+        self._legacy_memory_filename = "datafiles/google_translations.json"
+        self._active_target_language_code: Optional[str] = None
+        self.memory_filename = self._cache_file_for_language("zh")
+        self._translation_memory: Dict[str, str] = {}
+        self._sync_cache_for_active_language(force_reload=True)
         super().__init__()
+
+    def _cache_file_for_language(self, language_code: str) -> str:
+        safe_code = (language_code or "").strip().lower() or "unknown"
+        return os.path.join(self._memory_dir, f"{safe_code}.json")
+
+    def _migrate_legacy_cache_if_needed(self, target_language_code: str) -> None:
+        if not os.path.exists(self._legacy_memory_filename):
+            return
+
+        target_file = self._cache_file_for_language(target_language_code)
+        if os.path.exists(target_file):
+            return
+
+        os.makedirs(self._memory_dir, exist_ok=True)
+        with open(self._legacy_memory_filename, "r") as legacy_file:
+            legacy_memory = json.load(legacy_file)
+        with open(target_file, "w") as lang_file:
+            json.dump(legacy_memory, lang_file, indent=2)
+
+    def _sync_cache_for_active_language(self, force_reload: bool = False) -> str:
+        active_config = SystemConfiguration.load()
+        target_language_code = active_config.target_language_code
+        if (
+            not force_reload
+            and self._active_target_language_code == target_language_code
+            and getattr(self, "_translation_memory", None) is not None
+        ):
+            return target_language_code
+
+        self._migrate_legacy_cache_if_needed(target_language_code)
+        self.memory_filename = self._cache_file_for_language(target_language_code)
+        self.load_translation_memory()
+        self._active_target_language_code = target_language_code
+        return target_language_code
     
     def translate(self, text: str) -> str:
+        target_language_code = self._sync_cache_for_active_language()
         if text in self._translation_memory:
             return self._translation_memory[text]
-        translation = self.gclient.translate(text, source_language='en', target_language=config.target_language_code)
+        translation = self.gclient.translate(text, source_language='en', target_language=target_language_code)
         translation = translation['translatedText']
         self._translation_memory[text] = translation
         self.save_translation_memory()

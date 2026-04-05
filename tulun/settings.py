@@ -142,9 +142,9 @@ SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
 LOGIN_REDIRECT_URL = '/'
 
 UNFOLD = {
-    "SITE_TITLE": "Glossa Admin",
+    "SITE_TITLE": "Glossa 管理台",
     "SITE_HEADER": "Glossa",
-    "SITE_SUBHEADER": "Translation Operations",
+    "SITE_SUBHEADER": "翻译运营控制台",
     "SITE_URL": "/",
     "THEME": "light",
 }

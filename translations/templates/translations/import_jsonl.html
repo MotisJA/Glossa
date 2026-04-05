@@ -1,0 +1,305 @@
+{% extends 'unfold/layouts/base.html' %}
+
+{% block content %}
+<style>
+    :root {
+        --glossa-bg-soft: linear-gradient(135deg, #f7f8ff 0%, #eefaf5 100%);
+        --glossa-line: #dbe4f0;
+        --glossa-card-shadow: 0 18px 45px rgba(15, 23, 42, 0.08);
+        --glossa-head: linear-gradient(120deg, #edf2ff 0%, #e7f7ff 100%);
+        --glossa-accent: #0f766e;
+    }
+    .glossa-shell {
+        display: flex;
+        flex-direction: column;
+        gap: 14px;
+        background: var(--glossa-bg-soft);
+        border-radius: 20px;
+        padding: 18px;
+    }
+    .glossa-topbar {
+        display: flex;
+        justify-content: space-between;
+        gap: 10px;
+        align-items: center;
+        flex-wrap: wrap;
+    }
+    .glossa-main-title {
+        font-size: 1.15rem;
+        font-weight: 700;
+        color: #0f172a;
+    }
+    .glossa-card {
+        background: #ffffff;
+        border: 1px solid var(--glossa-line);
+        border-radius: 16px;
+        box-shadow: var(--glossa-card-shadow);
+        overflow: hidden;
+    }
+    .glossa-header {
+        display: flex;
+        gap: 12px;
+        align-items: center;
+        padding: 16px 18px;
+        background: var(--glossa-head);
+        border-bottom: 1px solid var(--glossa-line);
+    }
+    .glossa-badge {
+        width: 38px;
+        height: 38px;
+        border-radius: 11px;
+        background: linear-gradient(135deg, #0891b2 0%, #0f766e 100%);
+        color: #fff;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-weight: 700;
+    }
+    .glossa-body { padding: 18px; }
+    .hint { color: #516175; font-size: 0.875rem; }
+    .editable-table-wrap {
+        overflow: auto;
+        border: 1px solid var(--glossa-line);
+        border-radius: 12px;
+        background: #fff;
+        max-width: 100%;
+    }
+    .editable-table {
+        width: max-content;
+        min-width: 100%;
+        border-collapse: collapse;
+        font-size: 0.875rem;
+        table-layout: auto;
+    }
+    .editable-table th,
+    .editable-table td {
+        border: 1px solid var(--glossa-line);
+        padding: 8px 10px;
+        text-align: left;
+        vertical-align: top;
+        white-space: nowrap;
+    }
+    .editable-table th {
+        background: #f3f7fc;
+        font-weight: 600;
+    }
+    .editable-table input {
+        border: 1px solid #c8d5e3;
+        border-radius: 8px;
+        padding: 6px 8px;
+        font-size: 0.875rem;
+        background: #ffffff;
+        width: 14ch;
+        min-width: 14ch;
+        box-sizing: border-box;
+    }
+    .btn-row {
+        margin-top: 10px;
+        display: flex;
+        gap: 10px;
+        flex-wrap: wrap;
+    }
+</style>
+
+<div class="glossa-shell">
+    <div class="glossa-topbar">
+        <div>
+            <div class="text-sm tracking-widest text-slate-500">JSONL 导入</div>
+            <div class="glossa-main-title">JSONL 导入审阅</div>
+        </div>
+        <a href="{% url 'admin:index' %}" class="default">返回主界面</a>
+    </div>
+
+    <div class="glossa-card">
+        <div class="glossa-header">
+            <div class="glossa-badge">J</div>
+            <div>
+                <h2 class="text-xl font-semibold">解析文件并生成可编辑草稿</h2>
+            </div>
+        </div>
+        <div class="glossa-body">
+            <p class="hint">上传 JSONL 后会解析术语与翻译记忆，你可在下方直接增删改后再提交入库。</p>
+            <form method="post" enctype="multipart/form-data">
+                {% csrf_token %}
+                <input type="hidden" name="action" value="preview" />
+                <div style="margin-top: 12px;">
+                    {{ upload_form.jsonl_file.label_tag }}
+                    {{ upload_form.jsonl_file }}
+                    {% if upload_form.jsonl_file.help_text %}<p class="hint">{{ upload_form.jsonl_file.help_text }}</p>{% endif %}
+                    {% for error in upload_form.jsonl_file.errors %}<p class="hint" style="color:#dc2626">{{ error }}</p>{% endfor %}
+                </div>
+                <div style="margin-top: 12px;">
+                    <button type="submit" class="default">解析并预览</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    {% if terms or memories %}
+    <form method="post" id="jsonl-commit-form">
+        {% csrf_token %}
+        <input type="hidden" name="action" value="commit" />
+        <input type="hidden" name="terms_json" id="terms-json" />
+        <input type="hidden" name="memories_json" id="memories-json" />
+        <input type="hidden" name="source_filename" value="{{ source_filename }}" />
+
+        <div class="glossa-card">
+            <div class="glossa-header">
+                <div class="glossa-badge">术</div>
+                <div>
+                    <h3 class="text-lg font-semibold">术语表单（目标语言标签可编辑）</h3>
+                    <p class="hint">来源: proper_terms / random_terms / terms</p>
+                </div>
+            </div>
+            <div class="glossa-body">
+                <div class="editable-table-wrap">
+                    <table class="editable-table" id="terms-table">
+                        <thead>
+                            <tr><th>源术语</th><th>目标术语</th><th>目标语言</th><th>操作</th></tr>
+                        </thead>
+                        <tbody>
+                            {% for row in terms %}
+                            <tr>
+                                <td><input data-field="en" value="{{ row.en }}" /></td>
+                                <td><input data-field="tgt" value="{{ row.tgt }}" /></td>
+                                <td><input data-field="target_language" value="{{ row.target_language }}" /></td>
+                                <td><button type="button" class="default remove-row-btn">删除</button></td>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+                <div class="btn-row">
+                    <button type="button" class="default" id="add-term-row-btn">新增术语行</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="glossa-card">
+            <div class="glossa-header">
+                <div class="glossa-badge">忆</div>
+                <div>
+                    <h3 class="text-lg font-semibold">翻译记忆表单（目标语言标签可编辑）</h3>
+                </div>
+            </div>
+            <div class="glossa-body">
+                <div class="editable-table-wrap">
+                    <table class="editable-table" id="memories-table">
+                        <thead>
+                            <tr><th>英文原文</th><th>目标译文</th><th>目标语言</th><th>操作</th></tr>
+                        </thead>
+                        <tbody>
+                            {% for row in memories %}
+                            <tr>
+                                <td><input data-field="en" value="{{ row.en }}" /></td>
+                                <td><input data-field="tgt" value="{{ row.tgt }}" /></td>
+                                <td><input data-field="target_language" value="{{ row.target_language }}" /></td>
+                                <td><button type="button" class="default remove-row-btn">删除</button></td>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+                <div class="btn-row">
+                    <button type="button" class="default" id="add-memory-row-btn">新增记忆行</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="glossa-card">
+            <div class="glossa-body">
+                <div class="btn-row">
+                    <button type="submit" class="default">提交入库</button>
+                    <a href="{% url 'admin:index' %}" class="default">返回主界面</a>
+                </div>
+            </div>
+        </div>
+    </form>
+
+    <script>
+        function createRowHTML() {
+            return '<tr>'
+                + '<td><input data-field="en" value="" /></td>'
+                + '<td><input data-field="tgt" value="" /></td>'
+                + '<td><input data-field="target_language" value="" /></td>'
+                + '<td><button type="button" class="default remove-row-btn">删除</button></td>'
+                + '</tr>';
+        }
+
+        function wireRemoveButtons(container) {
+            container.querySelectorAll('.remove-row-btn').forEach((btn) => {
+                btn.onclick = () => {
+                    btn.closest('tr').remove();
+                    autoSizeTableInputs(container);
+                };
+            });
+        }
+
+        function autoSizeTableInputs(table) {
+            if (!table) return;
+            const colLengths = [];
+            table.querySelectorAll('thead th').forEach((th, i) => {
+                colLengths[i] = (th.textContent || '').trim().length;
+            });
+
+            table.querySelectorAll('tbody tr').forEach((tr) => {
+                tr.querySelectorAll('input').forEach((input, i) => {
+                    const len = (input.value || input.placeholder || '').trim().length;
+                    colLengths[i] = Math.max(colLengths[i] || 0, len);
+                });
+            });
+
+            table.querySelectorAll('tbody tr').forEach((tr) => {
+                tr.querySelectorAll('input').forEach((input, i) => {
+                    const widthCh = Math.max(12, (colLengths[i] || 0) + 3);
+                    input.style.width = `${widthCh}ch`;
+                    input.style.minWidth = `${widthCh}ch`;
+                });
+            });
+        }
+
+        function collectRows(tableId) {
+            const table = document.getElementById(tableId);
+            const rows = [];
+            table.querySelectorAll('tbody tr').forEach((tr) => {
+                const en = (tr.querySelector('input[data-field="en"]')?.value || '').trim();
+                const tgt = (tr.querySelector('input[data-field="tgt"]')?.value || '').trim();
+                const targetLanguage = (tr.querySelector('input[data-field="target_language"]')?.value || '').trim().toLowerCase();
+                if (!en || !tgt || !targetLanguage) return;
+                rows.push({ en: en, tgt: tgt, target_language: targetLanguage });
+            });
+            return rows;
+        }
+
+        const termsTable = document.getElementById('terms-table');
+        const memoriesTable = document.getElementById('memories-table');
+        wireRemoveButtons(termsTable);
+        wireRemoveButtons(memoriesTable);
+
+        document.getElementById('add-term-row-btn').onclick = () => {
+            termsTable.querySelector('tbody').insertAdjacentHTML('beforeend', createRowHTML());
+            wireRemoveButtons(termsTable);
+            autoSizeTableInputs(termsTable);
+        };
+
+        document.getElementById('add-memory-row-btn').onclick = () => {
+            memoriesTable.querySelector('tbody').insertAdjacentHTML('beforeend', createRowHTML());
+            wireRemoveButtons(memoriesTable);
+            autoSizeTableInputs(memoriesTable);
+        };
+
+        termsTable.addEventListener('input', () => autoSizeTableInputs(termsTable));
+        memoriesTable.addEventListener('input', () => autoSizeTableInputs(memoriesTable));
+        autoSizeTableInputs(termsTable);
+        autoSizeTableInputs(memoriesTable);
+
+        document.getElementById('jsonl-commit-form').addEventListener('submit', () => {
+            const terms = collectRows('terms-table');
+            const memories = collectRows('memories-table');
+            document.getElementById('terms-json').value = JSON.stringify(terms);
+            document.getElementById('memories-json').value = JSON.stringify(memories);
+        });
+    </script>
+    {% endif %}
+</div>
+{% endblock %}
