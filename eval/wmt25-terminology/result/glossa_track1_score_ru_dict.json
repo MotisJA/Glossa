@@ -1,0 +1,14 @@
+{
+    "ru": {
+        "proper": {
+            "Glossa": {
+                "bleu4": 26.177677255588115,
+                "chrf2++": 62.07177900116767,
+                "proper_term_success_rate": 0.7996070726915521,
+                "random_term_success_rate": 0.769927536231884,
+                "consistency_frequent": 0.7392996108949417,
+                "consistency_predefined": 0.5116731517509727
+            }
+        }
+    }
+}

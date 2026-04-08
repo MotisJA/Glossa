@@ -1,0 +1,3526 @@
+{
+  "version": 1,
+  "system_name": "Glossa",
+  "target_lang": "ru",
+  "mode": "proper",
+  "llm_model": "gemini/gemini-2.0-flash",
+  "size": 500,
+  "rows": [
+    {
+      "alg_terms": {
+        "pane": "область «Заметки»"
+      },
+      "over_aligned": true,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "contract": "контракта"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "type": "▔"
+      },
+      "over_aligned": false,
+      "error": "APIConnectionError: litellm.APIConnectionError: GeminiException - [SSL: UNEXPECTED_EOF_WHILE_READING] EOF occurred in violation of protocol (_ssl.c:1000)"
+    },
+    {
+      "alg_terms": {
+        "revenue": "Выручка"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "update": "Обновить"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "range": "интервала"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "provider": "провайдеров"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "provider": "провайдера"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "branch": "Прямой переход"
+      },
+      "over_aligned": true,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "type": "вид"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "input": "входная"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "type": "Вид процедуры"
+      },
+      "over_aligned": true,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "type": "виды"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "purpose": "цель"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "type": "тип"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "type": "тип"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "public": "общедоступный"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "provider": "провайдера"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "input": "входного"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "type": "типа"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "postponed": "Отсрочено"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "provider": "поставщика"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "regulation": "предписание"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "provider": "провайдера"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "input": "ввода"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "output": "вывод"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "billing": "для расчета"
+      },
+      "over_aligned": true,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "explosion": "▔"
+      },
+      "over_aligned": false,
+      "error": "AttributeError: 'NoneType' object has no attribute 'strip'"
+    },
+    {
+      "alg_terms": {
+        "association": "Ассоциация"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "group": "группировки"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "type": "виду"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "contract": "Договорный"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "scope": "объема"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "add-on": "дополнения"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "mapping": "сопоставлением ключей"
+      },
+      "over_aligned": true,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "summary": "Сводка"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "global currency": "Глобальная валюта"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "space": "пространство на диске"
+      },
+      "over_aligned": true,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "edit": "Редактировать"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "space": "Spaces"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "schedule": "планирование"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "input": "Входные данные"
+      },
+      "over_aligned": true,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "service entry sheet": "ведомости учета услуг"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "provider": "провайдером"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "provider": "провайдеров"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "range": "интервал времени"
+      },
+      "over_aligned": true,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "input": "входная"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "type": "видов"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "schedule": "планирование"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "data provider": "провайдер данных"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "residence period": "периода активного хранения"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "suspension": "Остановка"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "project type": "Тип проекта закупок"
+      },
+      "over_aligned": true,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "wizard": "ассистент импорта разрешений"
+      },
+      "over_aligned": true,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "flow": "поток данных"
+      },
+      "over_aligned": true,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "mapping": "сопоставление"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "due date": "сроку выполнения"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "tag": "отметить"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "provider": "Провайдер"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "transaction": "транзакцию"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "custom field": "пользовательское поле"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "pane": "область"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "residence period": "срок хранения"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "part": "деталь"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "range": "интервал времени"
+      },
+      "over_aligned": true,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "provider": "поставщики"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "balance": "балансовой"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "copy": "Копировать"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "accrual": "Начисления"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "type": "вид"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "use": "▔"
+      },
+      "over_aligned": false,
+      "error": "AttributeError: 'NoneType' object has no attribute 'strip'"
+    },
+    {
+      "alg_terms": {
+        "type": "Тип"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "schedule": "расписание"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "type": "типы"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "output": "вывода",
+        "input": "ввода"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "type": "вид"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "allocation": "распределение"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "contract": "договор"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "edit": "изменить"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "demand-driven": "определяемых потребностью"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "input": "ввода",
+        "join": "Соединение"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "space": "Пространства"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "accrual": "Начисления"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "residence period": "периода активного хранения"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "contract": "контрактами",
+        "assembly": "Enterprise Contract Assembly"
+      },
+      "over_aligned": true,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "copy": "Скопируйте"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "schedule": "планирование"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "accrual": "Начисления"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "provider": "▔"
+      },
+      "over_aligned": false,
+      "error": "APIConnectionError: litellm.APIConnectionError: GeminiException - [SSL: UNEXPECTED_EOF_WHILE_READING] EOF occurred in violation of protocol (_ssl.c:1000)"
+    },
+    {
+      "alg_terms": {
+        "service entry sheet": "ведомость учета услуг"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "type": "Тип"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "change": "Изменить"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "schedule": "расписание"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "undo": "Отмена"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "pause": "Приостановка"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "content": "списке контента"
+      },
+      "over_aligned": true,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "set": "выполните"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "thread": "тредов"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "Personal Data": "личные данные",
+        "personal data": "все личные данные"
+      },
+      "over_aligned": true,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "provider": "провайдера"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "type": "типу"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "attachment": "как вложение"
+      },
+      "over_aligned": true,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "activate": "Активировать"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "data provider": "провайдер данных"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "reporting": "создание отчетов"
+      },
+      "over_aligned": true,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "category": "категорию"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "type": "типу"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "client": "клиента"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "type": "типом"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "change": "Изменить"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "provider": "поставщиков"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "schedule": "расписание"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "provider": "провайдера"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "rate": "курс"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "wizard": "ассистента"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "pattern": "шаблон"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "type": "типы"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "provider": "провайдера"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "inactive": "неактивной",
+        "edit": "Редактировать"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "provider": "провайдера"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "schedule": "Планирование"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "copy": "Скопировать"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "edit": "Редактировать"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "tab": "Вкладка"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "provider": "провайдера"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "type": "типов"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "schedule": "запланировать"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "scope": "объема"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "contract": "договоров"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "retention period": "Срок хранения"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "story": "Журнал"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "space": "пространств"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "rate": "курс"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "tab": "Вкладка"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "type": "виды"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "space": "пространство на диске"
+      },
+      "over_aligned": true,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "transfer": "перевести"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "type": "тип"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "instance": "инстанции",
+        "open": "открыто"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "type": "Тип"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "wizard": "ассистент"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "type": "видов"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "tab": "вкладка"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "type": "виды"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "schedule": "запланировать"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "wizard": "ассистента"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "request": "заявками"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "change": "▔"
+      },
+      "over_aligned": false,
+      "error": "APIConnectionError: litellm.APIConnectionError: GeminiException - [SSL: UNEXPECTED_EOF_WHILE_READING] EOF occurred in violation of protocol (_ssl.c:1000)"
+    },
+    {
+      "alg_terms": {
+        "tab": "вкладка"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "restart": "перезапуск",
+        "pause": "Приостановка"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "relationship": "связь"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "aggregate": "Агрегированные"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "contract": "контракты"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "type": "тип"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "item": "элемент"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "design time": "Среда дизайна"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "type": "вида"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "schedule": "расписание"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "type": "вид"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "get": "Получить"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "update": "Обновить"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "download": "Выгрузите"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "check": "Проверить"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "space": "пространство"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "type": "видов"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "pause": "Приостановка"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "transaction type": "Вид операции"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "provider": "поставщику"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "wizard": "ассистента"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "type": "типа"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "type": "типов"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "provider": "провайдера"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "edit": "Редактировать"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "input": "входные"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "allocation": "Распределение"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "service confirmation": "подтверждение сервиса"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "request": "заявках"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "use": "используют"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "provider": "провайдеров"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "edit": "Редактировать"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "space": "пространства"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "type": "Тип"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "get": "Получение"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "purchase order": "Входящий заказ на поставку",
+        "Purchase Order": "Входящий заказ на поставку"
+      },
+      "over_aligned": true,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "sales order": "заказ клиента"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "type": "вид"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "exception": "исключение"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "type": "видов"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "category": "категория группы"
+      },
+      "over_aligned": true,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "item": "позициями"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "update": "Обновить"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "type": "типах"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "regulation": "предписание"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "source assignment": "Присвоение происхождения"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "term": "Вид"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "wizard": "ассистент"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "provider": "OData-провайдера"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "tab": "вкладками"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "tab": "Вкладка"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "type": "типа"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "type": "типов"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "retention period": "Срок хранения"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "transaction type": "Вид сделки"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "type": "видов"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "service confirmation": "подтверждения выполнения сервиса"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "interest calculation": "начисления процентов"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "clearing item": "Перерасчетная позиция"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "edit": "редактировать"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "edit": "Редактировать"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "purchase order": "заказ на поставку",
+        "Purchase Order": "заказ на поставку"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "merge": "Объединить"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "work package": "рабочий пакет"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "type": "вида"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "schedule": "запланирован"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "pause": "Приостановите"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "association": "Ассоциация"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "type": "вида"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "update": "Обновление"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "action": "Эта операция"
+      },
+      "over_aligned": true,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "type": "видах"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "where-used list": "▔"
+      },
+      "over_aligned": false,
+      "error": "AttributeError: 'NoneType' object has no attribute 'strip'"
+    },
+    {
+      "alg_terms": {
+        "record": "Запись"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "repair": "▔"
+      },
+      "over_aligned": false,
+      "error": "RateLimitError: litellm.RateLimitError: litellm.RateLimitError: VertexAIException - {\n  \"error\": {\n    \"code\": 429,\n    \"message\": \"Resource has been exhausted (e.g. check quota).\",\n    \"status\": \"RESOURCE_EXHAUSTED\"\n  }\n}\n"
+    },
+    {
+      "alg_terms": {
+        "contract": "контракта"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "Environment, Health and Safety": "в системе управления данными по охране здоровья и защите окружающей среды"
+      },
+      "over_aligned": true,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "type": "Тип"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "request": "запрошен"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "agent": "агента"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "request": "заявке"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "run": "Выполнить"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "service confirmation": "подтверждения сервиса"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "provider": "поставщика"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "characteristic": "Характеристика"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "retention period": "Срок хранения"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "carrier": "перевозчиков"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "service confirmation": "Подтверждение сервиса"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "use": "Используйте"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "transport type": "вид транспортировки"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "type": "тип"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "contract": "контракты"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "sales order": "Заказ клиента"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "release": "Деблокировать"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "clearing house": "расчетный центр"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "clearing house": "Расчетный центр"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "summary": "Сводка"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "change": "изменить",
+        "open": "открытый"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "monitor": "отслеживания"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "type": "вида"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "event type": "события обслуживания"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "set": "настроить"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "type": "типа"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "edit": "редактировать"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "schedule": "план"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "edit": "Редактировать"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "type": "типов"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "type": "типов"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "reporting": "Система отчетов"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "edit": "Редактировать"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "type": "Типы"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "term": "Вид"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "type": "Вид"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "contract": "контрактов",
+        "type": "видах"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "activate": "Активировать"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "edit": "Редактировать"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "gap": "пропуска"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "consumption model": "Модель использования"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "schedule": "планирование"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "review": "Просмотрите"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "update": "Обновление"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "type": "Вид"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "controller": "оператора"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "storage location": "Место хранения"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "consent": "согласие"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "use": "Использование"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "amount": "Количество"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "provider": "провайдера"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "apply": "применять"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "undo": "Отмените"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "type": "типов"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "get": "Получить"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "lot": "пакет"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "check": "Проверка"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "type": "типа"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "run": "Выполнить"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "edit": "Отредактировать"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "change": "изменить"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "journal entry": "запись журнала"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "provider": "Провайдер"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "account": "клиента"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "following": "следующих"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "type": "видов"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "following": "следующих"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "retention time": "срок хранения"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "tab": "Закладка"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "change": "изменить"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "type": "Тип"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "close": "Закрыть"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "withholding tax": "Удерживаемый налог"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "limit": "Лимит"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "validation": "проверка"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "output": "вывод"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "block indicator": "индикатор блокировки"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "schedule": "Планирование"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "stopped forecast delivery schedule": "Прогнозный график поставок"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "tab": "Вкладка"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "mapping": "Сопоставление"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "edit": "редактировать"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "form": "формах"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "use": "Использование"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "schedule": "график"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "in preparation": "на стадии подготовки"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "type": "вида"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "match": "Сопоставление"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "schedule": "планирование"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "type": "типа"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "copy": "Копирование"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "type": "тип"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "summary": "резюме"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "service confirmation": "подтверждение выполнения сервиса"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "posting level": "уровень проводки"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "input": "ввода"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "billing": "Фактурирование"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "group": "▔"
+      },
+      "over_aligned": false,
+      "error": "AttributeError: 'NoneType' object has no attribute 'strip'"
+    },
+    {
+      "alg_terms": {
+        "type": "типа"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "environmental limit": "экологический норматив"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "restatement": "Повторное представление"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "restart": "Перезапустить"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "Personal Information": "Персональные данные"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "retention period": "период хранения"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "type": "тип"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "transaction": "операциях"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "type": "типы"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "data replication": "репликация данных"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "payment": "Оплата"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "alert": "сигналу"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "type": "виды"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "type": "типов"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "expiration": "Истечение",
+        "contract": "контракта"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "validity start date": "начало срока действия"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "edit": "Редактировать"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "contract": "контракта"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "type": "типы"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "usage category": "▔"
+      },
+      "over_aligned": false,
+      "error": "AttributeError: 'NoneType' object has no attribute 'strip'"
+    },
+    {
+      "alg_terms": {
+        "Activities": "Операции"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "supplier ID": "идентификатор поставщика"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "type": "тип"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "type": "типов"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "service confirmation": "подтверждения сервиса"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "allocation": "Распределение"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "allocation": "распределения"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "get": "Получить"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "action": "операция"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "input": "Входные"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "copy": "Копировать"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "type": "видов"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "Personal Information": "Личная информация"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "claim": "Выберите страховой случай"
+      },
+      "over_aligned": true,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "contract": "контрактами"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "edit": "Редактировать"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "provider": "поставщика"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "go to": "получают"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "process": "Обработка"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "controller": "▔"
+      },
+      "over_aligned": false,
+      "error": "APIConnectionError: litellm.APIConnectionError: GeminiException - [SSL: UNEXPECTED_EOF_WHILE_READING] EOF occurred in violation of protocol (_ssl.c:1000)"
+    },
+    {
+      "alg_terms": {
+        "Activities": "действия"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "purpose": "назначение"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "change": "Изменение"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "withholding tax": "налог на источники дохода"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "assignment": "присвоение"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "service": "Услуга"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "space": "пространств"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "action": "операции"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "attach": "вложить"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "payment": "оплата"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "output": "вывода"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "activity": "операции"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "input": "ввода"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "input": "Входные"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "use": "Использование"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "change": "изменить"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "type": "типов"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "type": "виду"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "change": "Замена"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "transport": "переноса"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "carrier": "перевозчиков"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "connection": "подключение"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "process": "Для обработки"
+      },
+      "over_aligned": true,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "activate": "активируйте"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "provider": "провайдера"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "total": "Общая"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "controller": "оператора"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "confirmation control key": "управляющий ключ подтверждения."
+      },
+      "over_aligned": true,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "reconcile": "выполнить выверку"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "type": "тип"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "provider": "провайдера"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "type": "тип"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "consumption": "Потребление"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "category": "Категория"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "pause": "Приостановка"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "type": "тип"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "transport": "транспорт"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "tab": "Вкладка"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "type": "типов"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "workflow": "рабочий процесс"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "collection agency": "коллекторское агентство"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "type": "тип"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "type": "типа"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "client": "клиентов"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "category": "категория"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "edit": "редактировать"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "characteristic": "характеристик"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "release": "деблокировать"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "analytics chart": "аналитическая диаграмма"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "provider": "по поставщику"
+      },
+      "over_aligned": true,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "assigned": "Присвоен"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "run type": "тип прогона"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "exit": "выхода"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "data provider": "провайдер данных"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "account": "учетной записи"
+      },
+      "over_aligned": true,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "check": "Проверка"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "type": "видов"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "maintain": "выполнять ведение"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "location structure": "структуру местоположений"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "compliance": "обеспечением соответствия договорам"
+      },
+      "over_aligned": true,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "topic": "В этом разделе"
+      },
+      "over_aligned": true,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "compensation": "возмещения"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "pricing procedure": "Схема калькуляции"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "assembly": "сборка"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "tab": "Вкладка"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "edit": "Редактировать"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "pattern": "шаблон"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "type": "тип"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "transaction": "сделки"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "stop": "Остановить"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "tab": "Закладка"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "activate": "Активировать"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "contract": "Контракт"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "edit": "редактировать"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "wizard": "мастера"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "object category": "Категория типа объекта"
+      },
+      "over_aligned": true,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "cancel": "Отменить"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "restricted": "ограничением"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "assets": "Активы"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "inspection": "контрольной"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "use": "Интеграция данных для использования"
+      },
+      "over_aligned": true,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "reporting": "Отчетность"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "classification type": "Тип классификации"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "in review": "«В проверке»"
+      },
+      "over_aligned": true,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "provider": "провайдером"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "type": "вид"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "tab": "вкладка"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "stop": "eventStop"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "update": "Обновление"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "order": "порядок"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "schedule": "планирование"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "tab": "вкладках"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "distribution": "распространение"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "record": "записаны"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "Resource": "ресурсы"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "grouping": "группирование"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "billing document": "документ расчета"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "clarification account": "промежуточный счет"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "edit": "отредактировать"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "use": "использовать"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "type": "вида"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "transport": "транспортировки"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "provider": "поставщика"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "type": "Тип"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "revenue distribution": "Распределение"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "trigger": "триггер"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "type": "типы"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "extension number": "добавочный номер"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "type": "типа"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "public": "Общий"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "pause": "Приостановка"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "contract": "контракты"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "get": "Получить"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "contract": "договор"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "apply": "применить"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "process type": "Этот вид процесса"
+      },
+      "over_aligned": true,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "content": "содержание"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "type": "типов"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "edit": "редактировать"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "stopped forecast delivery schedule": "Прогнозный график поставок"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "schedule": "запланировать"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "utilization": "Загрузка"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "change": "изменить"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "type": "типы"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "provider": "провайдеров"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "output": "Тип вывода",
+        "type": "Тип"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "disabled": "деактивировано"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "numeric": "числовой"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "document type": "вид документа"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "get": "Получить"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "category": "Категория"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "update": "обновление"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "summary": "Сводка"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "billing data": "биллинговые данные"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "single account assignment": "Простая контировка"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "cancel": "отменить"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "control": "мероприятие",
+        "subtype": "Подтип"
+      },
+      "over_aligned": false,
+      "error": null
+    }
+  ],
+  "error_count": 10,
+  "completed": true
+}

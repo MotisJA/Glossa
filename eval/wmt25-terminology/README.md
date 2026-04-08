@@ -28,8 +28,8 @@
 ```bash
 eval $(poetry env activate)
 python eval/wmt25-terminology/run_nmt_llm_eval.py \
-  --input-file datafiles/wmt25/track1/ende.proper.jsonl \
-  --target-lang de \
+  --input-file datafiles/wmt25/track1/enru.proper.jsonl \
+  --target-lang ru \
   --domain-hint "information technology"
 ```
 
@@ -55,10 +55,11 @@ python eval/wmt25-terminology/run_nmt_llm_eval.py \
 ```bash
 eval $(poetry env activate)
 python eval/wmt25-terminology/evaluate_track1_local.py \
-  --input-file datafiles/wmt25/track1/output/ende.proper.de.output.jsonl \
+  --input-file datafiles/wmt25/track1/output/enru.proper.ru.output.jsonl \
+  --target-lang ru \
   --mode proper \
   --system-name Glossa \
-  --output-file datafiles/wmt25/track1/reference/track1_score_de_dict.json \
+  --output-file eval/wmt25-terminology/result/glossa_track1_score_ru_dict.json \
   --consistency-model gemini/gemini-2.0-flash
 ```
 
@@ -66,5 +67,14 @@ python eval/wmt25-terminology/evaluate_track1_local.py \
 
 - 当前实现默认只评测 `de` 目标语言。
 - `term-consistency` 的 `awesome-align` 预训练模型改为按需懒加载，仅在 `de` 且发生过对齐时加载。
+
+## 预加载模型
+
+```
+export HF_ENDPOINT=https://hf-mirror.com
+pip install -U huggingface_hub
+hf download stanfordnlp/stanza-es --local-dir stanza_models/es
+hf download stanfordnlp/stanza-ru --local-dir stanza_models/ru
+```
 
 

@@ -1,0 +1,101 @@
+# %%
+
+import json
+import matplotlib.pyplot as plt
+import statistics
+import os
+import utils
+
+# Adjusting params for different metrics
+metric_id = "chrf2++" # "consistency_predefined"
+metric_label = "ChrF++" # "Consistency \n(Pseudo-References from Dictionary)"
+threshold = 55 # 0.1
+limits = (54, 72) # (0.1, 0.9)
+file_suffix = "" # "_consistency_predefined"
+
+os.makedirs("generated/", exist_ok=True)
+plt.rcParams["font.family"] = "serif"
+
+plt.figure(figsize=(3.5, 4))
+ax = plt.gca()
+
+LANGS = ["de", "ru", "es"]
+with open("ranking/metric_track1/track1_score_dict.json", "r") as f:
+    data = json.load(f)
+data = [
+    {
+        "name": sys,
+        # es doesn't have term acc
+        "y": [
+            statistics.mean([data[lang]["noterm"][sys][metric_id] for lang in LANGS]),
+            statistics.mean([data[lang]["random"][sys][metric_id] for lang in LANGS]),
+            statistics.mean([data[lang]["proper"][sys][metric_id] for lang in LANGS]),
+        ]
+    }
+    for sys in [
+        sys
+        for sys, val in data["de"]["proper"].items()
+        if val != {} and all("chrf2++" in data[lang][t][sys] for lang in LANGS for t in ["proper", "noterm", "random"])
+    ]
+]
+data = [
+    line for line in data
+    if statistics.mean(line["y"]) > threshold
+]
+data.sort(
+    key=lambda line: statistics.mean(line["y"]),
+    reverse=True,
+)
+
+for line_i, line in enumerate(data):
+    plt.plot(
+        [line_i],
+        [line["y"][0]],
+        color="black",
+        marker="x",
+    )
+    # white "background" for R
+    plt.plot(
+        [line_i],
+        [line["y"][1]],
+        color="white",
+        marker="s",
+        markersize=5,
+        zorder=-5,
+    )
+    plt.plot(
+        [line_i+0.08],
+        [line["y"][1]],
+        color="black",
+        marker="$R$",
+    )
+    plt.plot(
+        [line_i],
+        [line["y"][2]],
+        color="black",
+        marker=r"$\star$",
+    )
+    plt.plot(
+        [line_i]*3,
+        line["y"],
+        color="black",
+        zorder=-10,
+    )
+
+plt.ylim(limits)
+
+# set xticks formatter to percentages
+ax.xaxis.set_major_formatter(plt.FuncFormatter(lambda x, _: f'{int(x*100)}%'))
+
+ax.spines[["top", "right"]].set_visible(False)
+# plt.xlabel('Terminology Accuracy')
+plt.xticks(
+    range(len(data)),
+    [utils.SYS_TO_NAME_2.get(line["name"], line["name"]) for line in data],
+    rotation=90,
+    fontsize=8,
+)
+plt.ylabel(metric_label)
+
+plt.tight_layout(pad=0)
+plt.savefig(f"generated/effect_termmode{file_suffix}.pdf")

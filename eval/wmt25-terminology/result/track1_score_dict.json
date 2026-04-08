@@ -1,0 +1,476 @@
+{
+    "de": {
+        "proper": {
+            "BIT": {
+                "bleu4": 35.232365667192425,
+                "chrf2++": 62.43959622296563,
+                "proper_term_success_rate": 0.9797421731123389,
+                "random_term_success_rate": 0.6780487804878049,
+                "consistency_frequent": 0.8689403559403559,
+                "consistency_predefined": 0.6791911175244508
+            },
+            "CommandA_MT": {
+                "bleu4": 41.8872700127124,
+                "chrf2++": 67.63254485665514,
+                "proper_term_success_rate": 0.8692449355432781,
+                "random_term_success_rate": 0.7284552845528456,
+                "consistency_frequent": 0.8747864357864358,
+                "consistency_predefined": 0.5379064661392248
+            },
+            "ContexTerm": {
+                "bleu4": 12.371134215930308,
+                "chrf2++": 40.20536446014415,
+                "proper_term_success_rate": 0.7992633517495396,
+                "random_term_success_rate": 0.35121951219512193,
+                "consistency_frequent": 0.8582957884327747,
+                "consistency_predefined": 0.6176759834368529
+            },
+            "CurTermNLLB": {
+                "bleu4": 35.91296047035373,
+                "chrf2++": 60.322254666290945,
+                "proper_term_success_rate": 0.7900552486187845,
+                "random_term_success_rate": 0.6439024390243903,
+                "consistency_frequent": 0.8758570602182937,
+                "consistency_predefined": 0.6621889512719207
+            },
+            "Erlendur": {
+                "bleu4": 45.472597579323676,
+                "chrf2++": 69.93771270507729,
+                "proper_term_success_rate": 0.9318600368324125,
+                "random_term_success_rate": 0.7365853658536585,
+                "consistency_frequent": 0.8628843995510662,
+                "consistency_predefined": 0.5944900872074785
+            },
+            "EuroLLM-ft": {},
+            "LC-2": {
+                "bleu4": 36.01876045984217,
+                "chrf2++": 61.04966310418004,
+                "proper_term_success_rate": 0.7071823204419889,
+                "random_term_success_rate": 0.6341463414634146,
+                "consistency_frequent": 0.8565953112544022,
+                "consistency_predefined": 0.5000715199405155
+            },
+            "LC-3": {
+                "bleu4": 36.01876045984217,
+                "chrf2++": 61.04966310418004,
+                "proper_term_success_rate": 0.7071823204419889,
+                "random_term_success_rate": 0.6341463414634146,
+                "consistency_frequent": 0.8565701612786816,
+                "consistency_predefined": 0.508805144394664
+            },
+            "LC-primary": {
+                "bleu4": 35.98100704739517,
+                "chrf2++": 61.203890974338634,
+                "proper_term_success_rate": 0.7071823204419889,
+                "random_term_success_rate": 0.6341463414634146,
+                "consistency_frequent": 0.8576892962543188,
+                "consistency_predefined": 0.5066217382811269
+            },
+            "MarianMT-ft": {},
+            "MeGuMa": {
+                "bleu4": 41.64781863995082,
+                "chrf2++": 67.72941250806254,
+                "proper_term_success_rate": 0.9631675874769797,
+                "random_term_success_rate": 0.7203252032520325,
+                "consistency_frequent": 0.885791774244689,
+                "consistency_predefined": 0.727744392547024
+            },
+            "Systran_generic_ft": {},
+            "TiUTermV0": {
+                "bleu4": 36.10938128738361,
+                "chrf2++": 60.96506827921231,
+                "proper_term_success_rate": 0.7108655616942909,
+                "random_term_success_rate": 0.6601626016260163,
+                "consistency_frequent": 0.8558471887011709,
+                "consistency_predefined": 0.4417371062845201
+            },
+            "TiUTermV1": {
+                "bleu4": 41.20081896986782,
+                "chrf2++": 65.71731279510267,
+                "proper_term_success_rate": 0.8729281767955801,
+                "random_term_success_rate": 0.6894308943089431,
+                "consistency_frequent": 0.8594146803422821,
+                "consistency_predefined": 0.5496298733082874
+            },
+            "TranssionMT": {
+                "bleu4": 0.07440001497861845,
+                "chrf2++": 1.5941268759295464,
+                "proper_term_success_rate": 0.0,
+                "random_term_success_rate": 0.0016260162601626016,
+                "consistency_frequent": 0.7759442610927759,
+                "consistency_predefined": 0.0
+            },
+            "duterm": {
+                "bleu4": 48.06385972223256,
+                "chrf2++": 70.73867185591375,
+                "proper_term_success_rate": 0.9815837937384899,
+                "random_term_success_rate": 0.7300813008130081,
+                "consistency_frequent": 0.8630704870615185,
+                "consistency_predefined": 0.6275584669857797
+            },
+            "laniqo": {
+                "bleu4": 30.68064516106849,
+                "chrf2++": 59.757863302146234,
+                "proper_term_success_rate": 0.994475138121547,
+                "random_term_success_rate": 0.6422764227642277,
+                "consistency_frequent": 0.8934589476064132,
+                "consistency_predefined": 0.7637595273057828
+            },
+            "o3-term-guide": {
+                "bleu4": 47.762341058985974,
+                "chrf2++": 71.55227430675188,
+                "proper_term_success_rate": 0.990791896869245,
+                "random_term_success_rate": 0.7609756097560976,
+                "consistency_frequent": 0.8608504088504088,
+                "consistency_predefined": 0.6436522176653755
+            },
+            "salamandrata": {
+                "bleu4": 43.98388253463324,
+                "chrf2++": 69.62407227591162,
+                "proper_term_success_rate": 0.9171270718232044,
+                "random_term_success_rate": 0.7284552845528456,
+                "consistency_frequent": 0.8642316017316016,
+                "consistency_predefined": 0.5987769144974384
+            },
+            "tower": {
+                "bleu4": 39.56244741017891,
+                "chrf2++": 65.9250257555877,
+                "proper_term_success_rate": 0.9484346224677717,
+                "random_term_success_rate": 0.7284552845528456,
+                "consistency_frequent": 0.8683875043740513,
+                "consistency_predefined": 0.6078624508139926
+            },
+            "organizers_gpt-4.1-nano": {
+                "bleu4": 43.218486505404286,
+                "chrf2++": 67.40636294405057,
+                "proper_term_success_rate": 0.8895027624309392,
+                "random_term_success_rate": 0.71869918699187,
+                "consistency_frequent": 0.8628143157291139,
+                "consistency_predefined": 0.6194382465307576
+            }
+        }
+    },
+    "es": {
+        "proper": {
+            "BIT": {
+                "bleu4": 48.52313725733142,
+                "chrf2++": 69.76711678921558,
+                "proper_term_success_rate": 0.962756052141527,
+                "random_term_success_rate": 0.7068062827225131,
+                "consistency_frequent": 0.8675099806676997,
+                "consistency_predefined": 0.7146060347446175
+            },
+            "CommandA_MT": {
+                "bleu4": 46.450037667557034,
+                "chrf2++": 70.68712434411908,
+                "proper_term_success_rate": 0.819366852886406,
+                "random_term_success_rate": 0.7574171029668412,
+                "consistency_frequent": 0.8452068400294607,
+                "consistency_predefined": 0.6581998081769831
+            },
+            "ContexTerm": {
+                "bleu4": 30.571563360457343,
+                "chrf2++": 53.7134892018212,
+                "proper_term_success_rate": 0.6852886405959032,
+                "random_term_success_rate": 0.4973821989528796,
+                "consistency_frequent": 0.7560023891610718,
+                "consistency_predefined": 0.5058824935100694
+            },
+            "CurTermNLLB": {
+                "bleu4": 49.605998957221715,
+                "chrf2++": 69.08025909029868,
+                "proper_term_success_rate": 0.7653631284916201,
+                "random_term_success_rate": 0.7294938917975567,
+                "consistency_frequent": 0.8749632284311519,
+                "consistency_predefined": 0.6133684198577078
+            },
+            "Erlendur": {
+                "bleu4": 56.77541658149268,
+                "chrf2++": 74.78887874343148,
+                "proper_term_success_rate": 0.9441340782122905,
+                "random_term_success_rate": 0.7678883071553229,
+                "consistency_frequent": 0.8380117635943577,
+                "consistency_predefined": 0.7290177445112963
+            },
+            "EuroLLM-ft": {
+                "bleu4": 41.5851697589244,
+                "chrf2++": 63.4541743045972,
+                "proper_term_success_rate": 0.3891992551210428,
+                "random_term_success_rate": 0.6422338568935427,
+                "consistency_frequent": 0.8249060633238852,
+                "consistency_predefined": 0.33681767648115135
+            },
+            "LC-2": {
+                "bleu4": 48.7388763785317,
+                "chrf2++": 67.68088193670516,
+                "proper_term_success_rate": 0.7355679702048417,
+                "random_term_success_rate": 0.6963350785340314,
+                "consistency_frequent": 0.8544193811162847,
+                "consistency_predefined": 0.5752861415125855
+            },
+            "LC-3": {
+                "bleu4": 48.7388763785317,
+                "chrf2++": 67.68088193670516,
+                "proper_term_success_rate": 0.7355679702048417,
+                "random_term_success_rate": 0.6963350785340314,
+                "consistency_frequent": 0.8563826385999619,
+                "consistency_predefined": 0.5846485272734204
+            },
+            "LC-primary": {
+                "bleu4": 49.32859450687956,
+                "chrf2++": 68.89012561241069,
+                "proper_term_success_rate": 0.7411545623836127,
+                "random_term_success_rate": 0.7033158813263525,
+                "consistency_frequent": 0.8358281736850318,
+                "consistency_predefined": 0.5683659389152665
+            },
+            "MarianMT-ft": {
+                "bleu4": 46.13438036811314,
+                "chrf2++": 65.55823183134771,
+                "proper_term_success_rate": 0.1750465549348231,
+                "random_term_success_rate": 0.7661431064572426,
+                "consistency_frequent": 0.5406667933837377,
+                "consistency_predefined": 0.12731872317963458
+            },
+            "MeGuMa": {
+                "bleu4": 49.77841099075852,
+                "chrf2++": 72.01710490708949,
+                "proper_term_success_rate": 0.9702048417132216,
+                "random_term_success_rate": 0.7713787085514834,
+                "consistency_frequent": 0.8694663364237047,
+                "consistency_predefined": 0.7231231656053538
+            },
+            "Systran_generic_ft": {
+                "bleu4": 52.8543189297152,
+                "chrf2++": 71.05954588138395,
+                "proper_term_success_rate": 0.441340782122905,
+                "random_term_success_rate": 0.7731239092495636,
+                "consistency_frequent": 0.8805163970443318,
+                "consistency_predefined": 0.389189255401594
+            },
+            "TiUTermV0": {
+                "bleu4": 48.86548396943552,
+                "chrf2++": 69.01735699326588,
+                "proper_term_success_rate": 0.7523277467411545,
+                "random_term_success_rate": 0.7504363001745201,
+                "consistency_frequent": 0.8504102911928431,
+                "consistency_predefined": 0.5814113067268646
+            },
+            "TiUTermV1": {
+                "bleu4": 60.076810581362146,
+                "chrf2++": 77.10726316573617,
+                "proper_term_success_rate": 0.8938547486033519,
+                "random_term_success_rate": 0.8150087260034904,
+                "consistency_frequent": 0.8574862788393323,
+                "consistency_predefined": 0.6539198381111665
+            },
+            "TranssionMT": {
+                "bleu4": 0.1879877165313543,
+                "chrf2++": 1.2770232124874719,
+                "proper_term_success_rate": 0.0,
+                "random_term_success_rate": 0.005235602094240838,
+                "consistency_frequent": 0.03187613843351548,
+                "consistency_predefined": 0.0
+            },
+            "duterm": {
+                "bleu4": 58.50962537211653,
+                "chrf2++": 76.08102686553325,
+                "proper_term_success_rate": 0.9869646182495344,
+                "random_term_success_rate": 0.7835951134380453,
+                "consistency_frequent": 0.8598490681395247,
+                "consistency_predefined": 0.771889235394151
+            },
+            "laniqo": {
+                "bleu4": 45.91551377140816,
+                "chrf2++": 68.53623223612053,
+                "proper_term_success_rate": 0.9869646182495344,
+                "random_term_success_rate": 0.7207678883071553,
+                "consistency_frequent": 0.8560660315916834,
+                "consistency_predefined": 0.741746413046506
+            },
+            "o3-term-guide": {
+                "bleu4": 56.89749178992793,
+                "chrf2++": 75.89938903017884,
+                "proper_term_success_rate": 0.9906890130353817,
+                "random_term_success_rate": 0.8115183246073299,
+                "consistency_frequent": 0.8666466657680052,
+                "consistency_predefined": 0.7460279653887852
+            },
+            "salamandrata": {
+                "bleu4": 49.03037426364518,
+                "chrf2++": 71.96675676435287,
+                "proper_term_success_rate": 0.9273743016759777,
+                "random_term_success_rate": 0.794066317626527,
+                "consistency_frequent": 0.8727422215782517,
+                "consistency_predefined": 0.7123893190382746
+            },
+            "tower": {
+                "bleu4": 55.19817336095581,
+                "chrf2++": 73.9928644359765,
+                "proper_term_success_rate": 0.9497206703910615,
+                "random_term_success_rate": 0.7643979057591623,
+                "consistency_frequent": 0.8762165068620494,
+                "consistency_predefined": 0.7525459270333813
+            },
+            "organizers_gpt-4.1-nano": {
+                "bleu4": 52.24893672681808,
+                "chrf2++": 72.40555367837055,
+                "proper_term_success_rate": 0.9515828677839852,
+                "random_term_success_rate": 0.7347294938917975,
+                "consistency_frequent": 0.8628529759279913,
+                "consistency_predefined": 0.7206743296735719
+            }
+        }
+    },
+    "ru": {
+        "proper": {
+            "BIT": {
+                "bleu4": 32.716943202998095,
+                "chrf2++": 58.86912694910988,
+                "proper_term_success_rate": 0.9666011787819253,
+                "random_term_success_rate": 0.6666666666666666,
+                "consistency_frequent": 0.8980577601410935,
+                "consistency_predefined": 0.8054529033700761
+            },
+            "CommandA_MT": {
+                "bleu4": 29.462418208676652,
+                "chrf2++": 59.28455236369841,
+                "proper_term_success_rate": 0.7072691552062869,
+                "random_term_success_rate": 0.7137681159420289,
+                "consistency_frequent": 0.8776624988915491,
+                "consistency_predefined": 0.6191086691086691
+            },
+            "ContexTerm": {
+                "bleu4": 23.44497287792796,
+                "chrf2++": 51.4784966751555,
+                "proper_term_success_rate": 0.6758349705304518,
+                "random_term_success_rate": 0.6141304347826086,
+                "consistency_frequent": 0.8435979750586493,
+                "consistency_predefined": 0.5047292066642283
+            },
+            "CurTermNLLB": {
+                "bleu4": 25.21043865038657,
+                "chrf2++": 51.00384076937458,
+                "proper_term_success_rate": 0.34577603143418467,
+                "random_term_success_rate": 0.6231884057971014,
+                "consistency_frequent": 0.887903778320445,
+                "consistency_predefined": 0.23374958374958374
+            },
+            "Erlendur": {
+                "bleu4": 35.43624256810625,
+                "chrf2++": 63.259408453019695,
+                "proper_term_success_rate": 0.9115913555992141,
+                "random_term_success_rate": 0.7155797101449275,
+                "consistency_frequent": 0.8996896337678459,
+                "consistency_predefined": 0.7671649029982364
+            },
+            "EuroLLM-ft": {},
+            "LC-2": {
+                "bleu4": 27.73012901636402,
+                "chrf2++": 53.65390327949324,
+                "proper_term_success_rate": 0.656188605108055,
+                "random_term_success_rate": 0.6485507246376812,
+                "consistency_frequent": 0.8622071292904626,
+                "consistency_predefined": 0.5134381859791696
+            },
+            "LC-3": {
+                "bleu4": 27.73012901636402,
+                "chrf2++": 53.65390327949324,
+                "proper_term_success_rate": 0.656188605108055,
+                "random_term_success_rate": 0.6485507246376812,
+                "consistency_frequent": 0.8667832014517096,
+                "consistency_predefined": 0.5198134136658726
+            },
+            "LC-primary": {
+                "bleu4": 27.67475447744242,
+                "chrf2++": 54.204016558777525,
+                "proper_term_success_rate": 0.6581532416502947,
+                "random_term_success_rate": 0.6503623188405797,
+                "consistency_frequent": 0.8695814679148012,
+                "consistency_predefined": 0.5219276473374834
+            },
+            "MarianMT-ft": {},
+            "MeGuMa": {
+                "bleu4": 32.76621369997171,
+                "chrf2++": 61.90895063645444,
+                "proper_term_success_rate": 0.9882121807465619,
+                "random_term_success_rate": 0.7010869565217391,
+                "consistency_frequent": 0.9020173805090006,
+                "consistency_predefined": 0.82547817604898
+            },
+            "Systran_generic_ft": {},
+            "TiUTermV0": {
+                "bleu4": 34.0780187321645,
+                "chrf2++": 58.261360542592776,
+                "proper_term_success_rate": 0.768172888015717,
+                "random_term_success_rate": 0.644927536231884,
+                "consistency_frequent": 0.8858360389610389,
+                "consistency_predefined": 0.6199552749276506
+            },
+            "TiUTermV1": {
+                "bleu4": 38.85101563276452,
+                "chrf2++": 63.78274255210841,
+                "proper_term_success_rate": 0.8605108055009824,
+                "random_term_success_rate": 0.7010869565217391,
+                "consistency_frequent": 0.8852053627477356,
+                "consistency_predefined": 0.7065642458100558
+            },
+            "TranssionMT": {
+                "bleu4": 20.03499927842517,
+                "chrf2++": 47.8097661332621,
+                "proper_term_success_rate": 0.3320235756385069,
+                "random_term_success_rate": 0.5978260869565217,
+                "consistency_frequent": 0.9007808395614079,
+                "consistency_predefined": 0.22268772893772892
+            },
+            "duterm": {
+                "bleu4": 35.79637499327885,
+                "chrf2++": 63.572833240995585,
+                "proper_term_success_rate": 0.9764243614931237,
+                "random_term_success_rate": 0.717391304347826,
+                "consistency_frequent": 0.8950696107120689,
+                "consistency_predefined": 0.823895790200138
+            },
+            "laniqo": {
+                "bleu4": 25.859947999577756,
+                "chrf2++": 56.897498348004895,
+                "proper_term_success_rate": 0.9960707269155207,
+                "random_term_success_rate": 0.6485507246376812,
+                "consistency_frequent": 0.8793340991367308,
+                "consistency_predefined": 0.8177567075733215
+            },
+            "o3-term-guide": {
+                "bleu4": 38.55709607568388,
+                "chrf2++": 65.58735862478122,
+                "proper_term_success_rate": 0.9901768172888016,
+                "random_term_success_rate": 0.7481884057971014,
+                "consistency_frequent": 0.903935341505174,
+                "consistency_predefined": 0.8446179987032453
+            },
+            "salamandrata": {
+                "bleu4": 30.95030916736447,
+                "chrf2++": 60.43771932443508,
+                "proper_term_success_rate": 0.8939096267190569,
+                "random_term_success_rate": 0.6793478260869565,
+                "consistency_frequent": 0.8861133404672731,
+                "consistency_predefined": 0.7687372528154652
+            },
+            "tower": {
+                "bleu4": 27.819405667402897,
+                "chrf2++": 58.0797214454568,
+                "proper_term_success_rate": 0.9115913555992141,
+                "random_term_success_rate": 0.697463768115942,
+                "consistency_frequent": 0.9072869557506429,
+                "consistency_predefined": 0.8473286335018179
+            },
+            "organizers_gpt-4.1-nano": {
+                "bleu4": 33.270376552391234,
+                "chrf2++": 62.25167795854457,
+                "proper_term_success_rate": 0.8801571709233792,
+                "random_term_success_rate": 0.7228260869565217,
+                "consistency_frequent": 0.8995330176269402,
+                "consistency_predefined": 0.7651590177133655
+            }
+        }
+    }
+}

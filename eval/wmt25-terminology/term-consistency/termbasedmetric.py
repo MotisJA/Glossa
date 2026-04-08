@@ -17,6 +17,8 @@ from collections import defaultdict
 import pymorphy3
 import jieba
 
+os.environ["HF_ENDPOINT"] = "https://hf-mirror.com"
+
 
 class TermBasedMetric():
     """
@@ -555,7 +557,7 @@ class TermBasedMetric():
     def _ensure_overalignment_model(self):
         if self.aligner_model is not None and self.aligner_tokenizer is not None:
             return
-        self.aligner_model = AutoModel.from_pretrained("aneuraz/awesome-align-with-co")
+        self.aligner_model = AutoModel.from_pretrained("aneuraz/awesome-align-with-co", use_safetensors=False)
         self.aligner_tokenizer = AutoTokenizer.from_pretrained("aneuraz/awesome-align-with-co")
 
     def _word_tokenize(self, sequence, lang):

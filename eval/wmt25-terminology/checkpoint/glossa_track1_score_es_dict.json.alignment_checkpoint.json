@@ -1,0 +1,3550 @@
+{
+  "version": 1,
+  "system_name": "Glossa",
+  "target_lang": "es",
+  "mode": "proper",
+  "llm_model": "gemini/gemini-2.0-flash",
+  "size": 500,
+  "rows": [
+    {
+      "alg_terms": {
+        "container": "contenedores"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "parallel processing": "procesamiento paralelo",
+        "job": "job:"
+      },
+      "over_aligned": true,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "report": "informe de lista"
+      },
+      "over_aligned": true,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "average": "edad media"
+      },
+      "over_aligned": true,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "item": "un elemento"
+      },
+      "over_aligned": true,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "explosion": "el desglose"
+      },
+      "over_aligned": true,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "add": "Agregar"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "range": "un intervalo"
+      },
+      "over_aligned": true,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "source": "origen"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "template": "plantilla"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "source": "la fuente"
+      },
+      "over_aligned": true,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "edit": "Editar"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "reset": "Restablece"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "add": "añadir"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "incident": "incidencias"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "template": "modelo"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "save": "guardar"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "write off": "ignorar",
+        "tab": "pestaña"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "partner": "socio",
+        "rule": "reglas"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "reset": "se restablece"
+      },
+      "over_aligned": true,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "category": "tipo"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "schedule": "programación"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "edit": "editar"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "completed": "concluido"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "pause": "Detenga"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "use": "utilizarla"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "schedule": "programación"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "delete": "eliminar"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "schedule": "programaciones"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "work center": "puesto de trabajo"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "customer": "deudor"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "range": "intervalo"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "delivery": "entrega de datos"
+      },
+      "over_aligned": true,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "processing": "procesamiento"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "upgrade": "upgrade"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "tab": "la pestaña"
+      },
+      "over_aligned": true,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "recurrence pattern": "patrón de repetición"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "public": "pública"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "schedule": "programada"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "save": "guardar"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "default": "predefinida"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "reset": "Restablecer"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "replenishment": "reaprovisionamiento"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "tab": "pestañas"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "template": "plantilla"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "process": "procesar"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "job": "tareas"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "recurrence pattern": "patrón de repetición"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "tab": "pestañas"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "completed": "Concluido"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "reporting": "de informes"
+      },
+      "over_aligned": true,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "save as": "Guardar como"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "search result": "resultado del proceso de búsqueda"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "schedule": "programación"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "job": "tareas"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "customer": "cliente"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "recurrence pattern": "patrón de repetición"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "substitute": "los suplentes"
+      },
+      "over_aligned": true,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "review": "Revisión"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "feature": "característica"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "customer": "deudor"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "call": "llamadas",
+        "tab": "pestaña"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "replication": "reproducción"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "set": "definirán"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "change": "una modificación"
+      },
+      "over_aligned": true,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "delete": "Eliminar"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "add": "añadir"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "account assignment": "la imputación de cuentas",
+        "partner": "socio comercial",
+        "default": "que puede predefinirse"
+      },
+      "over_aligned": true,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "write off": "Ignorar"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "measure": "indicador"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "transaction": "operación",
+        "customer": "deudor"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "record": "REGISTROS"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "header": "cabecera"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "performance": "rendimiento"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "worklist": "lista de trabajo"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "type": "Tipo"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "tab": "pestañas"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "schedule": "programación"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "worklist": "Lista de trabajo"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "add": "Añada"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "allocation": "imputación"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "profile page": "La página del perfil"
+      },
+      "over_aligned": true,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "allocation": "imputación"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "partner": "socio"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "incident": "la incidencia"
+      },
+      "over_aligned": true,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "consumption": "imputación",
+        "allocation": "imputación"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "assembly": "un conjunto",
+        "icon": "icono"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "delete": "eliminar"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "sorting": "orden"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "job": "job"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "client": "de cliente"
+      },
+      "over_aligned": true,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "report": "informe de la lista"
+      },
+      "over_aligned": true,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "job": "tarea"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "trigger": "iniciar"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "type": "tipo"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "partner": "socios"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "default": "valor estándar"
+      },
+      "over_aligned": true,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "use": "utilizar"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "fee": "tarifa"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "service confirmation": "notificación de servicio"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "allocation": "imputación"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "customer": "deudor"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "item": "elemento"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "incident": "la incidencia"
+      },
+      "over_aligned": true,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "partner": "socio comercial"
+      },
+      "over_aligned": true,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "product type group": "grupo de clases de producto"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "tab": "pestaña"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "transaction type": "clase de transacción"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "bill": "Para facturar"
+      },
+      "over_aligned": true,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "issue": "problema"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "output": "el resultado"
+      },
+      "over_aligned": true,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "save": "guardar"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "use": "uso"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "tab": "pestaña"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "check": "verificación"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "central contract": "pedido abierto central"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "work center": "puesto de trabajo"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "inbound": "de entrada"
+      },
+      "over_aligned": true,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "scope": "alcance",
+        "use": "utilizarlas"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "tab": "pestaña"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "type": "clase"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "sharing": "compartición"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "requirement": "requisitos"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "template": "plantilla"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "button": "pulsador"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "time": "el tiempo"
+      },
+      "over_aligned": true,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "schedule": "programación"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "source": "de la fuente"
+      },
+      "over_aligned": true,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "usage": "Uso"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "measure": "indicadores"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "work center": "puesto de trabajo"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "type": "clases de archivo"
+      },
+      "over_aligned": true,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "measure": "indicadores"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "template": "plantilla"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "complete": "incompletos",
+        "save": "guardar"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "business name": "nombre empresarial"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "prepayment": "pagos adelantados"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "process step": "paso de proceso"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "schedule": "la programación"
+      },
+      "over_aligned": true,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "requirement": "requisitos"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "measure": "indicador"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "check": "Verificando"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "supplement": "postimputación"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "parallel processing": "procesamiento paralelo",
+        "partner": "socios"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "performance": "rendimiento"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "run": "ejecutan"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "add": "Añadir"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "button": "pulsador"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "check": "verificar"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "worklist": "lista de trabajo"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "partner": "Socio"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "site": "sitio"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "demand-driven": "orientados a necesidad"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "process step": "paso del proceso"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "SAP affiliate": "una filial de SAP"
+      },
+      "over_aligned": true,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "popup": "popup Columnas"
+      },
+      "over_aligned": true,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "partner": "socios"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "add": "añadir"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "delete": "eliminar"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "partner": "socio comercial"
+      },
+      "over_aligned": true,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "lock": "bloquear"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "template": "la plantilla"
+      },
+      "over_aligned": true,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "allocation": "imputación"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "allocation": "imputación"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "termination": "rescisión"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "use case": "caso de utilización"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "delete": "eliminarlo"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "source": "fuente"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "range": "intervalo de fechas"
+      },
+      "over_aligned": true,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "process step": "paso del proceso"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "default": "Por defecto"
+      },
+      "over_aligned": true,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "item set": "conjunto de posiciones"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "explosion": "Desglose",
+        "tab": "pestaña"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "worklist": "lista de trabajo"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "worklist": "lista de trabajo"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "data controller": "el responsable del tratamiento"
+      },
+      "over_aligned": true,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "client application": "su aplicación cliente"
+      },
+      "over_aligned": true,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "view type": "clase de vista"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "save": "guardar"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "job": "job"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "measure": "indicador"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "template": "modelo"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "allocation": "imputación"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "stage": "fases"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "allocation": "imputación"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "work center": "puesto de trabajo"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "remove": "quitar",
+        "add": "Añada"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "business activity": "actividad empresarial"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "add": "Añadir"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "partner": "socios"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "acquisition": "altas"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "template": "una plantilla"
+      },
+      "over_aligned": true,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "item": "elemento"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "class": "de clase"
+      },
+      "over_aligned": true,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "inventory": "existencias"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "tab": "etiqueta"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "time": "hora",
+        "date": "fecha"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "launchpad": "la plataforma de lanzamiento de SAP Fiori"
+      },
+      "over_aligned": true,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "update": "actualización"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "item": "la posición"
+      },
+      "over_aligned": true,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "work center": "centro de trabajo"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "default": "estándar"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "save": "Guardar"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "type": "modelos"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "sharing": "compartición"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "template": "la plantilla"
+      },
+      "over_aligned": true,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "save as": "Grabar como"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "tab": "pestaña"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "set": "se definirán"
+      },
+      "over_aligned": true,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "role template": "plantilla de rol"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "template": "plantilla"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "item": "posición",
+        "add": "añadir"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "usage": "utilización"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "endpoint": "punto final"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "delete": "eliminar"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "retrieval": "recuperación"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "service organization": "organización de prestación de servicio"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "collection": "recopilación",
+        "item set": "Un conjunto de posiciones"
+      },
+      "over_aligned": true,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "filter": "Filtrar"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "schedule": "programación"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "default": "por defecto"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "template": "plantilla"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "union": "unión"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "run type": "clase de ejecución"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "recurrence pattern": "modelo de repetición"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "statement": "de declaración"
+      },
+      "over_aligned": true,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "feature": "función"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "adjustment": "corrección"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "local repository": "repositorio local",
+        "save": "Guardar"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "use": "utilizar"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "statement": "extracto"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "consumption": "compensación de la imputación",
+        "allocation": "imputación"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "replication": "Reproducción"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "approval": "autorización",
+        "Approval": "autorización"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "transfer": "contabilizaciones de transferencia"
+      },
+      "over_aligned": true,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "tab": "pestaña"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "production version": "versión de producción"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "replication": "la replicación"
+      },
+      "over_aligned": true,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "set": "Definir"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "reporting": "de informes"
+      },
+      "over_aligned": true,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "use": "utilizar"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "save": "Guardar"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "step": "pasos"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "purpose": "Objetivo"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "quantity contract": "Contrato por Cantidad"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "complete": "completada"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "template": "plantilla"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "approval": "autorización",
+        "Approval": "autorización"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "issue": "del problema"
+      },
+      "over_aligned": true,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "report": "informe"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "tab": "ficha"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "tab": "etiqueta"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "partner": "socio"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "network": "red"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "partner": "socio"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "edit": "Editar"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "template": "modelo",
+        "delete": "Borrar"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "about": "info de"
+      },
+      "over_aligned": true,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "partner": "socio"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "role": "Rol"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "template": "modelo"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "performance management": "gestión del rendimiento"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "contract account": "cuenta contractual"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "save": "Guardar"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "type": "clase"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "edit": "tratar"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "template": "una plantilla"
+      },
+      "over_aligned": true,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "tax type": "tipo de impuesto"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "usage": "utilización"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "approval": "Autorización",
+        "Approval": "Autorización"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "business content": "contenido empresarial"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "mass processing": "Procesamiento en masa"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "schedule": "una programación"
+      },
+      "over_aligned": true,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "job": "jobs"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "target": "destinos"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "role template": "plantilla de rol"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "schedule": "Programar"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "Purchase Orders": "orden de compra",
+        "about": "info de la"
+      },
+      "over_aligned": true,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "partner": "socios comerciales"
+      },
+      "over_aligned": true,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "item set": "Un conjunto de posiciones"
+      },
+      "over_aligned": true,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "tab": "Pestaña"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "deployment": "despliegue"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "pause": "Detener"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "assessment": "evaluación de conformidad"
+      },
+      "over_aligned": true,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "flow": "iFlows"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "aggregate": "agregadas"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "add": "añadir"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "transaction type": "Tipo de transacción"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "save": "Guardar"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "layout": "disposición",
+        "save": "guardar"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "shipment": "envío"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "role": "rol"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "type": "tipo"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "item": "artículo"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "template": "plantillas"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "template": "plantilla"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "endpoint": "punto de acceso"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "schedule": "programación"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "grid": "cuadrículas"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "add": "Agregar"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "goods receipt processing time": "El tiempo de procesamiento de entradas de mercancías"
+      },
+      "over_aligned": true,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "step": "paso"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "shipment": "envío",
+        "type": "tipos"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "type": "clase"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "schedule": "programaciones"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "tab": "pestaña"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "partner": "socio",
+        "rating": "Calificación"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "partner": "socios"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "drawing": "sorteo"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "delete": "Eliminar"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "partner": "Socio"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "bill": "facturación"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "work center": "centro de trabajo"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "tab": "pestaña"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "report": "informe"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "tab": "▔"
+      },
+      "over_aligned": false,
+      "error": "APIConnectionError: litellm.APIConnectionError: GeminiException - [SSL: UNEXPECTED_EOF_WHILE_READING] EOF occurred in violation of protocol (_ssl.c:1000)"
+    },
+    {
+      "alg_terms": {
+        "edit": "Editar"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "partner": "socio"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "partner": "socio"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "partner": "Socio"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "display": "visualización"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "partner": "Socio"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "goods receipt processing time": "El tiempo de procesamiento de entradas de mercancías"
+      },
+      "over_aligned": true,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "tab": "Pestaña"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "flow": "flujo"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "deselect": "anular la selección"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "delete": "se elimina"
+      },
+      "over_aligned": true,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "tab": "la pestaña"
+      },
+      "over_aligned": true,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "requirement": "necesidad"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "quota": "cuotas"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "add": "añadir"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "measure": "indicadores"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "tab": "Pestaña"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "delete": "Borrar"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "partner": "socio"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "edit": "Tratar"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "add": "Añadir"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "type": "Clase"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "button": "botón"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "partner": "Socio"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "reporting": "reporting"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "report": "informe"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "extension": "Extensión"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "display": "Visualización"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "delete": "Eliminar"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "mass processing": "Procesamiento en masa"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "business unit": "unidad empresarial"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "measure": "indicadores"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "tab": "pestaña"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "reset": "Anulación"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "completed": "concluido"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "expiration": "Vencimiento",
+        "contract": "pedido"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "usage": "uso"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "move": "Mover"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "supply": "suministrar"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "step": "etapa"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "approval": "autorización",
+        "Approval": "autorización"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "use": "Utilización"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "delete": "Eliminar"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "business location": "ubicación comercial"
+      },
+      "over_aligned": true,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "about": "info. de"
+      },
+      "over_aligned": true,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "tab": "pestaña"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "report": "informe"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "default": "Valor predeterminado"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "job": "trabajo"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "scope": "alcance"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "save": "Guardar"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "report": "informe"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "save": "guardar",
+        "add": "Agregar"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "job": "job"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "show": "Mostrar"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "use": "▔"
+      },
+      "over_aligned": false,
+      "error": "AttributeError: 'NoneType' object has no attribute 'strip'"
+    },
+    {
+      "alg_terms": {
+        "save": "Guardar"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "save": "guardar"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "item": "partida individual"
+      },
+      "over_aligned": true,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "deployment": "Despliegue"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "measure": "indicador"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "administration": "Administración"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "partner": "Socio"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "partner": "socio"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "partner": "socios"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "average": "medio"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "partner": "socio"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "measure": "indicadores"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "data warehouse": "Data Warehouse"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "collection": "la recopilación"
+      },
+      "over_aligned": true,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "item": "artículo"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "remove": "Eliminar"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "rating": "valoración"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "tile": "mosaico"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "default": "El valor predeterminado"
+      },
+      "over_aligned": true,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "qualifier": "cualificadores"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "delete": "Eliminar"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "tab": "pestaña"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "role": "rol"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "partner": "socios"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "edit": "Editar"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "tab": "pestaña"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "link": "enlaces"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "source": "fuente"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "type": "tipos"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "elimination": "compensación"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "link": "vínculos"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "dashboard": "dashboard",
+        "tab": "pestañas"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "partner": "socio"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "set": "definir"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "report": "el informe"
+      },
+      "over_aligned": true,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "benefits": "ventajas"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "business rule": "regla empresarial"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "partner": "socios"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "tab": "pestañas"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "add": "Añadir"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "partner": "socio"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "issue": "emisión"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "partner": "socio",
+        "type": "tipo"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "tab": "pestañas"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "partner": "socio"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "partner": "socio"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "explosion": "desglose"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "completed": "completado",
+        "purpose": "Propósito"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "company role": "el rol de empresa"
+      },
+      "over_aligned": true,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "partner": "Socios"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "usage": "utilización"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "template": "plantilla"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "enhancement": "mejoras"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "target": "coste objetivo"
+      },
+      "over_aligned": true,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "range": "intervalo de período"
+      },
+      "over_aligned": true,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "flow": "flujo"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "process template": "modelo de proceso"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "benefits": "Ventajas"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "rate": "tarifas"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "schedule": "la programación"
+      },
+      "over_aligned": true,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "delete": "Eliminar"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "business entity": "Entidad empresarial",
+        "site": "sitio"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "Purchase Orders": "pedidos de compra"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "approval status": "estados de autorización",
+        "Approval": "autorización"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "job": "tarea"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "use case": "casos de uso"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "schedule": "programación"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "term": "el término"
+      },
+      "over_aligned": true,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "partner": "socios"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "template": "La plantilla"
+      },
+      "over_aligned": true,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "save": "Guardar"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "pause": "Detener"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "date type": "tipo de fecha"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "reporting": "de informes"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "partner": "Socio comercial"
+      },
+      "over_aligned": true,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "job": "tarea"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "partner": "socio"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "assessment": "evaluación",
+        "type": "tipo"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "dunning": "reclamaciones",
+        "Dunning": "reclamaciones"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "time": "tiempo"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "template": "plantilla"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "template": "la plantilla"
+      },
+      "over_aligned": true,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "member": "miembro"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "template type": "tipo de modelo"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "change": "Modificación"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "add": "añadir"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "default": "predeterminada"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "feedback": "comentarios"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "mass processing": "Procesamiento en masa"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "template": "plantilla"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "production order": "orden de producción"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "item": "artículos"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "lock": "Bloquear"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "run": "Ejecución"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "business location": "ubicación comercial"
+      },
+      "over_aligned": true,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "run": "Ejecutar"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "schedule": "programar"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "tab": "ficha"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "save": "Guardar"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "delete": "eliminar"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "add": "Añadir"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "fixing": "fijación"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "picklist": "lista de selección"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "attachment": "el adjunto"
+      },
+      "over_aligned": true,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "attachment": "Anexo"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "use": "uso"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "sample code": "código de muestra"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "template": "un modelo"
+      },
+      "over_aligned": true,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "tab": "pestaña"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "schedule": "programación"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "tab": "pestaña"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "tab": "Pestaña"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "partner": "socio"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "agent": "agente"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "document type": "clase de documento"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "type": "Clase"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "business partner role": "rol de socio comercial"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "authorization group": "grupos de autorizaciones"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "run": "Ejecutar"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "delete": "Eliminar"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "partner": "socio"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "approval": "autorización",
+        "Approval": "autorización"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "delete": "eliminar"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "service confirmation": "Confirmación de servicio"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "template": "plantillas"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "save": "Guardar"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "partner": "Socios"
+      },
+      "over_aligned": false,
+      "error": null
+    },
+    {
+      "alg_terms": {
+        "layout": "disposición"
+      },
+      "over_aligned": false,
+      "error": null
+    }
+  ],
+  "error_count": 2,
+  "completed": true
+}
