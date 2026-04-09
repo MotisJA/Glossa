@@ -13,7 +13,7 @@
     {% comment %} Customize at https://v5.daisyui.com/docs/cdn/ {% endcomment %}
     <link href="https://cdn.jsdelivr.net/combine/npm/daisyui@beta/base/properties.css,npm/daisyui@beta/base/reset.css,npm/daisyui@beta/base/rootcolor.css,npm/daisyui@beta/base/rootscrollgutter.css,npm/daisyui@beta/base/rootscrolllock.css,npm/daisyui@beta/base/scrollbar.css,npm/daisyui@beta/base/svg.css,npm/daisyui@beta/components/button.css,npm/daisyui@beta/components/checkbox.css,npm/daisyui@beta/components/input.css,npm/daisyui@beta/components/menu.css,npm/daisyui@beta/components/modal.css,npm/daisyui@beta/components/tooltip.css,npm/daisyui@beta/components/loading.css,npm/daisyui@beta/components/select.css,npm/daisyui@beta/components/toggle.css,npm/daisyui@beta/theme/light.css,npm/daisyui@5/components/alert.css" rel="stylesheet" type="text/css" />
     <link rel= "stylesheet" href= "https://maxst.icons8.com/vue-static/landings/line-awesome/line-awesome/1.3.0/css/line-awesome.min.css" >
-    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&family=Noto+Serif+SC:wght@600;700&display=swap" rel="stylesheet">
     <style>
         :root {
             --ink: #10162f;
@@ -29,12 +29,35 @@
             font-family: "Space Grotesk", system-ui, -apple-system, sans-serif;
             color: var(--ink);
             background:
-                radial-gradient(1200px 600px at 10% -20%, rgba(59, 130, 246, 0.15), transparent 60%),
-                radial-gradient(800px 500px at 110% 20%, rgba(34, 197, 94, 0.12), transparent 55%),
-                linear-gradient(180deg, #f8fafc 0%, #eef2ff 100%);
+                radial-gradient(1200px 600px at 6% -20%, rgba(59, 130, 246, 0.22), transparent 60%),
+                radial-gradient(860px 520px at 108% 18%, rgba(34, 197, 94, 0.16), transparent 55%),
+                linear-gradient(160deg, #f8fafc 0%, #eef2ff 48%, #eafaf2 100%);
             min-height: 100vh;
             overflow-y: auto;
             overflow-x: hidden;
+            position: relative;
+        }
+        body::before,
+        body::after {
+            content: "";
+            position: fixed;
+            width: min(42vw, 460px);
+            aspect-ratio: 1 / 1;
+            border-radius: 999px;
+            filter: blur(48px);
+            pointer-events: none;
+            z-index: 0;
+            opacity: 0.5;
+        }
+        body::before {
+            left: -12vw;
+            top: 30vh;
+            background: radial-gradient(circle, rgba(14, 165, 233, 0.38) 0%, rgba(14, 165, 233, 0) 68%);
+        }
+        body::after {
+            right: -10vw;
+            bottom: 10vh;
+            background: radial-gradient(circle, rgba(34, 197, 94, 0.32) 0%, rgba(34, 197, 94, 0) 70%);
         }
         html {
             min-height: 100%;
@@ -67,49 +90,116 @@
         .section-title {
             letter-spacing: 0.04em;
         }
+        .page-shell {
+            width: 100%;
+            max-width: none;
+            margin: 0;
+            padding: 1.5rem clamp(0.75rem, 1.8vw, 1.75rem);
+            min-height: calc(100vh - 64px);
+            position: relative;
+            z-index: 1;
+        }
+        .outer-panel {
+            min-height: calc(100vh - 64px - 3rem);
+            position: relative;
+            overflow: hidden;
+            border: 1px solid rgba(148, 163, 184, 0.35);
+            background:
+                radial-gradient(1000px 460px at 4% -12%, rgba(56, 189, 248, 0.2), transparent 62%),
+                radial-gradient(880px 420px at 105% 14%, rgba(16, 185, 129, 0.16), transparent 60%),
+                linear-gradient(145deg, #ffffff 0%, #f5faff 45%, #f1fff7 100%);
+        }
+        .outer-panel::before,
+        .outer-panel::after {
+            content: "";
+            position: absolute;
+            pointer-events: none;
+            z-index: 0;
+        }
+        .outer-panel::before {
+            inset: -35% auto auto -10%;
+            width: 360px;
+            height: 360px;
+            background: radial-gradient(circle, rgba(37, 99, 235, 0.16), transparent 70%);
+        }
+        .outer-panel::after {
+            inset: auto -10% -42% auto;
+            width: 420px;
+            height: 420px;
+            background: radial-gradient(circle, rgba(34, 197, 94, 0.14), transparent 72%);
+        }
+        .outer-panel > * {
+            position: relative;
+            z-index: 1;
+        }
         .hero-head {
-            display: grid;
-            grid-template-columns: auto 1fr;
-            gap: 1.25rem;
-            align-items: center;
+            display: flex;
+            justify-content: center;
             width: 100%;
         }
         .hero-logo-wrap {
-            width: 118px;
-            height: 118px;
-            border-radius: 22px;
-            background: linear-gradient(145deg, #ffffff 0%, #eff6ff 100%);
-            border: 1px solid #dbeafe;
+            width: 160px;
+            height: 160px;
             display: flex;
             align-items: center;
             justify-content: center;
-            box-shadow: 0 12px 28px rgba(30, 64, 175, 0.15);
             flex-shrink: 0;
         }
         .hero-logo {
-            width: 98px;
-            height: 98px;
+            width: 158px;
+            height: 158px;
             object-fit: contain;
+            filter: drop-shadow(0 14px 28px rgba(37, 99, 235, 0.2));
         }
         .hero-title-wrap {
             text-align: center;
-            justify-self: center;
             width: 100%;
             max-width: 720px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        .hero-kicker {
+            justify-content: center;
+        }
+        .hero-title {
+            font-family: "Noto Serif SC", "Source Han Serif SC", serif;
+            font-size: clamp(1.7rem, 2.35vw, 2.7rem);
+            font-weight: 700;
+            line-height: 1.15;
+            letter-spacing: 0.01em;
+            white-space: nowrap;
+        }
+        .inner-frame {
+            width: 96%;
+            max-width: 1500px;
+            margin-left: auto;
+            margin-right: auto;
         }
         @media (max-width: 768px) {
             .hero-head {
-                grid-template-columns: 1fr;
-                justify-items: center;
+                display: flex;
+                justify-content: center;
                 text-align: center;
             }
             .hero-logo-wrap {
-                width: 92px;
-                height: 92px;
+                width: 116px;
+                height: 116px;
             }
             .hero-logo {
-                width: 74px;
-                height: 74px;
+                width: 112px;
+                height: 112px;
+            }
+            .hero-title-wrap {
+                text-align: center;
+            }
+            .hero-title {
+                white-space: normal;
+            }
+            .hero-kicker {
+                justify-content: center;
+            }
+            .outer-panel {
+                min-height: calc(100vh - 64px - 2rem);
             }
         }
         .switch {
@@ -191,173 +281,173 @@
     </nav>
     {% endif %}
     {% include "translations/add_modal.html" %}
-    <div class="w-[96vw] max-w-[1500px] mx-auto px-3 md:px-4 py-6 space-y-5">
-        <div class="panel p-6 md:p-8 flex flex-col gap-5 fade-in">
-            <div class="hero-head">
-                <div class="hero-logo-wrap">
-                    <img src="{% static 'admin/logo.svg' %}" alt="Glossa Logo" class="hero-logo" />
-                </div>
-                <div class="hero-title-wrap space-y-2">
-                    <div class="inline-flex items-center gap-2 text-xs tracking-widest text-slate-500 section-title">
-                        <span class="w-2 h-2 rounded-full bg-emerald-500"></span>
-                        自适应交互翻译工作台
-                    </div>
-                    <h1 class="text-3xl md:text-4xl font-semibold">Glossa: 自适应、交互式的机器翻译系统</h1>
-                    <p class="text-slate-600">即时生成译文、术语匹配与翻译记忆检索，减少人工切换与等待。</p>
-                </div>
-            </div>
-            <div class="flex items-center gap-3 panel-soft px-4 py-3">
-                <i class="las la-lightning-bolt text-xl text-blue-600"></i>
-                <div>
-                    <div class="text-sm font-medium">实时流式输出</div>
-                    <div class="text-xs text-slate-500">术语与翻译记忆同步呈现</div>
-                </div>
-            </div>
-        </div>
-
-        <form id="translateForm" class="panel p-5 md:p-7 space-y-6 fade-in">
-            {% csrf_token %}
+   
+    <div class="page-shell space-y-5">
+        <div class="panel outer-panel p-6 md:p-8 flex flex-col gap-5 fade-in">
             
-            <div class="grid md:grid-cols-2 gap-4">
-                <div class="space-y-2">
-                    <label for="source_text" class="block text-sm font-medium text-slate-700">英文原文</label>
-                    <div class="relative">
-                        <textarea 
-                            id="source_text" 
-                            name="source_text" 
-                            class="w-full h-44 p-3 border border-slate-200 rounded-xl shadow-sm focus:ring-2 focus:ring-blue-500 focus:border-blue-500 bg-white"
-                            placeholder="{{config.placeholder}}"
-                            maxlength="1000"
-                        ></textarea>
-                        {% include "translations/eval_browser.html" %}
-                    </div>
-                    <div class="panel-soft p-3">
-                        <div class="text-xs text-slate-500 mb-1">术语高亮预览</div>
-                        <div id="source-highlight" class="text-sm text-slate-700 min-h-8 leading-6"></div>
-                    </div>
-                </div>
-                <div class="space-y-2">
-                    <label class="block text-sm font-medium text-slate-700">{{config.target_language_name}} 译文</label>
-                    <div class="flex flex-col space-y-2">
-                        <div class="relative">
-                            <div
-                                id="mt-translation"
-                                class="w-full min-h-20 h-fit pt-3 px-3 pb-2 border border-dashed border-slate-200 rounded-xl bg-slate-50 text-sm text-slate-600 mono"
-                            ></div>
-                            <div class="absolute -top-1 right-2">
-                                <span class="text-xs text-slate-400 bg-white px-1">机器翻译</span>
-                            </div>
+            <div class="hero-head">
+                <div class="hero-title-wrap space-y-2 mx-auto">
+                    
+                    <div class="flex justify-center"> 
+                        <div class="inline-flex hero-kicker items-center gap-2 text-xs tracking-[0.24em] text-slate-500 section-title">
+                            <span class="w-2 h-2 rounded-full bg-emerald-500"></span>
+                            自适应交互翻译工作台
                         </div>
+                    </div>
+                    
+                    <h1 class="hero-title text-center">
+                        Glossa: 交互式自适应机器翻译
+                    </h1>
+                    
+                    <p class="text-center text-slate-600 text-base md:text-lg">
+                        即时生成译文、术语匹配与翻译记忆检索，减少人工切换与等待。
+                    </p>
+                </div>
+            </div>
+
+            <form id="translateForm" class="inner-frame panel p-5 md:p-7 space-y-6 fade-in">
+                {% csrf_token %}
+                
+                <div class="grid md:grid-cols-2 gap-4">
+                    <div class="space-y-2">
+                        <label for="source_text" class="block text-sm font-medium text-slate-700">英文原文</label>
                         <div class="relative">
-                            <div
-                                id="final-translation" 
-                                class="w-full min-h-28 h-fit pt-3 px-3 pb-2 border border-slate-200 rounded-xl bg-white"
-                            ></div>
-                            <div class="absolute -top-1 right-2">
-                                <span class="text-xs text-slate-700 bg-white px-1">最终译文</span>
-                            </div>
-                            {% if perms.translations.change_corpusentry %}
-                            <div class="absolute bottom-2 right-2">
-                                <div class="tooltip" data-tip="编辑并加入翻译记忆">
-                                    <i class="las la-pen text-xl cursor-pointer hover:text-blue-600" onclick="translation_modal.showModal()"></i>
+                            <textarea 
+                                id="source_text" 
+                                name="source_text" 
+                                class="w-full h-44 p-3 border border-slate-200 rounded-xl shadow-sm focus:ring-2 focus:ring-blue-500 focus:border-blue-500 bg-white"
+                                placeholder="{{config.placeholder}}"
+                                maxlength="1000"
+                            ></textarea>
+                            {% include "translations/eval_browser.html" %}
+                        </div>
+                        <div class="panel-soft p-3">
+                            <div class="text-xs text-slate-500 mb-1">术语高亮预览</div>
+                            <div id="source-highlight" class="text-sm text-slate-700 min-h-8 leading-6"></div>
+                        </div>
+                    </div>
+                    <div class="space-y-2">
+                        <label class="block text-sm font-medium text-slate-700">{{config.target_language_name}} 译文</label>
+                        <div class="flex flex-col space-y-2">
+                            <div class="relative">
+                                <div
+                                    id="mt-translation"
+                                    class="w-full min-h-20 h-fit pt-3 px-3 pb-2 border border-dashed border-slate-200 rounded-xl bg-slate-50 text-sm text-slate-600 mono"
+                                ></div>
+                                <div class="absolute -top-1 right-2">
+                                    <span class="text-xs text-slate-400 bg-white px-1">机器翻译</span>
                                 </div>
                             </div>
-                            {% endif %}
+                            <div class="relative">
+                                <div
+                                    id="final-translation" 
+                                    class="w-full min-h-28 h-fit pt-3 px-3 pb-2 border border-slate-200 rounded-xl bg-white"
+                                ></div>
+                                <div class="absolute -top-1 right-2">
+                                    <span class="text-xs text-slate-700 bg-white px-1">最终译文</span>
+                                </div>
+                                {% if perms.translations.change_corpusentry %}
+                                <div class="absolute bottom-2 right-2">
+                                    <div class="tooltip" data-tip="编辑并加入翻译记忆">
+                                        <i class="las la-pen text-xl cursor-pointer hover:text-blue-600" onclick="translation_modal.showModal()"></i>
+                                    </div>
+                                </div>
+                                {% endif %}
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
 
-            <div class="flex items-center justify-between flex-wrap gap-3">
-                <div class="flex items-center gap-3 flex-wrap">
-                    <div class="text-xs text-slate-500">输入后可立即流式返回结果</div>
-                    <label for="use-mt-toggle" class="flex items-center gap-2 text-sm text-slate-700 cursor-pointer">
-                        <span class="switch" aria-hidden="true">
-                            <input
-                                id="use-mt-toggle"
-                                name="llm_post_edit"
-                                type="checkbox"
-                                value="1"
-                                checked
-                            >
-                            <span class="switch-slider"></span>
-                        </span>
-                        <span>启用 LLM 译后编辑</span>
-                    </label>
-                    <label for="nmt-only-toggle" class="flex items-center gap-2 text-sm text-slate-700 cursor-pointer">
-                        <span class="switch" aria-hidden="true">
-                            <input
-                                id="nmt-only-toggle"
-                                name="nmt_only"
-                                type="checkbox"
-                                value="1"
-                            >
-                            <span class="switch-slider"></span>
-                        </span>
-                        <span>仅机器翻译</span>
-                    </label>
+                <div class="flex items-center justify-between flex-wrap gap-3">
+                    <div class="flex items-center gap-3 flex-wrap">
+                        <div class="text-xs text-slate-500">输入后可立即流式返回结果</div>
+                        <label for="use-mt-toggle" class="flex items-center gap-2 text-sm text-slate-700 cursor-pointer">
+                            <span class="switch" aria-hidden="true">
+                                <input
+                                    id="use-mt-toggle"
+                                    name="llm_post_edit"
+                                    type="checkbox"
+                                    value="1"
+                                    checked
+                                >
+                                <span class="switch-slider"></span>
+                            </span>
+                            <span>启用 LLM 译后编辑</span>
+                        </label>
+                        <label for="nmt-only-toggle" class="flex items-center gap-2 text-sm text-slate-700 cursor-pointer">
+                            <span class="switch" aria-hidden="true">
+                                <input
+                                    id="nmt-only-toggle"
+                                    name="nmt_only"
+                                    type="checkbox"
+                                    value="1"
+                                >
+                                <span class="switch-slider"></span>
+                            </span>
+                            <span>仅机器翻译</span>
+                        </label>
+                    </div>
+                    <div class="flex items-center gap-2 w-full md:w-auto">
+                        <label for="domain_hint" class="text-sm text-slate-600 whitespace-nowrap">领域（可选）</label>
+                        <input
+                            id="domain_hint"
+                            name="domain_hint"
+                            type="text"
+                            placeholder="例如：法律 / 医疗 / 电商"
+                            class="input input-bordered rounded-xl w-full md:w-72"
+                        />
+                    </div>
+                    <button 
+                        type="submit"
+                        id="translate-button"
+                        class="btn btn-primary px-6 rounded-full shadow"
+                    >
+                        开始翻译
+                    </button>
                 </div>
-                <div class="flex items-center gap-2 w-full md:w-auto">
-                    <label for="domain_hint" class="text-sm text-slate-600 whitespace-nowrap">领域（可选）</label>
-                    <input
-                        id="domain_hint"
-                        name="domain_hint"
-                        type="text"
-                        placeholder="例如：法律 / 医疗 / 电商"
-                        class="input input-bordered rounded-xl w-full md:w-72"
-                    />
-                </div>
-                <button 
-                    type="submit"
-                    id="translate-button"
-                    class="btn btn-primary px-6 rounded-full shadow"
-                >
-                    开始翻译
-                </button>
-            </div>
-        </form>
+            </form>
 
-        <div id="results" class="grid md:grid-cols-2 gap-5 fade-in">
-            <div class="panel p-6">
-                <div class="border-b border-slate-200 pb-4 mb-4">
-                    <h2 class="text-xl font-semibold flex items-center gap-2">
-                        术语库
-                        {% if perms.translations.change_glossaryentry %}
-                        <div class="tooltip" data-tip="编辑术语条目">
-                            <a href="/admin/translations/glossaryentry/" target="_blank" class="hover:text-blue-600">
-                                <i class="las la-pen text-sm border border-slate-400 p-1 rounded"></i>
-                            </a>
-                        </div>
-                        {% endif %}
-                    </h2>
-                    <p class="text-sm text-slate-600">与当前输入相关的术语候选</p>
+            <div id="results" class="inner-frame grid md:grid-cols-2 gap-5 fade-in">
+                <div class="panel p-6">
+                    <div class="border-b border-slate-200 pb-4 mb-4 flex flex-col items-center text-center">
+                        <h2 class="text-xl font-semibold flex items-center justify-center gap-2">
+                            术语库
+                            {% if perms.translations.change_glossaryentry %}
+                            <div class="tooltip" data-tip="编辑术语条目">
+                                <a href="/admin/translations/glossaryentry/" target="_blank" class="hover:text-blue-600">
+                                    <i class="las la-pen text-sm border border-slate-400 p-1 rounded"></i>
+                                </a>
+                            </div>
+                            {% endif %}
+                        </h2>
+                        <p class="text-sm text-slate-600 mt-1">与当前输入相关的术语候选</p>
+                    </div>
+                    <ul id="glossary-entries" class="space-y-2 text-sm text-slate-600">
+                        <li class="panel-soft px-3 py-2">等待翻译后展示相关术语。</li>
+                    </ul>
                 </div>
-                <ul id="glossary-entries" class="space-y-2 text-sm text-slate-600">
-                    <li class="panel-soft px-3 py-2">等待翻译后展示相关术语。</li>
-                </ul>
-            </div>
 
-            <div class="panel p-6">
-                <div class="border-b border-slate-200 pb-4 mb-4">
-                    <h2 class="text-xl font-semibold">
-                        翻译记忆库
-                        {% if perms.translations.change_corpusentry %}
-                        <div class="tooltip" data-tip="编辑翻译记忆">
-                            <a href="/admin/translations/corpusentry/" target="_blank" class="hover:text-blue-600">
-                                <i class="las la-pen text-sm border border-slate-400 p-1 rounded"></i>
-                            </a>
-                        </div>
-                        {% endif %}
-                    </h2>
-                    <p class="text-sm text-slate-600">与当前输入相关的历史译文</p>
+                <div class="panel p-6">
+                    <div class="border-b border-slate-200 pb-4 mb-4 flex flex-col items-center text-center">
+                        <h2 class="text-xl font-semibold flex items-center justify-center gap-2">
+                            翻译记忆库
+                            {% if perms.translations.change_corpusentry %}
+                            <div class="tooltip" data-tip="编辑翻译记忆">
+                                <a href="/admin/translations/corpusentry/" target="_blank" class="hover:text-blue-600">
+                                    <i class="las la-pen text-sm border border-slate-400 p-1 rounded"></i>
+                                </a>
+                            </div>
+                            {% endif %}
+                        </h2>
+                        <p class="text-sm text-slate-600 mt-1">与当前输入相关的历史译文</p>
+                    </div>
+                    <ul id="similar-sentences" class="space-y-3 text-sm text-slate-600">
+                        <li class="panel-soft px-3 py-2">等待翻译后展示相似记忆。</li>
+                    </ul>
                 </div>
-                <ul id="similar-sentences" class="space-y-3 text-sm text-slate-600">
-                    <li class="panel-soft px-3 py-2">等待翻译后展示相似记忆。</li>
-                </ul>
             </div>
         </div>
     </div>
-
     <script>
         function escapeHtml(raw) {
             const div = document.createElement('div');

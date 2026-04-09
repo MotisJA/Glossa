@@ -1,6 +1,5 @@
-import csv
 import json
-from typing import Dict, List, Tuple
+from typing import Dict, List
 
 from django.contrib import admin
 from django import forms
@@ -14,37 +13,6 @@ from django.contrib.auth.forms import (
 from unfold.admin import ModelAdmin
 
 from .models import GlossaryEntry, CorpusEntry, SystemConfiguration, Translation, CustomUser, EvalRow, EvalRecord
-
-
-def _normalize_target_language(row: Dict[str, str], fallback_language: str) -> str:
-    return (
-        (row.get("target_language") or row.get("lang") or fallback_language or "")
-        .strip()
-        .lower()
-    )
-
-
-def _read_csv_rows(csv_file) -> List[Dict[str, str]]:
-    decoded = csv_file.read().decode("utf-8-sig").splitlines()
-    reader = csv.DictReader(decoded)
-    return list(reader)
-
-
-def _dedupe_parallel_rows(rows: List[Dict[str, str]], fallback_language: str) -> List[Tuple[str, str, str]]:
-    deduped = {}
-    for row in rows:
-        source_text = (row.get("en") or "").strip()
-        translated_text = (row.get("tgt") or "").strip()
-        if not source_text or not translated_text:
-            continue
-        target_language = _normalize_target_language(row, fallback_language)
-        deduped[(source_text, translated_text, target_language)] = (
-            source_text,
-            translated_text,
-            target_language,
-        )
-    return list(deduped.values())
-
 
 def _parse_jsonl_rows(uploaded_file) -> List[Dict]:
     rows = []
@@ -117,11 +85,6 @@ def _extract_jsonl_payload(jsonl_rows: List[Dict], fallback_language: str):
     }
     return list(term_dedup.values()), list(memory_dedup.values())
 
-
-class ImportCSVForm(forms.Form):
-    csv_file = forms.FileField(help_text='CSV 需包含列: "en", "tgt"，可选 "target_language"/"lang"')
-
-
 class ImportJSONLUploadForm(forms.Form):
     jsonl_file = forms.FileField(help_text='JSONL 每行一个 JSON；支持 en + 目标语言键 + proper_terms/random_terms')
 
@@ -152,37 +115,9 @@ class GlossaryEntryAdmin(ModelAdmin):
     def get_urls(self):
         urls = super().get_urls()
         custom_urls = [
-            path('import-glossary/', self.import_csv, name='glossary_import_csv'),
             path('import-jsonl/', self.import_jsonl, name='glossary_import_jsonl'),
         ]
         return custom_urls + urls
-
-    def import_csv(self, request):
-        if not request.user.is_staff:
-            return redirect("..")
-        form = ImportCSVForm(request.POST or None, request.FILES or None)
-        sample_rows = []
-        if request.method == "POST" and form.is_valid():
-            config = SystemConfiguration.load()
-            csv_file = form.cleaned_data["csv_file"]
-            rows = _dedupe_parallel_rows(_read_csv_rows(csv_file), config.target_language_code)
-            for source_text, translated_text, target_language in rows:
-                GlossaryEntry.objects.get_or_create(
-                    english_key=source_text,
-                    translated_entry=translated_text,
-                    target_language=target_language,
-                )
-            self.message_user(request, f"CSV 导入完成，共处理 {len(rows)} 条术语。")
-            return redirect("..")
-        if request.method == "POST" and "csv_file" in request.FILES:
-            try:
-                sample_rows = _read_csv_rows(request.FILES["csv_file"])[:5]
-            except Exception:
-                sample_rows = []
-        payload = {"form": form, "sample_rows": sample_rows, "import_title": "术语 CSV 导入"}
-        return render(
-            request, "translations/corpusentry_import_csv.html", payload
-        )
 
     def import_jsonl(self, request):
         if not request.user.is_staff:
@@ -270,38 +205,9 @@ class CorpusEntryAdmin(ModelAdmin):
     def get_urls(self):
         urls = super().get_urls()
         custom_urls = [
-            path('import-csv/', self.import_csv, name='corpus_entry_import_csv'),
             path('import-jsonl/', self.import_jsonl, name='corpus_entry_import_jsonl'),
         ]
         return custom_urls + urls
-
-    def import_csv(self, request):
-        if not request.user.is_staff:
-            return redirect("..")
-        form = ImportCSVForm(request.POST or None, request.FILES or None)
-        sample_rows = []
-        if request.method == "POST" and form.is_valid():
-            config = SystemConfiguration.load()
-            csv_file = form.cleaned_data["csv_file"]
-            rows = _dedupe_parallel_rows(_read_csv_rows(csv_file), config.target_language_code)
-            for source_text, translated_text, target_language in rows:
-                CorpusEntry.objects.get_or_create(
-                    english_text=source_text,
-                    translated_text=translated_text,
-                    target_language=target_language,
-                    defaults={"source": f"csv import from file {csv_file.name}"},
-                )
-            self.message_user(request, f"CSV 导入完成，共处理 {len(rows)} 条翻译记忆。")
-            return redirect("..")
-        if request.method == "POST" and "csv_file" in request.FILES:
-            try:
-                sample_rows = _read_csv_rows(request.FILES["csv_file"])[:5]
-            except Exception:
-                sample_rows = []
-        payload = {"form": form, "sample_rows": sample_rows, "import_title": "翻译记忆 CSV 导入"}
-        return render(
-            request, "translations/corpusentry_import_csv.html", payload
-        )
 
     def import_jsonl(self, request):
         if not request.user.is_staff:

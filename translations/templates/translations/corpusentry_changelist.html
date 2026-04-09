@@ -1,13 +1,48 @@
 {% extends "admin/change_list.html" %}
 {% load i18n %}
 
+{% block extrahead %}
+    {{ block.super }}
+{% endblock %}
+
+{% block extrastyle %}
+    {{ block.super }}
+    <style>
+        .object-tools a.glossa-tool,
+        .change-list .object-tools a.glossa-tool,
+        body[class*="app-"] .object-tools a.glossa-tool,
+        .object-tools a.button.glossa-tool,
+        .object-tools .button.glossa-tool {
+            display: inline-flex !important;
+            align-items: center !important;
+            justify-content: center !important;
+            gap: 0.35rem !important;
+            border-radius: 999px !important;
+            border: 1px solid #cbd5e1 !important;
+            background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%) !important;
+            color: #0f172a !important;
+            font-weight: 600 !important;
+            padding: 0.5rem 0.9rem !important;
+            letter-spacing: 0.01em;
+            text-decoration: none !important;
+            box-shadow: 0 6px 20px rgba(15, 23, 42, 0.08);
+            transition: all 180ms ease;
+        }
+        .object-tools a.glossa-tool:hover,
+        .change-list .object-tools a.glossa-tool:hover,
+        .object-tools .button.glossa-tool:hover {
+            transform: translateY(-1px);
+            border-color: #93c5fd !important;
+            box-shadow: 0 10px 24px rgba(37, 99, 235, 0.2);
+            color: #1d4ed8 !important;
+        }
+    </style>
+{% endblock %}
+
 {% block object-tools-items %}
     {{ block.super }}
     <li>
-        <a class="historylink" href="{% url 'admin:corpus_entry_import_csv' %}">导入</a>
-    </li>
-    <li>
-        <a class="historylink" href="{% url 'admin:corpus_entry_import_jsonl' %}">导入 JSONL</a>
+        <a class="glossa-tool button" href="{% url 'admin:corpus_entry_import_jsonl' %}">导入 JSONL</a>
     </li>
 {% endblock %}
 

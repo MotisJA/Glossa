@@ -3,135 +3,254 @@
 {% block content %}
 <style>
     :root {
-        --glossa-bg-soft: linear-gradient(135deg, #f7f8ff 0%, #eefaf5 100%);
-        --glossa-line: #dbe4f0;
-        --glossa-card-shadow: 0 18px 45px rgba(15, 23, 42, 0.08);
-        --glossa-head: linear-gradient(120deg, #edf2ff 0%, #e7f7ff 100%);
-        --glossa-accent: #0f766e;
+        --primary: #6366f1;
+        --primary-hover: #4f46e5;
+        --bg-main: #f8fafc;
+        --card-bg: #ffffff;
+        --border-color: #e2e8f0;
+        --text-main: #1e293b;
+        --text-muted: #64748b;
+        --danger: #ef4444;
+        --success: #10b981;
     }
-    .glossa-shell {
-        display: flex;
-        flex-direction: column;
-        gap: 14px;
-        background: var(--glossa-bg-soft);
-        border-radius: 20px;
-        padding: 18px;
+
+    /* 整体容器 */
+    .g-container {
+        font-family: 'Inter', system-ui, -apple-system, sans-serif;
+        background-color: var(--bg-main);
+        padding: 24px;
+        min-height: 100vh;
+        color: var(--text-main);
     }
-    .glossa-topbar {
+
+    /* 顶栏 */
+    .g-top-nav {
         display: flex;
         justify-content: space-between;
-        gap: 10px;
         align-items: center;
-        flex-wrap: wrap;
+        margin-bottom: 24px;
     }
-    .glossa-main-title {
-        font-size: 1.15rem;
-        font-weight: 700;
-        color: #0f172a;
+    .g-page-title h1 {
+        font-size: 1.5rem;
+        font-weight: 800;
+        color: var(--text-main);
+        margin: 0;
     }
-    .glossa-card {
-        background: #ffffff;
-        border: 1px solid var(--glossa-line);
-        border-radius: 16px;
-        box-shadow: var(--glossa-card-shadow);
+    .g-page-title p {
+        font-size: 0.875rem;
+        color: var(--text-muted);
+        margin-top: 4px;
+    }
+
+    /* 卡片样式 */
+    .g-card {
+        background: var(--card-bg);
+        border: 1px solid var(--border-color);
+        border-radius: 12px;
+        box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+        margin-bottom: 24px;
         overflow: hidden;
     }
-    .glossa-header {
+    .g-card-header {
+        padding: 16px 20px;
+        border-bottom: 1px solid var(--border-color);
+        background: #fafafa;
         display: flex;
-        gap: 12px;
         align-items: center;
-        padding: 16px 18px;
-        background: var(--glossa-head);
-        border-bottom: 1px solid var(--glossa-line);
+        gap: 12px;
     }
-    .glossa-badge {
-        width: 38px;
-        height: 38px;
-        border-radius: 11px;
-        background: linear-gradient(135deg, #0891b2 0%, #0f766e 100%);
-        color: #fff;
-        display: flex;
+    .g-card-body { padding: 20px; }
+
+    /* 步骤条 */
+    .g-stepper {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 12px;
+        margin-bottom: 20px;
+    }
+    .g-step {
+        padding: 10px;
+        text-align: center;
+        font-size: 0.8rem;
+        font-weight: 600;
+        color: var(--text-muted);
+        border-radius: 8px;
+        background: var(--bg-main);
+        border: 1px solid var(--border-color);
+    }
+    .g-step.active {
+        background: #eef2ff;
+        color: var(--primary);
+        border-color: var(--primary);
+    }
+
+    /* 表格样式 */
+    .g-table-container {
+        width: 100%;
+        overflow-x: auto;
+        border: 1px solid var(--border-color);
+        border-radius: 8px;
+    }
+    .g-table {
+        width: 100%;
+        border-collapse: collapse;
+        table-layout: fixed; /* 保持列宽比例 */
+    }
+    .g-table th {
+        background: #f1f5f9;
+        padding: 12px;
+        text-align: left;
+        font-size: 0.75rem;
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+        color: var(--text-muted);
+        border-bottom: 1px solid var(--border-color);
+    }
+    .g-table td {
+        padding: 8px;
+        border-bottom: 1px solid var(--border-color);
+        vertical-align: top;
+    }
+
+    /* 输入控件 - 核心修复部分 */
+    .g-input-cell {
+        width: 100%;
+        min-height: 38px;
+        padding: 8px 10px;
+        border: 1px solid #cbd5e1;
+        border-radius: 6px;
+        font-size: 0.9rem;
+        line-height: 1.5;
+        color: var(--text-main);
+        background: #fff;
+        resize: none; /* 禁止手动拉伸 */
+        overflow: hidden; /* 隐藏滚动条，由高度自适应解决 */
+        display: block;
+        box-sizing: border-box;
+        transition: border-color 0.2s;
+    }
+    .g-input-cell:focus {
+        outline: none;
+        border-color: var(--primary);
+        box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.1);
+    }
+    .g-lang-input {
+        width: 100%;
+        padding: 8px;
+        border: 1px solid #cbd5e1;
+        border-radius: 6px;
+        font-size: 0.85rem;
+    }
+
+    /* 按钮样式 */
+    .g-btn {
+        display: inline-flex;
         align-items: center;
         justify-content: center;
-        font-weight: 700;
-    }
-    .glossa-body { padding: 18px; }
-    .hint { color: #516175; font-size: 0.875rem; }
-    .editable-table-wrap {
-        overflow: auto;
-        border: 1px solid var(--glossa-line);
-        border-radius: 12px;
-        background: #fff;
-        max-width: 100%;
-    }
-    .editable-table {
-        width: max-content;
-        min-width: 100%;
-        border-collapse: collapse;
-        font-size: 0.875rem;
-        table-layout: auto;
-    }
-    .editable-table th,
-    .editable-table td {
-        border: 1px solid var(--glossa-line);
-        padding: 8px 10px;
-        text-align: left;
-        vertical-align: top;
-        white-space: nowrap;
-    }
-    .editable-table th {
-        background: #f3f7fc;
+        padding: 8px 16px;
+        border-radius: 6px;
         font-weight: 600;
-    }
-    .editable-table input {
-        border: 1px solid #c8d5e3;
-        border-radius: 8px;
-        padding: 6px 8px;
         font-size: 0.875rem;
-        background: #ffffff;
-        width: 14ch;
-        min-width: 14ch;
-        box-sizing: border-box;
+        cursor: pointer;
+        transition: all 0.2s;
+        border: 1px solid transparent;
+        gap: 6px;
     }
-    .btn-row {
-        margin-top: 10px;
-        display: flex;
-        gap: 10px;
-        flex-wrap: wrap;
+    .g-btn-primary {
+        background: var(--primary);
+        color: white;
+    }
+    .g-btn-primary:hover { background: var(--primary-hover); }
+    
+    .g-btn-secondary {
+        background: white;
+        border-color: var(--border-color);
+        color: var(--text-main);
+    }
+    .g-btn-secondary:hover { background: #f1f5f9; }
+
+    .g-btn-danger {
+        color: var(--danger);
+        background: white;
+        border-color: #fee2e2;
+    }
+    .g-btn-danger:hover { background: #fef2f2; }
+
+    .g-file-input {
+        width: 100%;
+        padding: 30px;
+        border: 2px dashed var(--border-color);
+        border-radius: 12px;
+        text-align: center;
+        background: #fafafa;
+        cursor: pointer;
+    }
+
+    .g-alert {
+        padding: 12px 16px;
+        border-radius: 8px;
+        background: #ecfdf5;
+        border: 1px solid #a7f3d0;
+        color: #065f46;
+        margin-top: 16px;
+        font-size: 0.875rem;
+    }
+
+    .badge-dot {
+        width: 8px;
+        height: 8px;
+        border-radius: 50%;
+        background: var(--primary);
+        display: inline-block;
+    }
+
+    @media (max-width: 768px) {
+        .g-stepper { grid-template-columns: 1fr; }
     }
 </style>
 
-<div class="glossa-shell">
-    <div class="glossa-topbar">
-        <div>
-            <div class="text-sm tracking-widest text-slate-500">JSONL 导入</div>
-            <div class="glossa-main-title">JSONL 导入审阅</div>
+<div class="g-container">
+    <div class="g-top-nav">
+        <div class="g-page-title">
+            <h1>JSONL 批量导入</h1>
+            <p>术语表与翻译记忆库批量入库工具</p>
         </div>
-        <a href="{% url 'admin:index' %}" class="default">返回主界面</a>
+        <a href="{% url 'admin:index' %}" class="g-btn g-btn-secondary">
+            返回主界面
+        </a>
     </div>
 
-    <div class="glossa-card">
-        <div class="glossa-header">
-            <div class="glossa-badge">J</div>
-            <div>
-                <h2 class="text-xl font-semibold">解析文件并生成可编辑草稿</h2>
-            </div>
+    <div class="g-card">
+        <div class="g-card-header">
+            <span class="badge-dot"></span>
+            <span style="font-weight: 700;">数据解析预览</span>
         </div>
-        <div class="glossa-body">
-            <p class="hint">上传 JSONL 后会解析术语与翻译记忆，你可在下方直接增删改后再提交入库。</p>
+        <div class="g-card-body">
+            <div class="g-stepper">
+                <div class="g-step active">1. 上传文件</div>
+                <div class="g-step {% if terms or memories %}active{% endif %}">2. 审阅编辑</div>
+                <div class="g-step {% if terms or memories %}active{% endif %}">3. 完成入库</div>
+            </div>
+
             <form method="post" enctype="multipart/form-data">
                 {% csrf_token %}
                 <input type="hidden" name="action" value="preview" />
-                <div style="margin-top: 12px;">
-                    {{ upload_form.jsonl_file.label_tag }}
+                <div class="g-upload-zone">
                     {{ upload_form.jsonl_file }}
-                    {% if upload_form.jsonl_file.help_text %}<p class="hint">{{ upload_form.jsonl_file.help_text }}</p>{% endif %}
-                    {% for error in upload_form.jsonl_file.errors %}<p class="hint" style="color:#dc2626">{{ error }}</p>{% endfor %}
+                    {% if upload_form.jsonl_file.help_text %}
+                        <p style="font-size: 0.8rem; color: var(--text-muted); margin-top: 8px;">{{ upload_form.jsonl_file.help_text }}</p>
+                    {% endif %}
                 </div>
-                <div style="margin-top: 12px;">
-                    <button type="submit" class="default">解析并预览</button>
+                <div style="margin-top: 16px;">
+                    <button type="submit" class="g-btn g-btn-primary">开始解析 JSONL</button>
                 </div>
             </form>
+
+            {% if source_filename %}
+            <div class="g-alert">
+                <strong>解析成功：</strong> 正在编辑来自 <code>{{ source_filename }}</code> 的数据
+            </div>
+            {% endif %}
         </div>
     </div>
 
@@ -143,161 +262,351 @@
         <input type="hidden" name="memories_json" id="memories-json" />
         <input type="hidden" name="source_filename" value="{{ source_filename }}" />
 
-        <div class="glossa-card">
-            <div class="glossa-header">
-                <div class="glossa-badge">术</div>
-                <div>
-                    <h3 class="text-lg font-semibold">术语表单（目标语言标签可编辑）</h3>
-                    <p class="hint">来源: proper_terms / random_terms / terms</p>
-                </div>
+        <div class="g-card">
+            <div class="g-card-header">
+                <span style="font-weight: 700; color: var(--primary);">GLOSSARY</span>
+                <span style="font-size: 0.85rem; color: var(--text-muted);">术语表草稿 ({{ terms|length }})</span>
             </div>
-            <div class="glossa-body">
-                <div class="editable-table-wrap">
-                    <table class="editable-table" id="terms-table">
+            <div class="g-card-body">
+                <div class="g-table-container">
+                    <table class="g-table" id="terms-table">
+                        <colgroup>
+                            <col style="width: 18%;">
+                            <col style="width: 18%;">
+                            <col style="width: 8%;">
+                            <col style="width: 6%;">
+                            <col style="width: 18%;">
+                            <col style="width: 18%;">
+                            <col style="width: 8%;">
+                            <col style="width: 6%;">
+                        </colgroup>
                         <thead>
-                            <tr><th>源术语</th><th>目标术语</th><th>目标语言</th><th>操作</th></tr>
+                            <tr>
+                                <th>源术语 (EN) 1</th>
+                                <th>目标术语 (Target) 1</th>
+                                <th>语种 1</th>
+                                <th>操作 1</th>
+                                <th>源术语 (EN) 2</th>
+                                <th>目标术语 (Target) 2</th>
+                                <th>语种 2</th>
+                                <th>操作 2</th>
+                            </tr>
                         </thead>
                         <tbody>
                             {% for row in terms %}
                             <tr>
-                                <td><input data-field="en" value="{{ row.en }}" /></td>
-                                <td><input data-field="tgt" value="{{ row.tgt }}" /></td>
-                                <td><input data-field="target_language" value="{{ row.target_language }}" /></td>
-                                <td><button type="button" class="default remove-row-btn">删除</button></td>
+                                <td style="vertical-align: middle;"><textarea class="g-input-cell" data-field="en" data-slot="1">{{ row.en }}</textarea></td>
+                                <td style="vertical-align: middle;"><textarea class="g-input-cell" data-field="tgt" data-slot="1">{{ row.tgt }}</textarea></td>
+                                <td style="vertical-align: middle;"><input class="g-lang-input" data-field="target_language" data-slot="1" value="{{ row.target_language }}" /></td>
+                                <td style="text-align: center;">
+                                    <button type="button" class="g-btn g-btn-danger remove-term-pair-btn" data-slot="1">删除</button>
+                                </td>
+                                <td style="vertical-align: middle;"><textarea class="g-input-cell" data-field="en" data-slot="2"></textarea></td>
+                                <td style="vertical-align: middle;"><textarea class="g-input-cell" data-field="tgt" data-slot="2"></textarea></td>
+                                <td style="vertical-align: middle;"><input class="g-lang-input" data-field="target_language" data-slot="2" value="" /></td>
+                                <td style="text-align: center;">
+                                    <button type="button" class="g-btn g-btn-danger remove-term-pair-btn" data-slot="2">删除</button>
+                                </td>
                             </tr>
                             {% endfor %}
                         </tbody>
                     </table>
                 </div>
-                <div class="btn-row">
-                    <button type="button" class="default" id="add-term-row-btn">新增术语行</button>
+                <div style="margin-top: 12px; display: flex; gap: 8px;">
+                    <button type="button" class="g-btn g-btn-secondary" id="add-term-row-btn">+ 新增行</button>
+                    <button type="button" class="g-btn g-btn-danger" id="clear-terms-btn">清空术语</button>
                 </div>
             </div>
         </div>
 
-        <div class="glossa-card">
-            <div class="glossa-header">
-                <div class="glossa-badge">忆</div>
-                <div>
-                    <h3 class="text-lg font-semibold">翻译记忆表单（目标语言标签可编辑）</h3>
-                </div>
+        <div class="g-card">
+            <div class="g-card-header">
+                <span style="font-weight: 700; color: var(--success);">MEMORY</span>
+                <span style="font-size: 0.85rem; color: var(--text-muted);">翻译记忆草稿 ({{ memories|length }})</span>
             </div>
-            <div class="glossa-body">
-                <div class="editable-table-wrap">
-                    <table class="editable-table" id="memories-table">
+            <div class="g-card-body">
+                <div class="g-table-container">
+                    <table class="g-table" id="memories-table">
+                        <colgroup>
+                            <col style="width: 44%;">
+                            <col style="width: 44%;">
+                            <col style="width: 4%;">
+                            <col style="width: 8%;">
+                        </colgroup>
                         <thead>
-                            <tr><th>英文原文</th><th>目标译文</th><th>目标语言</th><th>操作</th></tr>
+                            <tr>
+                                <th>原文</th>
+                                <th>译文</th>
+                                <th>语种</th>
+                                <th>操作</th>
+                            </tr>
                         </thead>
                         <tbody>
                             {% for row in memories %}
                             <tr>
-                                <td><input data-field="en" value="{{ row.en }}" /></td>
-                                <td><input data-field="tgt" value="{{ row.tgt }}" /></td>
-                                <td><input data-field="target_language" value="{{ row.target_language }}" /></td>
-                                <td><button type="button" class="default remove-row-btn">删除</button></td>
+                                <td><textarea class="g-input-cell" data-field="en">{{ row.en }}</textarea></td>
+                                <td><textarea class="g-input-cell" data-field="tgt">{{ row.tgt }}</textarea></td>
+                                <td><input class="g-lang-input" data-field="target_language" value="{{ row.target_language }}" /></td>
+                                <td style="text-align: center;">
+                                    <button type="button" class="g-btn g-btn-danger remove-row-btn">删除</button>
+                                </td>
                             </tr>
                             {% endfor %}
                         </tbody>
                     </table>
                 </div>
-                <div class="btn-row">
-                    <button type="button" class="default" id="add-memory-row-btn">新增记忆行</button>
+                <div style="margin-top: 12px; display: flex; gap: 8px;">
+                    <button type="button" class="g-btn g-btn-secondary" id="add-memory-row-btn">+ 新增行</button>
+                    <button type="button" class="g-btn g-btn-danger" id="clear-memories-btn">清空记忆</button>
+                    <button type="button" class="g-btn g-btn-danger" id="clear-all-btn" style="margin-left: auto;">清空全部草稿</button>
                 </div>
             </div>
         </div>
 
-        <div class="glossa-card">
-            <div class="glossa-body">
-                <div class="btn-row">
-                    <button type="submit" class="default">提交入库</button>
-                    <a href="{% url 'admin:index' %}" class="default">返回主界面</a>
-                </div>
-            </div>
+        <div style="text-align: center; margin: 40px 0 80px;">
+            <button type="submit" class="g-btn g-btn-primary" style="padding: 12px 48px; font-size: 1rem; box-shadow: 0 10px 15px -3px rgba(99,102,241,0.3);">
+                确认无误，提交入库
+            </button>
         </div>
     </form>
 
     <script>
-        function createRowHTML() {
-            return '<tr>'
-                + '<td><input data-field="en" value="" /></td>'
-                + '<td><input data-field="tgt" value="" /></td>'
-                + '<td><input data-field="target_language" value="" /></td>'
-                + '<td><button type="button" class="default remove-row-btn">删除</button></td>'
-                + '</tr>';
+        /**
+         * 核心函数：自适应高度
+         * 逻辑：先设为 auto 以重置高度，再根据 scrollHeight 赋值
+         */
+        function autoResizeField(el) {
+            if (!el) return;
+            el.style.height = 'auto'; // 重置
+            el.style.height = (el.scrollHeight + 2) + 'px'; // 赋值
         }
 
-        function wireRemoveButtons(container) {
-            container.querySelectorAll('.remove-row-btn').forEach((btn) => {
-                btn.onclick = () => {
-                    btn.closest('tr').remove();
-                    autoSizeTableInputs(container);
-                };
-            });
+        function autoResizeAll() {
+            document.querySelectorAll('textarea.g-input-cell').forEach(autoResizeField);
         }
 
-        function autoSizeTableInputs(table) {
+        // 统一绑定事件
+        function wireTableEvents(tableId) {
+            const table = document.getElementById(tableId);
             if (!table) return;
-            const colLengths = [];
-            table.querySelectorAll('thead th').forEach((th, i) => {
-                colLengths[i] = (th.textContent || '').trim().length;
+
+            table.addEventListener('input', (e) => {
+                if (e.target.classList.contains('g-input-cell')) {
+                    autoResizeField(e.target);
+                }
             });
 
-            table.querySelectorAll('tbody tr').forEach((tr) => {
-                tr.querySelectorAll('input').forEach((input, i) => {
-                    const len = (input.value || input.placeholder || '').trim().length;
-                    colLengths[i] = Math.max(colLengths[i] || 0, len);
-                });
-            });
-
-            table.querySelectorAll('tbody tr').forEach((tr) => {
-                tr.querySelectorAll('input').forEach((input, i) => {
-                    const widthCh = Math.max(12, (colLengths[i] || 0) + 3);
-                    input.style.width = `${widthCh}ch`;
-                    input.style.minWidth = `${widthCh}ch`;
-                });
+            table.addEventListener('click', (e) => {
+                if (e.target.classList.contains('remove-row-btn')) {
+                    e.target.closest('tr').remove();
+                }
+                if (e.target.classList.contains('remove-term-pair-btn')) {
+                    const slot = e.target.getAttribute('data-slot');
+                    const row = e.target.closest('tr');
+                    if (!slot || !row) return;
+                    ['en', 'tgt', 'target_language'].forEach((field) => {
+                        const input = row.querySelector(`[data-field="${field}"][data-slot="${slot}"]`);
+                        if (input) input.value = '';
+                    });
+                    autoResizeAll();
+                    const hasAnyValue = ['1', '2'].some((s) => {
+                        const en = (row.querySelector(`[data-field="en"][data-slot="${s}"]`)?.value || '').trim();
+                        const tgt = (row.querySelector(`[data-field="tgt"][data-slot="${s}"]`)?.value || '').trim();
+                        const lang = (row.querySelector(`[data-field="target_language"][data-slot="${s}"]`)?.value || '').trim();
+                        return !!(en || tgt || lang);
+                    });
+                    if (!hasAnyValue) row.remove();
+                }
             });
         }
 
+        function buildTermPairRow(first = {}, second = {}) {
+            const tr = document.createElement('tr');
+
+            const source1Td = document.createElement('td');
+            const en1 = document.createElement('textarea');
+            en1.className = 'g-input-cell';
+            en1.setAttribute('data-field', 'en');
+            en1.setAttribute('data-slot', '1');
+            en1.value = first.en || '';
+            source1Td.appendChild(en1);
+
+            const target1Td = document.createElement('td');
+            const tgt1 = document.createElement('textarea');
+            tgt1.className = 'g-input-cell';
+            tgt1.setAttribute('data-field', 'tgt');
+            tgt1.setAttribute('data-slot', '1');
+            tgt1.value = first.tgt || '';
+            target1Td.appendChild(tgt1);
+
+            const lang1Td = document.createElement('td');
+            const lang1 = document.createElement('input');
+            lang1.className = 'g-lang-input';
+            lang1.setAttribute('data-field', 'target_language');
+            lang1.setAttribute('data-slot', '1');
+            lang1.value = first.target_language || '';
+            lang1Td.appendChild(lang1);
+
+            const action1Td = document.createElement('td');
+            action1Td.style.textAlign = 'center';
+            const removeBtn1 = document.createElement('button');
+            removeBtn1.type = 'button';
+            removeBtn1.className = 'g-btn g-btn-danger remove-term-pair-btn';
+            removeBtn1.setAttribute('data-slot', '1');
+            removeBtn1.textContent = '删除';
+            action1Td.appendChild(removeBtn1);
+
+            const source2Td = document.createElement('td');
+            const en2 = document.createElement('textarea');
+            en2.className = 'g-input-cell';
+            en2.setAttribute('data-field', 'en');
+            en2.setAttribute('data-slot', '2');
+            en2.value = second.en || '';
+            source2Td.appendChild(en2);
+
+            const target2Td = document.createElement('td');
+            const tgt2 = document.createElement('textarea');
+            tgt2.className = 'g-input-cell';
+            tgt2.setAttribute('data-field', 'tgt');
+            tgt2.setAttribute('data-slot', '2');
+            tgt2.value = second.tgt || '';
+            target2Td.appendChild(tgt2);
+
+            const lang2Td = document.createElement('td');
+            const lang2 = document.createElement('input');
+            lang2.className = 'g-lang-input';
+            lang2.setAttribute('data-field', 'target_language');
+            lang2.setAttribute('data-slot', '2');
+            lang2.value = second.target_language || '';
+            lang2Td.appendChild(lang2);
+
+            const action2Td = document.createElement('td');
+            action2Td.style.textAlign = 'center';
+            const removeBtn2 = document.createElement('button');
+            removeBtn2.type = 'button';
+            removeBtn2.className = 'g-btn g-btn-danger remove-term-pair-btn';
+            removeBtn2.setAttribute('data-slot', '2');
+            removeBtn2.textContent = '删除';
+            action2Td.appendChild(removeBtn2);
+
+            tr.appendChild(source1Td);
+            tr.appendChild(target1Td);
+            tr.appendChild(lang1Td);
+            tr.appendChild(action1Td);
+            tr.appendChild(source2Td);
+            tr.appendChild(target2Td);
+            tr.appendChild(lang2Td);
+            tr.appendChild(action2Td);
+            return tr;
+        }
+
+        // 动态生成记忆行
+        function createMemoryRowHTML() {
+            return `
+                <tr>
+                    <td><textarea class="g-input-cell" data-field="en"></textarea></td>
+                    <td><textarea class="g-input-cell" data-field="tgt"></textarea></td>
+                    <td><input class="g-lang-input" data-field="target_language" value="" /></td>
+                    <td style="text-align: center;">
+                        <button type="button" class="g-btn g-btn-danger remove-row-btn">删除</button>
+                    </td>
+                </tr>`;
+        }
+
+        function normalizeTermsTableToTwoPairs() {
+            const termsTable = document.getElementById('terms-table');
+            if (!termsTable) return;
+            const tbody = termsTable.querySelector('tbody');
+            const entries = [];
+
+            tbody.querySelectorAll('tr').forEach((tr) => {
+                const hasPairSlots = tr.querySelector('[data-field="en"][data-slot="1"]');
+                if (hasPairSlots) {
+                    ['1', '2'].forEach((slot) => {
+                        const en = (tr.querySelector(`[data-field="en"][data-slot="${slot}"]`)?.value || '').trim();
+                        const tgt = (tr.querySelector(`[data-field="tgt"][data-slot="${slot}"]`)?.value || '').trim();
+                        const lang = (tr.querySelector(`[data-field="target_language"][data-slot="${slot}"]`)?.value || '').trim().toLowerCase();
+                        if (!en && !tgt && !lang) return;
+                        entries.push({ en: en, tgt: tgt, target_language: lang });
+                    });
+                } else {
+                    const en = (tr.querySelector('[data-field="en"]')?.value || '').trim();
+                    const tgt = (tr.querySelector('[data-field="tgt"]')?.value || '').trim();
+                    const lang = (tr.querySelector('[data-field="target_language"]')?.value || '').trim().toLowerCase();
+                    if (!en && !tgt && !lang) return;
+                    entries.push({ en: en, tgt: tgt, target_language: lang });
+                }
+            });
+
+            tbody.innerHTML = '';
+            for (let i = 0; i < entries.length; i += 2) {
+                tbody.appendChild(buildTermPairRow(entries[i], entries[i + 1]));
+            }
+        }
+
+        // 数据收集逻辑
         function collectRows(tableId) {
             const table = document.getElementById(tableId);
             const rows = [];
             table.querySelectorAll('tbody tr').forEach((tr) => {
-                const en = (tr.querySelector('input[data-field="en"]')?.value || '').trim();
-                const tgt = (tr.querySelector('input[data-field="tgt"]')?.value || '').trim();
-                const targetLanguage = (tr.querySelector('input[data-field="target_language"]')?.value || '').trim().toLowerCase();
-                if (!en || !tgt || !targetLanguage) return;
-                rows.push({ en: en, tgt: tgt, target_language: targetLanguage });
+                const hasPairSlots = tr.querySelector('[data-field="en"][data-slot="1"]');
+                if (hasPairSlots) {
+                    ['1', '2'].forEach((slot) => {
+                        const en = (tr.querySelector(`[data-field="en"][data-slot="${slot}"]`)?.value || '').trim();
+                        const tgt = (tr.querySelector(`[data-field="tgt"][data-slot="${slot}"]`)?.value || '').trim();
+                        const lang = (tr.querySelector(`[data-field="target_language"][data-slot="${slot}"]`)?.value || '').trim().toLowerCase();
+                        if (en || tgt) {
+                            rows.push({ en: en, tgt: tgt, target_language: lang });
+                        }
+                    });
+                    return;
+                }
+
+                const en = (tr.querySelector('[data-field="en"]')?.value || '').trim();
+                const tgt = (tr.querySelector('[data-field="tgt"]')?.value || '').trim();
+                const lang = (tr.querySelector('[data-field="target_language"]')?.value || '').trim().toLowerCase();
+                if (en || tgt) {
+                    rows.push({ en: en, tgt: tgt, target_language: lang });
+                }
             });
             return rows;
         }
 
-        const termsTable = document.getElementById('terms-table');
-        const memoriesTable = document.getElementById('memories-table');
-        wireRemoveButtons(termsTable);
-        wireRemoveButtons(memoriesTable);
+        // 初始化
+        document.addEventListener('DOMContentLoaded', () => {
+            normalizeTermsTableToTwoPairs();
+            wireTableEvents('terms-table');
+            wireTableEvents('memories-table');
 
-        document.getElementById('add-term-row-btn').onclick = () => {
-            termsTable.querySelector('tbody').insertAdjacentHTML('beforeend', createRowHTML());
-            wireRemoveButtons(termsTable);
-            autoSizeTableInputs(termsTable);
-        };
+            // 首次自适应高度（加延迟确保渲染完成）
+            setTimeout(autoResizeAll, 100);
 
-        document.getElementById('add-memory-row-btn').onclick = () => {
-            memoriesTable.querySelector('tbody').insertAdjacentHTML('beforeend', createRowHTML());
-            wireRemoveButtons(memoriesTable);
-            autoSizeTableInputs(memoriesTable);
-        };
+            // 新增行按钮
+            document.getElementById('add-term-row-btn').onclick = () => {
+                document.getElementById('terms-table').querySelector('tbody').appendChild(buildTermPairRow());
+                autoResizeAll();
+            };
+            document.getElementById('add-memory-row-btn').onclick = () => {
+                document.getElementById('memories-table').querySelector('tbody').insertAdjacentHTML('beforeend', createMemoryRowHTML());
+                autoResizeAll();
+            };
 
-        termsTable.addEventListener('input', () => autoSizeTableInputs(termsTable));
-        memoriesTable.addEventListener('input', () => autoSizeTableInputs(memoriesTable));
-        autoSizeTableInputs(termsTable);
-        autoSizeTableInputs(memoriesTable);
+            // 清空逻辑
+            document.getElementById('clear-terms-btn').onclick = () => document.querySelector('#terms-table tbody').innerHTML = '';
+            document.getElementById('clear-memories-btn').onclick = () => document.querySelector('#memories-table tbody').innerHTML = '';
+            document.getElementById('clear-all-btn').onclick = () => {
+                document.querySelector('#terms-table tbody').innerHTML = '';
+                document.querySelector('#memories-table tbody').innerHTML = '';
+            };
 
-        document.getElementById('jsonl-commit-form').addEventListener('submit', () => {
-            const terms = collectRows('terms-table');
-            const memories = collectRows('memories-table');
-            document.getElementById('terms-json').value = JSON.stringify(terms);
-            document.getElementById('memories-json').value = JSON.stringify(memories);
+            // 提交前序列化
+            document.getElementById('jsonl-commit-form').onsubmit = function() {
+                document.getElementById('terms-json').value = JSON.stringify(collectRows('terms-table'));
+                document.getElementById('memories-json').value = JSON.stringify(collectRows('memories-table'));
+            };
+
+            // 窗口缩放时重新调整
+            window.onresize = autoResizeAll;
         });
     </script>
     {% endif %}

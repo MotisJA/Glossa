@@ -20,6 +20,5 @@ GEMINI_API_KEY='<api-key>'
 
 3. Run the server:
 ```bash
-eval $(poetry env activate)
-./manage.py migrate && ./manage.py runserver
+eval $(poetry env activate)&./manage.py runserver
 ```
